@@ -1,14 +1,12 @@
 using System.ComponentModel.DataAnnotations;
+using UserService.Domain.Enums;
 
-namespace UserService.Domain;
+namespace UserService.Domain.Entities;
 
 public class User
 {
     [Key]
     public Guid Id {get; init;} = Guid.NewGuid();
-    
-    [Required]
-    public long TelegramId {get; set;}
     
     public string? FirstName {get; set;}
     
@@ -20,5 +18,10 @@ public class User
     public string? PhotoUrl {get; set;}
     
     [Required]
-    public string LanguageCode {get; set;}
+    public Language Language {get; set;}
+    
+    public TelegramAccount TelegramAccount {get; set;}
+    
+    public ICollection<RefreshToken> RefreshTokens { get; set; } = [];
+    public ICollection<SocialNetworkAccount> SocialNetworkAccounts {get; init;} = [];
 }

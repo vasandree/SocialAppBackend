@@ -1,7 +1,7 @@
 using Common.Exceptions;
 using Common.GenericRepository;
 using Microsoft.EntityFrameworkCore;
-using UserService.Domain;
+using UserService.Domain.Entities;
 
 namespace UserService.Persistence.Repositories.UserRepository;
 
@@ -19,24 +19,13 @@ public class UserRepository : GenericRepository<User>, IUserRepository
         return await _context.Users.FirstOrDefaultAsync(u => u.Id == id) ??
                throw new NotFound($"User with id={id} does not exist");
     }
-
-    public async Task<User> GetByTelegramIdAsync(long telegramId)
-    {
-        return await _context.Users.FirstOrDefaultAsync(u => u.TelegramId == telegramId)
-               ?? throw new NotFound($"User with telegramId={telegramId} does not exist");
-    }
-
+    
     public async Task<User> GetByUsernameAsync(string username)
     {
         return await _context.Users.FirstOrDefaultAsync(x => x.UserName == username) ??
                throw new NotFound($"User with username={username} does not exist");
     }
-
-    public async Task<bool> CheckIfUserExistsByTelegramIdAsync(long telegramId)
-    {
-       return await _context.Users.AnyAsync(x => x.TelegramId == telegramId);
-    }
-
+    
     public async Task<bool> CheckIfUserExistsByIdAsync(Guid id)
     {
         return await _context.Users.AnyAsync(u => u.Id == id);

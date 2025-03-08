@@ -4,6 +4,7 @@ using System.Web;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using UserService.Application.Dtos.Telegram;
+using UserService.Domain.Enums;
 
 namespace UserService.Application.Helpers.TelegramHelper
 {
@@ -86,6 +87,11 @@ namespace UserService.Application.Helpers.TelegramHelper
             }
 
             return true;
+        }
+
+        public Language GetLanguage(string code)
+        {
+            return code == "ru" ? Language.Ru : Language.En;
         }
 
         private static Dictionary<string, string> ParseQueryString(string? queryString)

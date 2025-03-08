@@ -3,7 +3,7 @@ using MediatR;
 using Microsoft.Extensions.Configuration;
 using UserService.Application.Dtos.Responses;
 using UserService.Application.Helpers.JwtService;
-using UserService.Domain;
+using UserService.Domain.Entities;
 using UserService.Persistence.Repositories.RefreshTokenRepository;
 using UserService.Persistence.Repositories.UserRepository;
 

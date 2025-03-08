@@ -1,6 +1,7 @@
 using MediatR;
-using UserService.Application.Dtos.Telegram;
+using UserService.Application.Dtos.Requests;
+using UserService.Domain.Enums;
 
 namespace UserService.Application.Features.Commands.UpdateUser;
 
-public record UpdateUserCommand(TelegramUser User) : IRequest<Unit>;
+public record UpdateUserCommand(SocialNetwork SocialNetwork, InitDataDto InitData) : IRequest<Unit>;

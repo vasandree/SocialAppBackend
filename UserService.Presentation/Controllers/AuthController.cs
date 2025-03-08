@@ -3,8 +3,10 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using UserService.Application.Dtos.Requests;
-using UserService.Application.Features.Commands.LoginWithTelegram;
+using UserService.Application.Features.Commands.Login;
+using UserService.Application.Features.Commands.LoginCommand;
 using UserService.Application.Features.Commands.RefreshTokens;
+using UserService.Domain.Enums;
 
 namespace UserService.Presentation.Controllers;
 
@@ -20,9 +22,9 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost("login")]
-    public async Task<IActionResult> Login([FromBody] TelegramInitDataDto initData)
+    public async Task<IActionResult> Login([FromBody] InitDataDto initData, [FromHeader] SocialNetwork socialNetwork)
     {
-        return Ok(await _mediator.Send(new LoginWithTelegramCommand(initData)));
+        return Ok(await _mediator.Send(new LoginCommand(socialNetwork, initData)));
     }
 
     [Authorize]

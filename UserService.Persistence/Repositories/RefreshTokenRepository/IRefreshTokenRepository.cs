@@ -1,5 +1,6 @@
 using Common.GenericRepository;
 using UserService.Domain;
+using UserService.Domain.Entities;
 
 namespace UserService.Persistence.Repositories.RefreshTokenRepository;
 

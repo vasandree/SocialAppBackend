@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace UserService.Application.Dtos.Requests;
 
-public class TelegramInitDataDto
+public class InitDataDto
 {
     [Required]
     public string InitData { get; set; }

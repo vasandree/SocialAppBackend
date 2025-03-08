@@ -1,3 +1,6 @@
+using UserService.Domain;
+using UserService.Domain.Entities;
+
 namespace UserService.Application.Dtos.Telegram;
 
 public class TelegramInitData

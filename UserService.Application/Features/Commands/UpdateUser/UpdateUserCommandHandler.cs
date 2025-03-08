@@ -1,32 +1,29 @@
-using Common.Exceptions;
 using MediatR;
-using UserService.Persistence.Repositories.UserRepository;
+using UserService.Application.Features.Commands.UpdateTelegramUser;
+using UserService.Domain.Enums;
 
 namespace UserService.Application.Features.Commands.UpdateUser;
 
 public class UpdateUserCommandHandler : IRequestHandler<UpdateUserCommand, Unit>
 {
-    private readonly IUserRepository _userRepository;
+    private readonly IMediator _mediator;
 
-    public UpdateUserCommandHandler(IUserRepository userRepository)
+    public UpdateUserCommandHandler(IMediator mediator)
     {
-        _userRepository = userRepository;
+        _mediator = mediator;
     }
 
     public async Task<Unit> Handle(UpdateUserCommand request, CancellationToken cancellationToken)
     {
-        if (!await _userRepository.CheckIfUserExistsByTelegramIdAsync(request.User.Id))
-            throw new BadRequest("User does not exist");
+        switch (request.SocialNetwork)
+        {
+            case SocialNetwork.Telegram:
+                await _mediator.Send(new UpdateTelegramUserCommand(request.InitData), cancellationToken);
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
         
-        var user = await _userRepository.GetByTelegramIdAsync(request.User.Id);
-
-        user.UserName = request.User.Username;
-        user.FirstName = request.User.First_Name;
-        user.LastName = request.User.Last_Name;
-        user.PhotoUrl = request.User.Photo_Url;
-        user.LanguageCode = request.User.Language_Code;
-        
-        await _userRepository.UpdateAsync(user);
         return Unit.Value;
     }
 }

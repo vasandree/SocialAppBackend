@@ -1,36 +1,27 @@
-using Common.Exceptions;
 using MediatR;
-using UserService.Domain;
-using UserService.Persistence.Repositories.UserRepository;
+using UserService.Application.Features.Commands.AddTelegramUser;
+using UserService.Domain.Entities;
+using UserService.Domain.Enums;
 
 namespace UserService.Application.Features.Commands.AddUser;
 
 public class AddUserCommandHandler : IRequestHandler<AddUserCommand, User>
 {
-    private readonly IUserRepository _userRepository;
+    private readonly IMediator _mediator;
 
-    public AddUserCommandHandler(IUserRepository userRepository)
+    public AddUserCommandHandler(IMediator mediator)
     {
-        _userRepository = userRepository;
+        _mediator = mediator;
     }
 
     public async Task<User> Handle(AddUserCommand request, CancellationToken cancellationToken)
     {
-        if (await _userRepository.CheckIfUserExistsByTelegramIdAsync(request.InitData.Id))
-            throw new BadRequest("Such user already exists");
-
-        var user = new User()
+        switch (request.SocialNetwork)
         {
-            TelegramId = request.InitData.Id,
-            FirstName = request.InitData.First_Name,
-            LastName = request.InitData.Last_Name,
-            UserName = request.InitData.Username,
-            PhotoUrl = request.InitData.Photo_Url,
-            LanguageCode = request.InitData.Language_Code
-        };
-        
-        await _userRepository.AddAsync(user);
-        
-        return user;
+            case SocialNetwork.Telegram:
+                return await _mediator.Send(new AddTelegramUserCommand(request.InitData), cancellationToken);
+        }
+
+        return null;
     }
 }

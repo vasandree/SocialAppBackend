@@ -1,6 +1,6 @@
 using MediatR;
 using UserService.Application.Dtos.Responses;
-using UserService.Domain;
+using UserService.Domain.Entities;
 
 namespace UserService.Application.Features.Commands.CreateTokens;
 
