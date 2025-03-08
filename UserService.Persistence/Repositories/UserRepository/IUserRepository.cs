@@ -11,4 +11,5 @@ public interface IUserRepository: IGenericRepository<User>
     Task<bool> CheckIfUserExistsByTelegramIdAsync(long telegramId);
     Task<bool> CheckIfUserExistsByIdAsync(Guid id);
     Task<bool> CheckIfUserExistsByUsernameAsync(string username);
+    IQueryable<User> GetAllUsers();
 }

@@ -13,5 +13,6 @@ public static class UserServiceApplicationConfiguration
         builder.Services.AddMediatR(config => config.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
         builder.Services.AddScoped<ITelegramHelper, TelegramHelper>();
         builder.Services.AddScoped<IJwtService, JwtService>();
+        builder.Services.AddAutoMapper(typeof(MappingProfile));
     }
 }
