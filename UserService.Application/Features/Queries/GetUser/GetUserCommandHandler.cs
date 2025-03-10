@@ -22,6 +22,8 @@ public class GetUserCommandHandler : IRequestHandler<GetUserCommand, UserDto>
         if (!await _userRepository.CheckIfUserExistsByIdAsync(request.UserId))
             throw new NotFound("User not found");
         
-        return _mapper.Map<UserDto>(await _userRepository.GetUserByIdAsync(request.UserId));
+        var user = await _userRepository.GetUserByIdAsync(request.UserId);
+        
+        return _mapper.Map<UserDto>(user);
     }
 }

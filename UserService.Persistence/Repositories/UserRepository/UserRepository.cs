@@ -14,9 +14,9 @@ public class UserRepository : GenericRepository<User>, IUserRepository
         _context = context;
     }
 
-    public async Task<User> GetUserByIdAsync(Guid id)
+    public async Task<User?> GetUserByIdAsync(Guid id)
     {
-        return await _context.Users.FirstOrDefaultAsync(u => u.Id == id) ??
+        return await _context.Users.Include(x=>x.TelegramAccount).FirstOrDefaultAsync(u => u.Id == id) ??
                throw new NotFound($"User with id={id} does not exist");
     }
     

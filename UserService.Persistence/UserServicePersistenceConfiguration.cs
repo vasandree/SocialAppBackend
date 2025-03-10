@@ -19,6 +19,13 @@ public static class UserServicePersistenceConfiguration
         builder.Services.AddTransient<ITelegramAccountRepository, TelegramAccountRepository>();
 
         builder.Services.AddDbContext<UserServiceDbContext>(options =>
-            options.UseNpgsql(builder.Configuration.GetConnectionString("PostrgesDb")));
+            options.UseNpgsql(builder.Configuration.GetConnectionString("UserDb")));
+    }
+
+    public static void UseUserServicePersistence(this WebApplication app)
+    {
+        using var serviceScope = app.Services.CreateScope();
+        var dbContext = serviceScope.ServiceProvider.GetService<UserServiceDbContext>();
+        dbContext?.Database.Migrate();
     }
 }

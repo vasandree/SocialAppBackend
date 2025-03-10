@@ -5,6 +5,7 @@ namespace UserService.Domain.Entities;
 
 public class RefreshToken
 {
+    [Key]
     [Required]
     public string Token { get; set; }
     

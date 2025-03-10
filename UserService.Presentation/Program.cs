@@ -14,12 +14,14 @@ var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
     app.UseSwaggerConfiguration();
 }
 
-app.ConfigureAuth();
+app.UseUserServicePersistence();
 app.UseHttpsRedirection();
-app.UseRouting();
+app.UseMiddleware();
+app.UseAuthentication();
+app.UseAuthorization();
+app.MapControllers();
 
 app.Run();

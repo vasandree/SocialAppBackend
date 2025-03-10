@@ -1,11 +1,12 @@
 using MediatR;
 using UserService.Application.Helpers.TelegramHelper;
+using UserService.Domain.Entities;
 using UserService.Persistence.Repositories.TelegramAccountRepository;
 using UserService.Persistence.Repositories.UserRepository;
 
 namespace UserService.Application.Features.Commands.UpdateTelegramUser;
 
-public class UpdateTelegramUserCommandHandler : IRequestHandler<UpdateTelegramUserCommand, Unit>
+public class UpdateTelegramUserCommandHandler : IRequestHandler<UpdateTelegramUserCommand, User>
 {
     private readonly IUserRepository _userRepository;
     private readonly ITelegramHelper _telegramHelper;
@@ -19,7 +20,7 @@ public class UpdateTelegramUserCommandHandler : IRequestHandler<UpdateTelegramUs
         _telegramHelper = telegramHelper;
     }
 
-    public async Task<Unit> Handle(UpdateTelegramUserCommand request, CancellationToken cancellationToken)
+    public async Task<User> Handle(UpdateTelegramUserCommand request, CancellationToken cancellationToken)
     {
         var parsedInitData = _telegramHelper.ParseInitData(request.InitData.InitData);
 
@@ -43,6 +44,6 @@ public class UpdateTelegramUserCommandHandler : IRequestHandler<UpdateTelegramUs
         await _userRepository.UpdateAsync(user);
         await _telegramAccountRepository.UpdateAsync(telegramAccount);
 
-        return Unit.Value;
+        return user;
     }
 }

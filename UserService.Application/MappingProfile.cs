@@ -9,6 +9,8 @@ public class MappingProfile : Profile
 {
     public MappingProfile()
     {
-        CreateMap<UserDto, User>();
+        CreateMap<User, UserDto>()
+            .ForMember(dest => dest.TelegramId, opt => opt.MapFrom(src => src.TelegramAccount.Id));
+        CreateMap<User, ShortenUserDto>();
     }
 }

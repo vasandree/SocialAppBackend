@@ -37,10 +37,4 @@ public static class AuthConfiguration
                 .RequireAuthenticatedUser()
                 .Build());
     }
-
-    public static void ConfigureAuth(this WebApplication app)
-    {
-        app.UseAuthentication();
-        app.UseAuthorization();
-    }
 }

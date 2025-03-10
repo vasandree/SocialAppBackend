@@ -2,8 +2,11 @@ using Common.Extensions;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using UserService.Application.Dtos.Requests;
+using UserService.Application.Features.Commands.UpdateUser;
 using UserService.Application.Features.Queries.GetUser;
 using UserService.Application.Features.Queries.GetUsers;
+using UserService.Domain.Enums;
 
 namespace UserService.Presentation.Controllers;
 
@@ -34,8 +37,9 @@ public class UsersController : ControllerBase
     
     [HttpPut]
     [Route("{id:guid}")]
-    public async Task<IActionResult> UpdateUser(Guid id)
+    public async Task<IActionResult> UpdateUser(Guid id, InitDataDto initData,
+        SocialNetwork socialNetwork = SocialNetwork.Telegram)
     {
-        return Ok(await _mediator.Send(new GetUserCommand(id)));
+        return Ok(await _mediator.Send(new UpdateUserCommand(id, socialNetwork, initData)));
     }
 }

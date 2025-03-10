@@ -1,6 +1,6 @@
 using MediatR;
 using UserService.Application.Dtos.Responses;
-using UserService.Application.Features.Commands.LoginCommand.LoginWithTelegram;
+using UserService.Application.Features.Commands.LoginWithTelegram;
 using UserService.Domain.Enums;
 
 namespace UserService.Application.Features.Commands.Login;

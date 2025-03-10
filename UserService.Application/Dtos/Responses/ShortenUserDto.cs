@@ -3,13 +3,10 @@ using UserService.Domain.Enums;
 
 namespace UserService.Application.Dtos.Responses;
 
-public class UserDto
+public class ShortenUserDto
 {
     [Required]
     public Guid Id {get; set;} 
-    
-    [Required]
-    public long TelegramId {get; set;}
     
     public string? FirstName {get; set;}
     
@@ -20,6 +17,4 @@ public class UserDto
     
     public string? PhotoUrl {get; set;}
     
-    [Required]
-    public Language LanguageCode {get; set;}
 }

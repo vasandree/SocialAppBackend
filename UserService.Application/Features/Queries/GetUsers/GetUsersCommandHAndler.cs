@@ -3,11 +3,12 @@ using Common.Exceptions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using UserService.Application.Dtos.Responses;
+using UserService.Domain.Entities;
 using UserService.Persistence.Repositories.UserRepository;
 
 namespace UserService.Application.Features.Queries.GetUsers;
 
-public class GetUsersCommandHAndler : IRequestHandler<GetUsersCommand, List<UserDto>>
+public class GetUsersCommandHAndler : IRequestHandler<GetUsersCommand, List<ShortenUserDto>>
 {
     private readonly IUserRepository _userRepository;
     private readonly IMapper _mapper;
@@ -18,9 +19,9 @@ public class GetUsersCommandHAndler : IRequestHandler<GetUsersCommand, List<User
         _mapper = mapper;
     }
 
-    public async Task<List<UserDto>> Handle(GetUsersCommand request, CancellationToken cancellationToken)
+    public async Task<List<ShortenUserDto>> Handle(GetUsersCommand request, CancellationToken cancellationToken)
     {
-        if (await _userRepository.CheckIfUserExistsByIdAsync(request.UserId))
+        if (!await _userRepository.CheckIfUserExistsByIdAsync(request.UserId))
             throw new NotFound("Provided user does not exist");
 
         var query = _userRepository.GetAllUsers();
@@ -35,6 +36,6 @@ public class GetUsersCommandHAndler : IRequestHandler<GetUsersCommand, List<User
 
         var users = await query.ToListAsync(cancellationToken);
 
-        return _mapper.Map(users, new List<UserDto>());
+        return _mapper.Map(users, new List<ShortenUserDto>());
     }
 }

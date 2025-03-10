@@ -45,9 +45,7 @@ public class AddTelegramUserCommandHandler : IRequestHandler<AddTelegramUserComm
             User = user,
             UserId = user.Id,
         };
-
-        user.TelegramAccount = telegramAccount;
-
+        
         await _userRepository.AddAsync(user);
         await _telegramAccountRepository.AddAsync(telegramAccount);
 

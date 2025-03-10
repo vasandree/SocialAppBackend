@@ -6,7 +6,7 @@ namespace UserService.Persistence;
 public class UserServiceDbContext : DbContext
 {
     public DbSet<User> Users { get; set; }
-    public DbSet<RefreshToken> RefreshTokens { get; set; }
+    public DbSet<RefreshToken?> RefreshTokens { get; set; }
     public DbSet<TelegramAccount> TelegramAccounts { get; set; }
     
     public DbSet<SocialNetworkAccount> SocialNetworkAccounts { get; set; }

@@ -6,6 +6,9 @@ namespace UserService.Domain.Entities;
 
 public class SocialNetworkAccount
 {
+    [Key]
+    public Guid Id { get; set; } = Guid.NewGuid();
+    
     [Required]
     public string Username {get; set;}
 
