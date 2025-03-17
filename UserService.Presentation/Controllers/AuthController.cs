@@ -1,6 +1,4 @@
-using Common.Extensions;
 using MediatR;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using UserService.Application.Dtos.Requests;
 using UserService.Application.Dtos.Responses;

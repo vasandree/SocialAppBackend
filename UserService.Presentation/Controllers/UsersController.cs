@@ -42,4 +42,11 @@ public class UsersController : ControllerBase
     {
         return Ok(await _mediator.Send(new UpdateUserCommand(id, socialNetwork, initData)));
     }
+
+    [HttpGet]
+    [Route("profile")]
+    public async Task<IActionResult> GetProfile()
+    {
+        return Ok(await _mediator.Send(new GetUserCommand(User.GetUserId()!.Value)));
+    }
 }
