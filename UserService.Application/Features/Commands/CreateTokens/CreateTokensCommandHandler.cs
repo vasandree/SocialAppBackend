@@ -34,7 +34,7 @@ public class CreateTokensCommandHandler : IRequestHandler<CreateTokensCommand, T
         {
             Token = _jwtService.GenerateRefreshTokenString(),
             UserId = request.User.Id,
-            Expires = DateTime.UtcNow.AddDays(_configuration.GetValue<int>("Jwt:RefreshDaysLifeTime")),
+            Expires = DateTime.UtcNow.AddHours(_configuration.GetValue<int>("Jwt:RefreshDaysLifeTime")),
         };
         
         await _refreshTokenRepository.AddAsync(refreshToken);

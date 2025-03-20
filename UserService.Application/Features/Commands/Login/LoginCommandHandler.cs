@@ -1,3 +1,4 @@
+using Common.Exceptions;
 using MediatR;
 using UserService.Application.Dtos.Responses;
 using UserService.Application.Features.Commands.LoginWithTelegram;
@@ -20,7 +21,7 @@ public class LoginCommandHandler : IRequestHandler<LoginCommand, TokensDto>
         {
             SocialNetwork.Telegram => await _mediator.Send(new LoginWithTelegramCommand(request.InitData),
                 cancellationToken),
-            _ => throw new ArgumentOutOfRangeException()
+            _ => throw new BadRequest("Provided social network is not supported yet")
         };
     }
 }
