@@ -3,7 +3,7 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using UserService.Application.Dtos.Requests;
-using UserService.Application.Features.Commands.UpdateUser;
+using UserService.Application.Features.Commands.User.UpdateUser;
 using UserService.Application.Features.Queries.GetUser;
 using UserService.Application.Features.Queries.GetUsers;
 using UserService.Domain.Enums;
@@ -12,7 +12,7 @@ namespace UserService.Presentation.Controllers;
 
 [Authorize]
 [ApiController]
-[Route("social_app/users")]
+[Route("user_service/users")]
 public class UsersController : ControllerBase
 {
     private readonly IMediator _mediator;

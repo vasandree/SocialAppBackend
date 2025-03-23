@@ -2,14 +2,14 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using UserService.Application.Dtos.Requests;
 using UserService.Application.Dtos.Responses;
-using UserService.Application.Features.Commands.Login;
-using UserService.Application.Features.Commands.RefreshTokens;
+using UserService.Application.Features.Commands.Auth.Login;
+using UserService.Application.Features.Commands.Auth.RefreshTokens;
 using UserService.Domain.Enums;
 
 namespace UserService.Presentation.Controllers;
 
 [ApiController]
-[Route("social_app/auth")]
+[Route("user_service/auth")]
 public class AuthController : ControllerBase
 {
     private readonly IMediator _mediator;

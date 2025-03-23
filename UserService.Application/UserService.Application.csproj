@@ -26,4 +26,9 @@
       <ProjectReference Include="..\UserService.Persistence\UserService.Persistence.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Features\Commands\Auth\" />
+      <Folder Include="Features\Commands\User\" />
+    </ItemGroup>
+
 </Project>

@@ -12,5 +12,6 @@ public class MappingProfile : Profile
         CreateMap<User, UserDto>()
             .ForMember(dest => dest.TelegramId, opt => opt.MapFrom(src => src.TelegramAccount.Id));
         CreateMap<User, ShortenUserDto>();
+        CreateMap<SocialNetworkAccount, SocialNetworkAccountDto>();
     }
 }

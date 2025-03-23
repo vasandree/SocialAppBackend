@@ -9,7 +9,7 @@ public class UserServiceDbContext : DbContext
     public DbSet<RefreshToken?> RefreshTokens { get; set; }
     public DbSet<TelegramAccount> TelegramAccounts { get; set; }
     
-    public DbSet<SocialNetworkAccount> SocialNetworkAccounts { get; set; }
+    public DbSet<SocialNetworkAccount?> SocialNetworkAccounts { get; set; }
 
     public UserServiceDbContext(DbContextOptions<UserServiceDbContext> options) : base(options)
     {
