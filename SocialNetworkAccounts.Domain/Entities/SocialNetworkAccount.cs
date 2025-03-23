@@ -1,8 +1,7 @@
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using UserService.Domain.Enums;
+using SocialNetworkAccounts.Domain.Enums;
 
-namespace UserService.Domain.Entities;
+namespace SocialNetworkAccounts.Domain.Entities;
 
 public class SocialNetworkAccount
 {
@@ -15,11 +14,4 @@ public class SocialNetworkAccount
     [Required]
     [EnumDataType(typeof(SocialNetwork))]
     public SocialNetwork Type {get; set;}
-    
-    [Required]
-    public User User {get; set;}
-    
-    [Required]
-    [ForeignKey("User")]
-    public Guid UserId {get; set;}
 }

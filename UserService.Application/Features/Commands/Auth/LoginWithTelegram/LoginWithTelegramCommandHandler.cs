@@ -34,17 +34,23 @@ public class LoginWithTelegramCommandHandler : IRequestHandler<LoginWithTelegram
         var parsedInitData = _telegramHelper.ParseInitData(request.InitData.InitData);
 
         Domain.Entities.User user;
-        
+
         if (await _telegramAccountRepository.CheckIfUserExistsByTelegramIdAsync(parsedInitData.User.Id))
         {
-            var userByTelegramIdAsync = await _telegramAccountRepository.GetUserByTelegramIdAsync(parsedInitData.User.Id);
-            user = await _mediator.Send(new UpdateUserCommand(userByTelegramIdAsync.Id, Domain.Enums.SocialNetwork.Telegram, request.InitData), cancellationToken);
+            var userByTelegramIdAsync =
+                await _telegramAccountRepository.GetUserByTelegramIdAsync(parsedInitData.User.Id);
+            user = await _mediator.Send(
+                new UpdateUserCommand(userByTelegramIdAsync.Id, Domain.Enums.SocialNetwork.Telegram, request.InitData),
+                cancellationToken);
+            //todo: update telegram account
         }
         else
         {
-            user = await _mediator.Send(new AddUserCommand(Domain.Enums.SocialNetwork.Telegram, request.InitData), cancellationToken);
+            user = await _mediator.Send(new AddUserCommand(Domain.Enums.SocialNetwork.Telegram, request.InitData),
+                cancellationToken);
+            //todo: add telegram account to user
         }
-        
+
         return await _mediator.Send(new CreateTokensCommand(user), cancellationToken);
     }
 }

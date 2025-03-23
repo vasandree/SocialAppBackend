@@ -3,9 +3,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using UserService.Domain.Entities;
 using UserService.Persistence.Repositories.RefreshTokenRepository;
-using UserService.Persistence.Repositories.SocialNetworkAccountRepository;
 using UserService.Persistence.Repositories.TelegramAccountRepository;
 using UserService.Persistence.Repositories.UserRepository;
 
@@ -19,7 +17,6 @@ public static class UserServicePersistenceConfiguration
         builder.Services.AddTransient<IUserRepository, UserRepository>();
         builder.Services.AddTransient<IRefreshTokenRepository, RefreshTokenRepository>();
         builder.Services.AddTransient<ITelegramAccountRepository, TelegramAccountRepository>();
-        builder.Services.AddTransient<ISocialNetworkAccountRepository, SocialNetworkAccountRepository>();
 
         builder.Services.AddDbContext<UserServiceDbContext>(options =>
             options.UseNpgsql(builder.Configuration.GetConnectionString("UserDb")));
