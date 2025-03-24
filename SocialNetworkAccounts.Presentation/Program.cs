@@ -1,5 +1,6 @@
 using Common.Configurations;
 using SocialNetworkAccounts.Application;
+using SocialNetworkAccounts.Infrastructure;
 using SocialNetworkAccounts.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,15 +11,16 @@ builder.AddSocialNetworkAccountsApplication();
 builder.AddSocialNetworkAccountsPersistence();
 builder.AddSwaggerConfiguration();
 builder.AddLoggingConfiguration();
+builder.AddSocialNetworkAccountsInfrastructureConfiguration();
 builder.Services.AddCors(options =>
 {
     if (builder.Environment.IsDevelopment())
     {
         options.AddPolicy("AllowAll", policy =>
         {
-            policy.AllowAnyOrigin() 
-                .AllowAnyHeader() 
-                .AllowAnyMethod(); 
+            policy.AllowAnyOrigin()
+                .AllowAnyHeader()
+                .AllowAnyMethod();
         });
     }
 });

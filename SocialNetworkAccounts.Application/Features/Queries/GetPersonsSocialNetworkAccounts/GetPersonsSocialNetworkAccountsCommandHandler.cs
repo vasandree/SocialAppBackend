@@ -1,6 +1,8 @@
 using AutoMapper;
+using Common.Exceptions;
 using MediatR;
 using SocialNetworkAccounts.Application.Dtos.Responses;
+using SocialNetworkAccounts.Infrastructure.ServiceBus.RpcRequestSender;
 using SocialNetworkAccounts.Persistence.Repositories.PersonsAccountRepository;
 
 namespace SocialNetworkAccounts.Application.Features.Queries.GetPersonsSocialNetworkAccounts;
@@ -10,18 +12,24 @@ public class
     List<SocialNetworkAccountDto>>
 {
     private IMapper _mapper;
+    private readonly IRpcRequestSender _rpcRequestSender;
     private readonly IPersonsAccountRepository _personsAccountRepository;
 
-    public GetPersonsSocialNetworkAccountsCommandHandler(IPersonsAccountRepository personsAccountRepository, IMapper mapper)
+    public GetPersonsSocialNetworkAccountsCommandHandler(IPersonsAccountRepository personsAccountRepository, IMapper mapper, IRpcRequestSender rpcRequestSender)
     {
         _personsAccountRepository = personsAccountRepository;
         _mapper = mapper;
+        _rpcRequestSender = rpcRequestSender;
     }
 
     public async Task<List<SocialNetworkAccountDto>> Handle(GetPersonsSocialNetworkAccountsCommand request,
         CancellationToken cancellationToken)
     {
-        //todo: check user existence
+         var userExistence = await _rpcRequestSender.CheckUserExistence(request.UserId);
+
+        if (userExistence is { Exists: true })
+            throw new BadRequest("User does not exist");
+        
         //todo: check person existence
 
         var accounts =

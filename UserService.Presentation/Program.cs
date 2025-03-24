@@ -1,5 +1,6 @@
 using Common.Configurations;
 using UserService.Application;
+using UserService.Infrastructure;
 using UserService.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,15 +11,16 @@ builder.AddAuth();
 builder.AddSwaggerConfiguration();
 builder.AddUserServiceApplication();
 builder.AddLoggingConfiguration();
+builder.AddUserServiceInfrastructureConfiguration();
 builder.Services.AddCors(options =>
 {
     if (builder.Environment.IsDevelopment())
     {
         options.AddPolicy("AllowAll", policy =>
         {
-            policy.AllowAnyOrigin() 
-                .AllowAnyHeader() 
-                .AllowAnyMethod(); 
+            policy.AllowAnyOrigin()
+                .AllowAnyHeader()
+                .AllowAnyMethod();
         });
     }
 });

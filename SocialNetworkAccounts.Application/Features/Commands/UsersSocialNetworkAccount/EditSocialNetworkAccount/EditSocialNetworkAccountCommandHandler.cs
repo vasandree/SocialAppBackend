@@ -1,5 +1,6 @@
 using Common.Exceptions;
 using MediatR;
+using SocialNetworkAccounts.Infrastructure.ServiceBus.RpcRequestSender;
 using SocialNetworkAccounts.Persistence.Repositories.UsersAccountRepository;
 
 namespace SocialNetworkAccounts.Application.Features.Commands.UsersSocialNetworkAccount.EditSocialNetworkAccount;
@@ -7,10 +8,12 @@ namespace SocialNetworkAccounts.Application.Features.Commands.UsersSocialNetwork
 public class EditSocialNetworkAccountCommandHandler : IRequestHandler<EditSocialNetworkAccountCommand, Unit>
 {
     private readonly IUsersAccountRepository _usersAccountRepository;
+    private readonly IRpcRequestSender _rpcRequestSender;
 
-    public EditSocialNetworkAccountCommandHandler(IUsersAccountRepository usersAccountRepository)
+    public EditSocialNetworkAccountCommandHandler(IUsersAccountRepository usersAccountRepository, IRpcRequestSender rpcRequestSender)
     {
         _usersAccountRepository = usersAccountRepository;
+        _rpcRequestSender = rpcRequestSender;
     }
 
 
@@ -19,7 +22,10 @@ public class EditSocialNetworkAccountCommandHandler : IRequestHandler<EditSocial
         if (!await _usersAccountRepository.CheckIfAccountAddedByIdAsync(request.SocialNetworkAccountId))
             throw new NotFound($"Account with id={request.SocialNetworkAccountId} not found");
         
-        //todo: check user existence
+        var userExistence = await _rpcRequestSender.CheckUserExistence(request.UserId);
+
+        if (userExistence is { Exists: true })
+            throw new BadRequest("User does not exist");
         
         var account = await _usersAccountRepository.GetById(request.SocialNetworkAccountId);
 

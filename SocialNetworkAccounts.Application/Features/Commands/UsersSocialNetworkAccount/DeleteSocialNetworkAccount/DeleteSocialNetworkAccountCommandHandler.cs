@@ -1,5 +1,6 @@
 using Common.Exceptions;
 using MediatR;
+using SocialNetworkAccounts.Infrastructure.ServiceBus.RpcRequestSender;
 using SocialNetworkAccounts.Persistence.Repositories.UsersAccountRepository;
 
 namespace SocialNetworkAccounts.Application.Features.Commands.UsersSocialNetworkAccount.DeleteSocialNetworkAccount;
@@ -7,15 +8,20 @@ namespace SocialNetworkAccounts.Application.Features.Commands.UsersSocialNetwork
 public class DeleteSocialNetworkAccountCommandHandler : IRequestHandler<DeleteSocialNetworkAccountCommand, Unit>
 {
     private readonly IUsersAccountRepository _usersAccountRepository;
+    private readonly IRpcRequestSender _rpcRequestSender;
 
-    public DeleteSocialNetworkAccountCommandHandler(IUsersAccountRepository usersAccountRepository)
+    public DeleteSocialNetworkAccountCommandHandler(IUsersAccountRepository usersAccountRepository, IRpcRequestSender rpcRequestSender)
     {
         _usersAccountRepository = usersAccountRepository;
+        _rpcRequestSender = rpcRequestSender;
     }
     
     public async Task<Unit> Handle(DeleteSocialNetworkAccountCommand request, CancellationToken cancellationToken)
     {
-        //todo: check user existence
+         var userExistence = await _rpcRequestSender.CheckUserExistence(request.UserId);
+
+        if (userExistence is { Exists: true })
+            throw new BadRequest("User does not exist");
 
         if (!await _usersAccountRepository.CheckIfAccountAddedByIdAsync(request.SocialNetworkAccountId))
             throw new NotFound($"Account with id={request.SocialNetworkAccountId} not found");

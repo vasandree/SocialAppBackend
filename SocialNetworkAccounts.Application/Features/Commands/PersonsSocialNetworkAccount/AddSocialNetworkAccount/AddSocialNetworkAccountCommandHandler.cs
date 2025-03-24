@@ -1,6 +1,7 @@
 using Common.Exceptions;
 using MediatR;
 using SocialNetworkAccounts.Domain.Entities;
+using SocialNetworkAccounts.Infrastructure.ServiceBus.RpcRequestSender;
 using SocialNetworkAccounts.Persistence.Repositories.PersonsAccountRepository;
 
 namespace SocialNetworkAccounts.Application.Features.Commands.PersonsSocialNetworkAccount.AddSocialNetworkAccount;
@@ -8,15 +9,22 @@ namespace SocialNetworkAccounts.Application.Features.Commands.PersonsSocialNetwo
 public class AddSocialNetworkAccountCommandHandler: IRequestHandler<AddSocialNetworkAccountCommand, Unit>
 {
     private readonly IPersonsAccountRepository _personsAccountRepository;
+    private readonly IRpcRequestSender _rpcRequestSender;
 
-    public AddSocialNetworkAccountCommandHandler(IPersonsAccountRepository personsAccountRepository)
+    public AddSocialNetworkAccountCommandHandler(IPersonsAccountRepository personsAccountRepository, IRpcRequestSender rpcRequestSender)
     {
         _personsAccountRepository = personsAccountRepository;
+        _rpcRequestSender = rpcRequestSender;
     }
 
     public async Task<Unit> Handle(AddSocialNetworkAccountCommand request, CancellationToken cancellationToken)
     {
-        //todo: check user existence
+
+        var userExistence = await _rpcRequestSender.CheckUserExistence(request.UserId);
+
+        if (userExistence is { Exists: true })
+            throw new BadRequest("User does not exist");
+        
         //todo: check person existence
         
         if (await _personsAccountRepository.CheckIfAccountIsAddedAsync(request.UserId,

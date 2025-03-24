@@ -17,6 +17,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\SocialNetworkAccounts.Application\SocialNetworkAccounts.Application.csproj" />
+      <ProjectReference Include="..\SocialNetworkAccounts.Infrastructure\SocialNetworkAccounts.Infrastructure.csproj" />
     </ItemGroup>
 
 </Project>
