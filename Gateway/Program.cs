@@ -1,6 +1,4 @@
-using System.Text;
 using Common.Configurations;
-using Microsoft.Extensions.Logging;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 
@@ -16,7 +14,6 @@ builder.AddLoggingConfiguration();
 var app = builder.Build();
 
 await app.UseOcelot();
-app.UseMiddleware<JsonBodyMiddleware>();
 app.UseAuthentication();
 app.UseAuthorization();
 
