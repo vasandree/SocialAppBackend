@@ -1,4 +1,4 @@
-using Common.GenericRepository;
+using Common.Repositories.GenericRepository;
 using Microsoft.EntityFrameworkCore;
 using UserService.Domain;
 using UserService.Domain.Entities;

@@ -1,4 +1,4 @@
-using Common.GenericRepository;
+using Common.Repositories.GenericRepository;
 using SocialNetworkAccounts.Domain.Entities;
 using SocialNetworkAccounts.Domain.Enums;
 

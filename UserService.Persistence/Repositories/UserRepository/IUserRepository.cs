@@ -1,14 +1,11 @@
-using Common.GenericRepository;
-using UserService.Domain;
+using Common.Repositories.BaseEntityRepository;
 using UserService.Domain.Entities;
 
 namespace UserService.Persistence.Repositories.UserRepository;
 
-public interface IUserRepository : IGenericRepository<User>
-{
-    Task<User?> GetUserByIdAsync(Guid id);
+public interface IUserRepository : IBaseEntityRepository<User>
+{ 
     Task<User> GetByUsernameAsync(string username);
-    Task<bool> CheckIfUserExistsByIdAsync(Guid id);
     Task<bool> CheckIfUserExistsByUsernameAsync(string username);
     IQueryable<User> GetAllUsers();
 }

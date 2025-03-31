@@ -21,7 +21,7 @@ public class GetUsersCommandHAndler : IRequestHandler<GetUsersCommand, List<Shor
 
     public async Task<List<ShortenUserDto>> Handle(GetUsersCommand request, CancellationToken cancellationToken)
     {
-        if (!await _userRepository.CheckIfUserExistsByIdAsync(request.UserId))
+        if (!await _userRepository.CheckIfExists(request.UserId))
             throw new NotFound("Provided user does not exist");
 
         var query = _userRepository.GetAllUsers();

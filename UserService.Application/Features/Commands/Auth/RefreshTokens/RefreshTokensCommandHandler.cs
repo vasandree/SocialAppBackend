@@ -34,10 +34,10 @@ public class RefreshTokensCommandHandler : IRequestHandler<RefreshTokensCommand,
             throw new Unauthorized("Invalid or missing UserId in the token.");
         }
 
-        if (!await _userRepository.CheckIfUserExistsByIdAsync(userId))
+        if (!await _userRepository.CheckIfExists(userId))
             throw new NotFound("user does not exist");
 
-        var user = await _userRepository.GetUserByIdAsync(userId);
+        var user = await _userRepository.GetByIdAsync(userId);
 
         if (!await _refreshTokenRepository.CheckIfRefreshTokenExistsAsync(request.Tokens.RefreshToken) ||
             !await _refreshTokenRepository.IsRefreshTokenValidAsync(request.Tokens.RefreshToken) ||
