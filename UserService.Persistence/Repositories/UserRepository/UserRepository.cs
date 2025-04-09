@@ -1,25 +1,21 @@
+using Common;
 using Common.Exceptions;
-using Common.GenericRepository;
+using Common.Repositories.BaseEntityRepository;
 using Microsoft.EntityFrameworkCore;
 using UserService.Domain.Entities;
 
 namespace UserService.Persistence.Repositories.UserRepository;
 
-public class UserRepository : GenericRepository<User>, IUserRepository
+public class UserRepository : BaseEntityRepository<User>, IUserRepository
 {
     private readonly UserServiceDbContext _context;
 
-    public UserRepository(UserServiceDbContext context) : base(context)
+
+    public UserRepository( DbSet<User> dbSet, UserServiceDbContext context) : base(context, dbSet)
     {
         _context = context;
     }
 
-    public async Task<User?> GetUserByIdAsync(Guid id)
-    {
-        return await _context.Users.Include(x=>x.TelegramAccount).FirstOrDefaultAsync(u => u.Id == id) ??
-               throw new NotFound($"User with id={id} does not exist");
-    }
-    
     public async Task<User> GetByUsernameAsync(string username)
     {
         return await _context.Users.FirstOrDefaultAsync(x => x.UserName == username) ??

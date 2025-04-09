@@ -1,4 +1,4 @@
-using Common.GenericRepository;
+using Common.Repositories.GenericRepository;
 using UserService.Domain;
 using UserService.Domain.Entities;
 

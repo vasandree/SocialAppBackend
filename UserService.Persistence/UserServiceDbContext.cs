@@ -16,13 +16,6 @@ public class UserServiceDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<User>()
-            .HasMany(u => u.SocialNetworkAccounts)
-            .WithOne(s => s.User)
-            .HasForeignKey(s => s.UserId)
-            .IsRequired()
-            .OnDelete(DeleteBehavior.Cascade);
-
-        modelBuilder.Entity<User>()
             .HasMany(u => u.RefreshTokens)
             .WithOne(s => s.User)
             .HasForeignKey(s => s.UserId)

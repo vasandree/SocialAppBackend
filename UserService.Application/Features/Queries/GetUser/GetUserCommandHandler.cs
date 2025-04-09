@@ -19,10 +19,10 @@ public class GetUserCommandHandler : IRequestHandler<GetUserCommand, UserDto>
 
     public async Task<UserDto> Handle(GetUserCommand request, CancellationToken cancellationToken)
     {
-        if (!await _userRepository.CheckIfUserExistsByIdAsync(request.UserId))
+        if (!await _userRepository.CheckIfExists(request.UserId))
             throw new NotFound("User not found");
         
-        var user = await _userRepository.GetUserByIdAsync(request.UserId);
+        var user = await _userRepository.GetByIdAsync(request.UserId);
         
         return _mapper.Map<UserDto>(user);
     }

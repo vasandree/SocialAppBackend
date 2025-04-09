@@ -27,7 +27,7 @@ public class CreateTokensCommandHandler : IRequestHandler<CreateTokensCommand, T
 
     public async Task<TokensDto> Handle(CreateTokensCommand request, CancellationToken cancellationToken)
     {
-        if (!await _userRepository.CheckIfUserExistsByIdAsync(request.User.Id))
+        if (!await _userRepository.CheckIfExists(request.User.Id))
             throw new BadRequest("User does not exist");
 
         var refreshToken = new RefreshToken

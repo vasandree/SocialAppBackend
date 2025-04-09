@@ -19,7 +19,7 @@ public class CheckUserExistenceConsumer : BaseConsumer<CheckUserExistenceRequest
     {
 
         var message = context.Message;
-        await context.Publish(new CheckUserExistenceResponse(await _userRepository.CheckIfUserExistsByIdAsync(message.UserId)));
+        await context.Publish(new CheckUserExistenceResponse(await _userRepository.CheckIfExists(message.UserId)));
 
     }
 }

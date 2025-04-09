@@ -1,4 +1,5 @@
-using Common.GenericRepository;
+using Common.Exceptions;
+using Common.Repositories.GenericRepository;
 using Microsoft.EntityFrameworkCore;
 using UserService.Domain.Entities;
 
@@ -23,17 +24,9 @@ public class TelegramAccountRepository : GenericRepository<TelegramAccount>, ITe
         return (await _context.TelegramAccounts.FirstOrDefaultAsync(x => x.Id == telegramId))!;
     }
 
-    public async Task<User> GetUserByTelegramIdAsync(long telegramId)
+    public async Task<User> GetUserByTelegramIdAsync(long userId)
     {
-        return (await _context.Users
-            .Join(
-                _context.TelegramAccounts,
-                user => user.Id,
-                account => account.UserId,
-                (user, account) => new { User = user, Account = account })
-            .Where(x => x.Account.Id == telegramId)
-            .Select(x => x.User)
-            .Include(x => x.SocialNetworkAccounts)
-            .FirstOrDefaultAsync().ConfigureAwait(false))!;
+        var user = await _context.TelegramAccounts.Include(x => x.User).FirstOrDefaultAsync(x => x.Id == userId);
+        return user?.User ?? throw new NotFound($"User with telegram id={userId} does not exist");
     }
 }
