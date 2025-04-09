@@ -1,6 +1,4 @@
-using System.ComponentModel.DataAnnotations;
-
-namespace PersonService.Domain;
+namespace PersonService.Domain.Entities;
 
 public class Person : BaseSocialNode
 {

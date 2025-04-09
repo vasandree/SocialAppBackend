@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Http;
 
 namespace PersonService.Application.Dtos.Requests;
 
@@ -13,5 +14,5 @@ public class PersonRequestDto
     
     public string? PhoneNumber { get; set;}
     
-    public string? avatarUrl { get; set; }
+    public IFormFile? Avatar { get; set; }
 }

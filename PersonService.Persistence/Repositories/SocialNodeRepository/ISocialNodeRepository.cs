@@ -1,10 +1,10 @@
 using Common.Repositories.BaseEntityRepository;
-using PersonService.Domain;
+using PersonService.Domain.Entities;
 
 namespace PersonService.Persistence.Repositories.SocialNodeRepository;
 
-public interface ISocialNodeRepository: IBaseEntityRepository<BaseSocialNode>
+public interface ISocialNodeRepository<T> : IBaseEntityRepository<T> where T : BaseSocialNode
 {
-    public Task<IEnumerable<BaseSocialNode>> GetByName(string name, int page, int pageSize, Guid userId);
-    public Task<IEnumerable<BaseSocialNode>> GetAll(Guid userId, int page, int pageSize);
+    Task<IQueryable<T>> GetAllAsQueryable(Guid userId);
+    public Task<bool> CheckIfUserIsCreator(Guid userId, Guid nodeId);
 }

@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using Common;
 
-namespace PersonService.Domain;
+namespace PersonService.Domain.Entities;
 
 public class BaseSocialNode : BaseEntity
 {
@@ -9,7 +9,7 @@ public class BaseSocialNode : BaseEntity
 
     public string? Description { get; set; }
 
-    public string? avatarUrl { get; set; }
+    public string? AvatarUrl { get; set; }
 
     [Required] public Guid CreatorId { get; set; }
 }

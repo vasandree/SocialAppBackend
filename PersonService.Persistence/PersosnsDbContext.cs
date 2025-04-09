@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using PersonService.Domain;
+using PersonService.Domain.Entities;
 
 namespace PersonService.Persistence;
 
@@ -13,5 +14,7 @@ public class PersosnsDbContext: DbContext
     public DbSet<Place> Places { get; set; }
     public DbSet<ClusterOfPeople> ClustersOfPeople { get; set; }
 
-
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+    }
 }
