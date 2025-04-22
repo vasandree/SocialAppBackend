@@ -1,6 +1,6 @@
 namespace WorkspaceService.Domain.Entities;
 
-public class UserInWorkspace
+public class WorkspaceItem
 {
     
 }
