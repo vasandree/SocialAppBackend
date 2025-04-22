@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="MediatR" Version="12.4.1" />
+      <PackageReference Include="Microsoft.AspNetCore.Authorization" Version="9.0.4" />
+      <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.3.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\SocialNetworkAccounts.Domain\SocialNetworkAccounts.Domain.csproj" />
+      <ProjectReference Include="..\User.Application\User.Application.csproj" />
+      <ProjectReference Include="..\User.Contracts\User.Contracts.csproj" />
+      <ProjectReference Include="..\User.Infrastructure\User.Infrastructure.csproj" />
+      <ProjectReference Include="..\User.Persistence\User.Persistence.csproj" />
+    </ItemGroup>
+
+</Project>
