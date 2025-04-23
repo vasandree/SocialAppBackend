@@ -1,5 +1,5 @@
-using Common.Exceptions;
 using Microsoft.EntityFrameworkCore;
+using Shared.Domain.Exceptions;
 using Shared.Persistence.Repositories;
 using User.Contracts.Repositories;
 using User.Domain.Entities;

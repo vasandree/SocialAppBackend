@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using Shared.Domain;
 
-namespace SocialNetworkAccounts.Application.Dtos.Responses;
+namespace SocialNetworkAccounts.Contracts.Dtos.Responses;
 
 public class SocialNetworkAccountDto
 {

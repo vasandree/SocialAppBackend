@@ -1,7 +1,7 @@
 using AutoMapper;
-using Common.Exceptions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Shared.Domain.Exceptions;
 using User.Contracts.Dtos.Responses;
 using User.Contracts.Queries;
 using User.Contracts.Repositories;

@@ -1,7 +1,7 @@
-using Common.Exceptions;
 using Microsoft.AspNetCore.Http;
+using Shared.Domain.Exceptions;
 
-namespace Common.Middleware;
+namespace Shared.Configurations.Middleware;
 
 public class Middleware
 {

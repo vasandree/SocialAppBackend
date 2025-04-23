@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace SocialNetworkAccounts.Application.Dtos.Requests;
+namespace SocialNetworkAccounts.Contracts.Dtos.Requests;
 
 public class EditSocialNetworkAccountDto
 {

@@ -6,6 +6,6 @@ public static class MiddlewareConfig
 {
     public static void UseMiddleware(this WebApplication app)
     {
-        app.UseMiddleware<Common.Middleware.Middleware>();
+        app.UseMiddleware<Middleware.Middleware>();
     }
 }

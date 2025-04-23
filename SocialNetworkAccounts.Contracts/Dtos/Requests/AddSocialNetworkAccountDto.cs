@@ -1,8 +1,7 @@
-
 using System.ComponentModel.DataAnnotations;
 using Shared.Domain;
 
-namespace SocialNetworkAccounts.Application.Dtos.Requests;
+namespace SocialNetworkAccounts.Contracts.Dtos.Requests;
 
 public class AddSocialNetworkAccountDto
 {

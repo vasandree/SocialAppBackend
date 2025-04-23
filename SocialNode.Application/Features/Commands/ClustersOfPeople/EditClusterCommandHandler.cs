@@ -1,5 +1,5 @@
-using Common.Exceptions;
 using MediatR;
+using Shared.Domain.Exceptions;
 using SocialNode.Contracts.Commands.ClusterOfPeople;
 using SocialNode.Contracts.Dtos.Requests;
 using SocialNode.Contracts.Repositories;

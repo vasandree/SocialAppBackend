@@ -1,6 +1,6 @@
 using AutoMapper;
-using Common.Exceptions;
 using MediatR;
+using Shared.Domain.Exceptions;
 using SocialNode.Contracts.Dtos.Responses.Place;
 using SocialNode.Contracts.Queries;
 using SocialNode.Contracts.Repositories;

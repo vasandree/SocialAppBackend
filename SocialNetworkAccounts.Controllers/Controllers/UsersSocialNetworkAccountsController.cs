@@ -1,9 +1,9 @@
-using Common.Extensions;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using SocialNetworkAccounts.Application.Dtos.Requests;
+using Shared.Configurations.Extensions;
 using SocialNetworkAccounts.Contracts.Commands.UserSocialNetworkAccount;
+using SocialNetworkAccounts.Contracts.Dtos.Requests;
 using SocialNetworkAccounts.Contracts.Queries;
 
 namespace SocialNetworkAccounts.Controllers.Controllers;

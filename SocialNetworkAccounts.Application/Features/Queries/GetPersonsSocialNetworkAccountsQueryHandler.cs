@@ -1,7 +1,7 @@
 using AutoMapper;
 using MediatR;
-using SocialNetworkAccounts.Application.Dtos.Responses;
-using SocialNetworkAccounts.Application.Features.Queries.GetPersonsSocialNetworkAccounts;
+using SocialNetworkAccounts.Contracts.Dtos.Responses;
+using SocialNetworkAccounts.Contracts.Queries;
 using SocialNetworkAccounts.Contracts.Repositories;
 
 namespace SocialNetworkAccounts.Application.Features.Queries;

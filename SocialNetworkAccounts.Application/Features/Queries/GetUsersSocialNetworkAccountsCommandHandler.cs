@@ -1,7 +1,6 @@
 using AutoMapper;
-using Common.Exceptions;
 using MediatR;
-using SocialNetworkAccounts.Application.Dtos.Responses;
+using SocialNetworkAccounts.Contracts.Dtos.Responses;
 using SocialNetworkAccounts.Contracts.Queries;
 using SocialNetworkAccounts.Contracts.Repositories;
 

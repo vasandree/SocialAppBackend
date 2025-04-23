@@ -1,7 +1,7 @@
-using Common.Extensions;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Shared.Configurations.Extensions;
 using SocialNode.Contracts.Commands.Place;
 using SocialNode.Contracts.Dtos.Requests;
 using SocialNode.Contracts.Queries;

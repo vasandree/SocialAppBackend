@@ -1,7 +1,7 @@
-using Common.Extensions;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Shared.Configurations.Extensions;
 using Shared.Domain;
 using User.Contracts.Commands;
 using User.Contracts.Dtos.Requests;

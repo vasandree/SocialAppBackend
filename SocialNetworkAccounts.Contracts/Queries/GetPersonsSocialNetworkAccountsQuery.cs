@@ -1,6 +1,6 @@
 using MediatR;
-using SocialNetworkAccounts.Application.Dtos.Responses;
+using SocialNetworkAccounts.Contracts.Dtos.Responses;
 
-namespace SocialNetworkAccounts.Application.Features.Queries.GetPersonsSocialNetworkAccounts;
+namespace SocialNetworkAccounts.Contracts.Queries;
 
 public record GetPersonsSocialNetworkAccountsQuery(Guid UserId, Guid PersonId): IRequest<List<SocialNetworkAccountDto>>;

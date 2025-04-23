@@ -1,5 +1,5 @@
 using AutoMapper;
-using SocialNetworkAccounts.Application.Dtos.Responses;
+using SocialNetworkAccounts.Contracts.Dtos.Responses;
 using SocialNetworkAccounts.Domain.Entities;
 
 namespace SocialNetworkAccounts.Application;

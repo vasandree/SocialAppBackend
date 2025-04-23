@@ -1,7 +1,7 @@
 using CloudinaryDotNet;
 using CloudinaryDotNet.Actions;
-using Common.Exceptions;
 using Microsoft.AspNetCore.Http;
+using Shared.Domain.Exceptions;
 using SocialNode.Contracts.Services;
 
 namespace SocialNode.Infrastructure.CloudStorage;

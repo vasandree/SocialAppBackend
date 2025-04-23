@@ -1,5 +1,5 @@
-using Common.Exceptions;
 using MediatR;
+using Shared.Domain.Exceptions;
 using SocialNetworkAccounts.Contracts.Commands.UserSocialNetworkAccount;
 using SocialNetworkAccounts.Contracts.Repositories;
 

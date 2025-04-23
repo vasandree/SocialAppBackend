@@ -1,6 +1,6 @@
 using AutoMapper;
-using Common.Exceptions;
 using MediatR;
+using Shared.Domain.Exceptions;
 using User.Contracts.Dtos.Responses;
 using User.Contracts.Queries;
 using User.Contracts.Repositories;

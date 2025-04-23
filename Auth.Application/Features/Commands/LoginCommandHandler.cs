@@ -1,8 +1,8 @@
 using Auth.Contracts.Commands;
 using Auth.Contracts.Responses;
-using Common.Exceptions;
 using MediatR;
 using Shared.Domain;
+using Shared.Domain.Exceptions;
 
 namespace Auth.Application.Features.Commands;
 

@@ -3,7 +3,7 @@ using Shared.Persistence.Repositories;
 using User.Contracts.Repositories;
 using User.Domain.Entities;
 using User.Infrastructure;
-using NotFound = Common.Exceptions.NotFound;
+using NotFound = Shared.Domain.Exceptions.NotFound;
 
 namespace User.Persistence.Repositories;
 

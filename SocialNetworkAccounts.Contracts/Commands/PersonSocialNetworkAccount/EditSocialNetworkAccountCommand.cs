@@ -1,5 +1,5 @@
 using MediatR;
-using SocialNetworkAccounts.Application.Dtos.Requests;
+using SocialNetworkAccounts.Contracts.Dtos.Requests;
 
 namespace SocialNetworkAccounts.Contracts.Commands.PersonSocialNetworkAccount;
 

@@ -2,9 +2,9 @@ using Auth.Contracts.Commands;
 using Auth.Contracts.Repositories;
 using Auth.Contracts.Responses;
 using Auth.Domain.Entites;
-using Common.Exceptions;
 using MediatR;
 using Microsoft.Extensions.Configuration;
+using Shared.Domain.Exceptions;
 using User.Contracts.Helpers;
 using User.Contracts.Repositories;
 
