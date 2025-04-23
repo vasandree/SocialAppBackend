@@ -1,5 +1,8 @@
-namespace SocialNetworkAccounts.Domain.Enums;
+using System.Text.Json.Serialization;
 
+namespace Shared.Domain;
+
+[JsonConverter(typeof(JsonStringEnumConverter))]
 public enum SocialNetwork
 {
     Facebook,

@@ -2,10 +2,10 @@ using Common.Extensions;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Shared.Domain;
 using User.Contracts.Commands;
 using User.Contracts.Dtos.Requests;
 using User.Contracts.Queries;
-using User.Domain.Enums;
 
 namespace User.Controllers.Controllers;
 

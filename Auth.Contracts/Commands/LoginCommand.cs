@@ -1,7 +1,7 @@
 using Auth.Contracts.Responses;
 using MediatR;
+using Shared.Domain;
 using User.Contracts.Dtos.Requests;
-using User.Domain.Enums;
 
 namespace Auth.Contracts.Commands;
 

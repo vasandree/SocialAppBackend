@@ -1,6 +1,6 @@
 using Shared.Contracts.Repositories;
+using Shared.Domain;
 using SocialNetworkAccounts.Domain.Entities;
-using SocialNetworkAccounts.Domain.Enums;
 
 namespace SocialNetworkAccounts.Contracts.Repositories;
 

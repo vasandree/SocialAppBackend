@@ -2,6 +2,7 @@ using Auth.Contracts.Commands;
 using Auth.Contracts.Responses;
 using Common.Exceptions;
 using MediatR;
+using Shared.Domain;
 using User.Contracts.Commands;
 using User.Contracts.Helpers;
 using User.Contracts.Repositories;

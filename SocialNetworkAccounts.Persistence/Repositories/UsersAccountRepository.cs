@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
+using Shared.Domain;
 using Shared.Persistence.Repositories;
 using SocialNetworkAccounts.Contracts.Repositories;
 using SocialNetworkAccounts.Domain.Entities;
-using SocialNetworkAccounts.Domain.Enums;
 using SocialNetworkAccounts.Infrastructure;
 
 namespace SocialNetworkAccounts.Persistence.Repositories;

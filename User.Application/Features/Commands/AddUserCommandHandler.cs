@@ -1,4 +1,5 @@
 using MediatR;
+using Shared.Domain;
 using User.Contracts.Commands;
 using User.Domain.Entities;
 using User.Domain.Enums;

@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Shared.Domain;
 using SocialNetworkAccounts.Domain.Entities;
-using SocialNetworkAccounts.Domain.Enums;
 
 namespace SocialNetworkAccounts.Infrastructure;
 

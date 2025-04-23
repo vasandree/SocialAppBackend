@@ -1,6 +1,6 @@
 
 using System.ComponentModel.DataAnnotations;
-using SocialNetworkAccounts.Domain.Enums;
+using Shared.Domain;
 
 namespace SocialNetworkAccounts.Application.Dtos.Requests;
 

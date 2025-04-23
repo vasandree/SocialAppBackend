@@ -1,7 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using Common;
 using Shared.Domain;
-using SocialNetworkAccounts.Domain.Enums;
 
 namespace SocialNetworkAccounts.Domain.Entities;
 

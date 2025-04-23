@@ -2,13 +2,13 @@ using Auth.Contracts.Commands;
 using Auth.Contracts.Responses;
 using Common.Exceptions;
 using MediatR;
-using User.Domain.Enums;
+using Shared.Domain;
 
 namespace Auth.Application.Features.Commands;
 
 public class LoginCommandHandler : IRequestHandler<LoginCommand, TokensDto>
 {
-    private ISender _mediator;
+    private readonly ISender _mediator;
 
     public LoginCommandHandler(ISender mediator)
     {

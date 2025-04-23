@@ -2,13 +2,13 @@ using Auth.Contracts.Commands;
 using Auth.Contracts.Responses;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Shared.Domain;
 using User.Contracts.Dtos.Requests;
-using User.Domain.Enums;
 
 namespace Auth.Controllers.Controllers;
 
 [ApiController]
-[Route("user_service/auth")]
+[Route("/auth")]
 public class AuthController : ControllerBase
 {
     private readonly ISender _mediator;

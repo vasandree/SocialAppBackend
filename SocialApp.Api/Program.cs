@@ -9,8 +9,6 @@ var builder = WebApplication.CreateSlimBuilder(args);
 
 builder.Services.AddOpenApi();
 
-builder.Services.AddMediatR(config
-    => config.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
 builder.AddGenericRepository();
 
 builder.AddAuth();
