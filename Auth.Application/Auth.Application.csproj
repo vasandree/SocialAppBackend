@@ -7,7 +7,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="MediatR" Version="12.4.1" />
+      <PackageReference Include="MediatR" Version="12.5.0" />
+      <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.4" />
       <PackageReference Include="Quartz" Version="3.14.0" />
       <PackageReference Include="Quartz.Extensions.DependencyInjection" Version="3.14.0" />
       <PackageReference Include="Quartz.Extensions.Hosting" Version="3.14.0" />
@@ -16,6 +17,7 @@
     <ItemGroup>
       <ProjectReference Include="..\Auth.Contracts\Auth.Contracts.csproj" />
       <ProjectReference Include="..\Auth.Infrastructure\Auth.Infrastructure.csproj" />
+      <ProjectReference Include="..\Shared.Domain\Shared.Domain.csproj" />
       <ProjectReference Include="..\User.Contracts\User.Contracts.csproj" />
     </ItemGroup>
 

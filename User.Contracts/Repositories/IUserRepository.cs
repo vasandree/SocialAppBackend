@@ -1,4 +1,4 @@
-using Common.Repositories.BaseEntityRepository;
+using Shared.Contracts.Repositories;
 using User.Domain.Entities;
 
 namespace User.Contracts.Repositories;

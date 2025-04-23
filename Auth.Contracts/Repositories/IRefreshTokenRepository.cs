@@ -1,5 +1,5 @@
 using Auth.Domain.Entites;
-using Common.Repositories.GenericRepository;
+using Shared.Contracts.Repositories;
 
 namespace Auth.Contracts.Repositories;
 

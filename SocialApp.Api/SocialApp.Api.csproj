@@ -4,16 +4,16 @@
         <TargetFramework>net9.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
-        <InvariantGlobalization>true</InvariantGlobalization>
-        <PublishAot>true</PublishAot>
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="MediatR" Version="12.5.0" />
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.4" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\Auth.Controllers\Auth.Controllers.csproj" />
+      <ProjectReference Include="..\SocialNetworkAccounts.Controllers\SocialNetworkAccounts.Controllers.csproj" />
+      <ProjectReference Include="..\SocialNode.Controllers\SocialNode.Controllers.csproj" />
       <ProjectReference Include="..\User.Controllers\User.Controllers.csproj" />
     </ItemGroup>
 

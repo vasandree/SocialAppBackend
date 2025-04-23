@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.4" />
+      <PackageReference Include="Microsoft.AspNetCore.Authorization" Version="9.0.4" />
+      <PackageReference Include="Microsoft.OpenApi" Version="1.6.24" />
+      <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="8.1.1" />
+      <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="8.1.1" />
+      <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="8.1.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Shared.Contracts\Shared.Contracts.csproj" />
+      <ProjectReference Include="..\Shared.Domain\Shared.Domain.csproj" />
+      <ProjectReference Include="..\Shared.Persistence\Shared.Persistence.csproj" />
+    </ItemGroup>
+
+</Project>

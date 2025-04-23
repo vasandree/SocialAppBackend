@@ -1,0 +1,12 @@
+using SocialNode.Contracts.Repositories;
+using SocialNode.Domain.Entities;
+using SocialNode.Infrastructure;
+
+namespace SocialNode.Persistence.Repositories;
+
+public class PlaceRepository : SocialNodeRepository<Place>, IPlaceRepository
+{
+    public PlaceRepository(PersosnsDbContext context) : base(context)
+    {
+    }
+}

@@ -1,20 +1,57 @@
 using System.Reflection;
 using Auth.Controllers;
-using Common.Configurations;
+using Shared.Configurations.Configurations;
+using SocialNetworkAccounts.Controllers;
+using SocialNode.Controllers;
 using User.Controllers;
 
 var builder = WebApplication.CreateSlimBuilder(args);
+
+builder.Services.AddOpenApi();
 
 builder.Services.AddMediatR(config
     => config.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
 builder.AddGenericRepository();
 
+builder.AddAuth();
+builder.AddLoggingConfiguration();
+builder.AddSwaggerConfiguration();
+
 builder.AddUserModule();
 builder.AddAuthModule();
+builder.AddSocialNetworkAccountsModule();
+builder.AddSocialNodeModule();
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.AllowAnyOrigin()
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
 
 var app = builder.Build();
 
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwaggerConfiguration();
+    app.UseCors("AllowAll");
+}
+
+app.UseMiddleware();
+
 app.UseUserModule();
 app.UseAuthModule();
+app.UseSocialNetworkAccountsModule();
+app.UseSocialNodeModule();
+
+app.UseHttpsRedirection();
+
+app.UseAuthentication();
+app.UseAuthorization();
+
+app.MapControllers();
 
 app.Run();

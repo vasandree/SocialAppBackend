@@ -1,15 +1,15 @@
 using System.ComponentModel.DataAnnotations;
 using Common;
+using Shared.Domain;
 using SocialNetworkAccounts.Domain.Enums;
 
 namespace SocialNetworkAccounts.Domain.Entities;
 
-public class SocialNetworkAccount: BaseEntity
+public class SocialNetworkAccount : BaseEntity
 {
-    [Required]
-    public string Username {get; set;}
-    
+    [Required] public string Username { get; set; }
+
     [Required]
     [EnumDataType(typeof(SocialNetwork))]
-    public SocialNetwork Type {get; set;}
+    public SocialNetwork Type { get; set; }
 }

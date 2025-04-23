@@ -1,9 +1,9 @@
-using Common.Exceptions;
-using Common.Repositories.GenericRepository;
 using Microsoft.EntityFrameworkCore;
+using Shared.Persistence.Repositories;
 using User.Contracts.Repositories;
 using User.Domain.Entities;
 using User.Infrastructure;
+using NotFound = Common.Exceptions.NotFound;
 
 namespace User.Persistence.Repositories;
 

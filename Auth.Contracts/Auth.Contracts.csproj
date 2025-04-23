@@ -8,7 +8,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Auth.Domain\Auth.Domain.csproj" />
-      <ProjectReference Include="..\Common\Common.csproj" />
+      <ProjectReference Include="..\Shared.Contracts\Shared.Contracts.csproj" />
       <ProjectReference Include="..\User.Contracts\User.Contracts.csproj" />
       <ProjectReference Include="..\User.Domain\User.Domain.csproj" />
     </ItemGroup>

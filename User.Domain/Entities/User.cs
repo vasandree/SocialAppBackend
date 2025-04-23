@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using Common;
+using Shared.Domain;
 using User.Domain.Enums;
 
 namespace User.Domain.Entities;

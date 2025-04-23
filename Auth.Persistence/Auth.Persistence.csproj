@@ -10,7 +10,7 @@
       <ProjectReference Include="..\Auth.Contracts\Auth.Contracts.csproj" />
       <ProjectReference Include="..\Auth.Domain\Auth.Domain.csproj" />
       <ProjectReference Include="..\Auth.Infrastructure\Auth.Infrastructure.csproj" />
-      <ProjectReference Include="..\Common\Common.csproj" />
+      <ProjectReference Include="..\Shared.Persistence\Shared.Persistence.csproj" />
     </ItemGroup>
 
 </Project>

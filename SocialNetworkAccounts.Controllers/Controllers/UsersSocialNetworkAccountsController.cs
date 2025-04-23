@@ -3,42 +3,43 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SocialNetworkAccounts.Application.Dtos.Requests;
-using SocialNetworkAccounts.Application.Features.Commands.UsersSocialNetworkAccount.AddSocialNetworkAccount;
-using SocialNetworkAccounts.Application.Features.Commands.UsersSocialNetworkAccount.DeleteSocialNetworkAccount;
-using SocialNetworkAccounts.Application.Features.Commands.UsersSocialNetworkAccount.EditSocialNetworkAccount;
-using SocialNetworkAccounts.Application.Features.Queries.GetUsersSocialNetworkAccounts;
+using SocialNetworkAccounts.Contracts.Commands.UserSocialNetworkAccount;
+using SocialNetworkAccounts.Contracts.Queries;
 
-namespace SocialNetworkAccounts.Presentation.Controllers;
+namespace SocialNetworkAccounts.Controllers.Controllers;
 
 [Authorize]
 [ApiController]
-[Route("social_network_service/users")]
+[Microsoft.AspNetCore.Components.Route("users")]
 public class UsersSocialNetworkAccountsController : ControllerBase
 {
-    private readonly IMediator _mediator;
+    private readonly ISender _mediator;
 
-    public UsersSocialNetworkAccountsController(IMediator mediator)
+    public UsersSocialNetworkAccountsController(ISender mediator)
     {
         _mediator = mediator;
     }
 
     [HttpGet]
-    [Route("{id:guid}")]
+    [Route("{id:guid}/social_networks")]
     public async Task<IActionResult> GetPersonsSocialNetworkAccounts(Guid id)
     {
-        return Ok(await _mediator.Send(new GetUsersSocialNetworkAccountsCommand(id)));
+        return Ok(await _mediator.Send(new GetUsersSocialNetworkAccountsQuery(id)));
     }
 
     [HttpPost]
+    [Route("{id:guid}/social_networks")]
     public async Task<IActionResult> AddSocialNetworkAccount(
         [FromBody] AddSocialNetworkAccountDto addSocialNetworkAccountDto)
     {
+        //todo: check if id belongs tp user
+
         return Ok(await _mediator.Send(
             new AddSocialNetworkAccountCommand(User.GetUserId()!.Value, addSocialNetworkAccountDto)));
     }
 
     [HttpPut]
-    [Route("{id:guid}")]
+    [Route("social_networks/{id:guid}")]
     public async Task<IActionResult> EditSocialNetworkAccount(Guid id,
         [FromBody] EditSocialNetworkAccountDto editSocialNetworkAccountDto)
     {
@@ -47,7 +48,7 @@ public class UsersSocialNetworkAccountsController : ControllerBase
     }
 
     [HttpDelete]
-    [Route("{id:guid}")]
+    [Route("social_networks/{id:guid}")]
     public async Task<IActionResult> DeleteSocialNetworkAccount(Guid id)
     {
         return Ok(await _mediator.Send(new DeleteSocialNetworkAccountCommand(User.GetUserId()!.Value, id)));

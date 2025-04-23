@@ -1,4 +1,3 @@
-using Common.Configurations;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using User.Contracts.Repositories;
