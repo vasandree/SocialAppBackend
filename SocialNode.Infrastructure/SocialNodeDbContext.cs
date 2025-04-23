@@ -3,9 +3,9 @@ using SocialNode.Domain.Entities;
 
 namespace SocialNode.Infrastructure;
 
-public class PersosnsDbContext : DbContext
+public class SocialNodeDbContext : DbContext
 {
-    public PersosnsDbContext(DbContextOptions<PersosnsDbContext> options) : base(options)
+    public SocialNodeDbContext(DbContextOptions<SocialNodeDbContext> options) : base(options)
     {
     }
 

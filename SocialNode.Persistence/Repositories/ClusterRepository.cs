@@ -6,7 +6,7 @@ namespace SocialNode.Persistence.Repositories;
 
 public class ClusterRepository : SocialNodeRepository<ClusterOfPeople>, IClusterRepository
 {
-    public ClusterRepository(PersosnsDbContext context) : base(context)
+    public ClusterRepository(SocialNodeDbContext context) : base(context)
     {
     }
 }

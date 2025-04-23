@@ -8,9 +8,9 @@ namespace SocialNode.Persistence.Repositories;
 
 public class SocialNodeRepository<T> : BaseEntityRepository<T>, ISocialNodeRepository<T> where T : BaseSocialNode
 {
-    private readonly PersosnsDbContext _context;
+    private readonly SocialNodeDbContext _context;
 
-    public SocialNodeRepository(PersosnsDbContext context) : base(context)
+    public SocialNodeRepository(SocialNodeDbContext context) : base(context)
     {
         _context = context;
     }

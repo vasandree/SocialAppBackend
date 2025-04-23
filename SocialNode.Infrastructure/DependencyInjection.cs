@@ -17,14 +17,14 @@ public static class DependencyInjection
 
         builder.Services.AddScoped<ICloudStorageService, CloudStorageServiceService>();
 
-        builder.Services.AddDbContext<PersosnsDbContext>(options =>
+        builder.Services.AddDbContext<SocialNodeDbContext>(options =>
             options.UseNpgsql(builder.Configuration.GetConnectionString("SocialAppDb")));
     }
     
     public static void UseSocialNodeInfrastructure(this WebApplication app)
     {
         using var serviceScope = app.Services.CreateScope();
-        var dbContext = serviceScope.ServiceProvider.GetService<PersosnsDbContext>();
+        var dbContext = serviceScope.ServiceProvider.GetService<SocialNodeDbContext>();
         dbContext?.Database.Migrate();
     }
 }

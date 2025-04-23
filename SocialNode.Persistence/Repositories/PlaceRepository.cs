@@ -6,7 +6,7 @@ namespace SocialNode.Persistence.Repositories;
 
 public class PlaceRepository : SocialNodeRepository<Place>, IPlaceRepository
 {
-    public PlaceRepository(PersosnsDbContext context) : base(context)
+    public PlaceRepository(SocialNodeDbContext context) : base(context)
     {
     }
 }
