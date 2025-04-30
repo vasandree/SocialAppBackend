@@ -2,6 +2,7 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Shared.Configurations.Extensions;
+using Shared.Domain.Exceptions;
 using SocialNetworkAccounts.Contracts.Commands.UserSocialNetworkAccount;
 using SocialNetworkAccounts.Contracts.Dtos.Requests;
 using SocialNetworkAccounts.Contracts.Queries;
@@ -10,7 +11,7 @@ namespace SocialNetworkAccounts.Controllers.Controllers;
 
 [Authorize]
 [ApiController]
-[Microsoft.AspNetCore.Components.Route("users")]
+[Route("users")]
 public class UsersSocialNetworkAccountsController : ControllerBase
 {
     private readonly ISender _mediator;
@@ -29,11 +30,15 @@ public class UsersSocialNetworkAccountsController : ControllerBase
 
     [HttpPost]
     [Route("{id:guid}/social_networks")]
-    public async Task<IActionResult> AddSocialNetworkAccount(
+    public async Task<IActionResult> AddSocialNetworkAccount(Guid id,
         [FromBody] AddSocialNetworkAccountDto addSocialNetworkAccountDto)
     {
-        //todo: check if id belongs tp user
+        
+        var userId = User.GetUserId();
 
+        if (userId != null && userId.Value != id)
+            throw new Forbidden("This is not the same user id.");
+        
         return Ok(await _mediator.Send(
             new AddSocialNetworkAccountCommand(User.GetUserId()!.Value, addSocialNetworkAccountDto)));
     }

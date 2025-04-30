@@ -15,4 +15,6 @@ public class PersonRequestDto
     public string? PhoneNumber { get; set;}
     
     public IFormFile? Avatar { get; set; }
+    
+    public string AvatarUrl { get; set; }
 }

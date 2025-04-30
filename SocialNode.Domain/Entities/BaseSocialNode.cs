@@ -1,5 +1,4 @@
 using System.ComponentModel.DataAnnotations;
-using Common;
 using Shared.Domain;
 
 namespace SocialNode.Domain.Entities;

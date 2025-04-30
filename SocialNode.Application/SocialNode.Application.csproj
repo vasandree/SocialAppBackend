@@ -17,6 +17,7 @@
       <ProjectReference Include="..\SocialNode.Domain\SocialNode.Domain.csproj" />
       <ProjectReference Include="..\SocialNode.Infrastructure\SocialNode.Infrastructure.csproj" />
       <ProjectReference Include="..\SocialNode.Persistence\SocialNode.Persistence.csproj" />
+      <ProjectReference Include="..\User.Contracts\User.Contracts.csproj" />
     </ItemGroup>
 
 </Project>

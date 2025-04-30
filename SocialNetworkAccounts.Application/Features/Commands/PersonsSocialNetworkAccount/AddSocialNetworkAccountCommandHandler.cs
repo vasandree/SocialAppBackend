@@ -3,23 +3,26 @@ using Shared.Domain.Exceptions;
 using SocialNetworkAccounts.Contracts.Commands.PersonSocialNetworkAccount;
 using SocialNetworkAccounts.Contracts.Repositories;
 using SocialNetworkAccounts.Domain.Entities;
+using User.Contracts.Repositories;
 
 namespace SocialNetworkAccounts.Application.Features.Commands.PersonsSocialNetworkAccount;
 
 public class AddSocialNetworkAccountCommandHandler : IRequestHandler<AddSocialNetworkAccountCommand, Unit>
 {
+    private readonly IUserRepository _userRepository;
     private readonly IPersonsAccountRepository _personsAccountRepository;
 
-    public AddSocialNetworkAccountCommandHandler(IPersonsAccountRepository personsAccountRepository)
+    public AddSocialNetworkAccountCommandHandler(IPersonsAccountRepository personsAccountRepository,
+        IUserRepository userRepository)
     {
         _personsAccountRepository = personsAccountRepository;
+        _userRepository = userRepository;
     }
 
     public async Task<Unit> Handle(AddSocialNetworkAccountCommand request, CancellationToken cancellationToken)
     {
-        //todo: check if user exist
-        
-        //todo: check person existence
+        if (!await _userRepository.CheckIfExists(request.UserId))
+            throw new BadRequest("User does not exist");
 
         if (await _personsAccountRepository.CheckIfAccountIsAddedAsync(request.UserId,
                 request.SocialNetworkAccountDto.Type))

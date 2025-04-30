@@ -2,16 +2,19 @@ using MediatR;
 using Shared.Domain.Exceptions;
 using SocialNetworkAccounts.Contracts.Commands.PersonSocialNetworkAccount;
 using SocialNetworkAccounts.Contracts.Repositories;
+using User.Contracts.Repositories;
 
 namespace SocialNetworkAccounts.Application.Features.Commands.PersonsSocialNetworkAccount;
 
 public class EditSocialNetworkAccountCommandHandler : IRequestHandler<EditSocialNetworkAccountCommand, Unit>
 {
     private readonly IPersonsAccountRepository _personsAccountRepository;
+    private readonly IUserRepository _userRepository;
 
-    public EditSocialNetworkAccountCommandHandler(IPersonsAccountRepository personsAccountRepository)
+    public EditSocialNetworkAccountCommandHandler(IPersonsAccountRepository personsAccountRepository, IUserRepository userRepository)
     {
         _personsAccountRepository = personsAccountRepository;
+        _userRepository = userRepository;
     }
 
     public async Task<Unit> Handle(EditSocialNetworkAccountCommand request, CancellationToken cancellationToken)
@@ -19,7 +22,8 @@ public class EditSocialNetworkAccountCommandHandler : IRequestHandler<EditSocial
         if (!await _personsAccountRepository.CheckIfAccountAddedByIdAsync(request.AccountId))
             throw new NotFound($"Account with id={request.AccountId} not found");
 
-        //todo: check user existsnce
+        if (!await _userRepository.CheckIfExists(request.UserId))
+            throw new BadRequest("User does not exist");
 
         var account = await _personsAccountRepository.GetById(request.AccountId);
 

@@ -1,26 +1,31 @@
 using MediatR;
+using Shared.Domain.Exceptions;
 using SocialNode.Contracts.Commands.Place;
 using SocialNode.Contracts.Repositories;
 using SocialNode.Contracts.Services;
 using SocialNode.Domain.Entities;
+using User.Contracts.Repositories;
 
 namespace SocialNode.Application.Features.Commands.Places;
 
 public class CreatePlaceCommandHandler : IRequestHandler<CreatePlaceCommand, Unit>
 {
     private readonly IPlaceRepository _placeRepository;
+    private readonly IUserRepository _userRepository;
     private readonly ICloudStorageService _cloudStorageService;
 
     public CreatePlaceCommandHandler(IPlaceRepository placeRepository,
-        ICloudStorageService cloudStorageService)
+        ICloudStorageService cloudStorageService, IUserRepository userRepository)
     {
         _placeRepository = placeRepository;
         _cloudStorageService = cloudStorageService;
+        _userRepository = userRepository;
     }
 
     public async Task<Unit> Handle(CreatePlaceCommand request, CancellationToken cancellationToken)
     {
-        //todo: check user existence
+        if (!await _userRepository.CheckIfExists(request.UserId))
+            throw new BadRequest("User does not exist");
 
         var id = Guid.NewGuid();
         await _placeRepository.AddAsync(new Place

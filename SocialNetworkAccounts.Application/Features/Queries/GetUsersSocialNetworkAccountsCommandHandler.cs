@@ -1,8 +1,10 @@
 using AutoMapper;
 using MediatR;
+using Shared.Domain.Exceptions;
 using SocialNetworkAccounts.Contracts.Dtos.Responses;
 using SocialNetworkAccounts.Contracts.Queries;
 using SocialNetworkAccounts.Contracts.Repositories;
+using User.Contracts.Repositories;
 
 namespace SocialNetworkAccounts.Application.Features.Queries;
 
@@ -11,12 +13,14 @@ public class
     List<SocialNetworkAccountDto>>
 {
     private readonly IMapper _mapper;
+    private readonly IUserRepository _userRepository;
     private readonly IUsersAccountRepository _usersAccountRepository;
 
-    public GetUsersSocialNetworkAccountsCommandHandler(IMapper mapper, IUsersAccountRepository usersAccountRepository)
+    public GetUsersSocialNetworkAccountsCommandHandler(IMapper mapper, IUsersAccountRepository usersAccountRepository, IUserRepository userRepository)
     {
         _mapper = mapper;
         _usersAccountRepository = usersAccountRepository;
+        _userRepository = userRepository;
     }
 
 
@@ -24,7 +28,8 @@ public class
         CancellationToken cancellationToken)
     {
         
-        //todo: check user existsnce
+        if (!await _userRepository.CheckIfExists(request.UserId))
+            throw new BadRequest("User does not exist");
 
         var accounts = await _usersAccountRepository.GetAllByUserId(request.UserId);
 

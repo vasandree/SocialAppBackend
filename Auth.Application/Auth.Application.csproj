@@ -18,6 +18,7 @@
       <ProjectReference Include="..\Auth.Contracts\Auth.Contracts.csproj" />
       <ProjectReference Include="..\Auth.Infrastructure\Auth.Infrastructure.csproj" />
       <ProjectReference Include="..\Shared.Domain\Shared.Domain.csproj" />
+      <ProjectReference Include="..\SocialNetworkAccounts.Contracts\SocialNetworkAccounts.Contracts.csproj" />
       <ProjectReference Include="..\User.Contracts\User.Contracts.csproj" />
     </ItemGroup>
 

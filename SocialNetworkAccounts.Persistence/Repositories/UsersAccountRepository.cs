@@ -35,4 +35,9 @@ public class UsersAccountRepository : GenericRepository<UsersAccount>, IUsersAcc
     {
         return await _context.UsersAccounts.AnyAsync(x => x.UserId == userId && x.Type == type);
     }
+
+    public async Task<UsersAccount?> GetByUserIdAndTypeAsync(Guid userId, SocialNetwork type)
+    {
+        return await _context.UsersAccounts.FirstOrDefaultAsync(x => x.UserId == userId && x.Type == type);
+    }
 }

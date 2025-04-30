@@ -1,4 +1,9 @@
 using MediatR;
+using Shared.Domain;
+using SocialNetworkAccounts.Contracts.Commands.UserSocialNetworkAccount;
+using SocialNetworkAccounts.Contracts.Dtos.Requests;
+using SocialNode.Contracts.Commands.Person;
+using SocialNode.Contracts.Dtos.Requests;
 using User.Contracts.Commands;
 using User.Contracts.Helpers;
 using User.Contracts.Repositories;
@@ -8,22 +13,26 @@ namespace User.Application.Features.Commands;
 
 public class AddTelegramUserCommandHandler : IRequestHandler<AddTelegramUserCommand, ApplicationUser>
 {
+    private readonly ISender _mediator;
     private readonly IUserRepository _userRepository;
     private readonly ITelegramHelper _telegramHelper;
     private readonly ITelegramAccountRepository _telegramAccountRepository;
 
     public AddTelegramUserCommandHandler(IUserRepository userRepository, ITelegramHelper telegramHelper,
-        ITelegramAccountRepository telegramAccountRepository)
+        ITelegramAccountRepository telegramAccountRepository, ISender mediator)
     {
         _userRepository = userRepository;
         _telegramHelper = telegramHelper;
         _telegramAccountRepository = telegramAccountRepository;
+        _mediator = mediator;
     }
 
     public async Task<ApplicationUser> Handle(AddTelegramUserCommand request,
         CancellationToken cancellationToken)
     {
         var parsedTelegramData = _telegramHelper.ParseInitData(request.InitData.InitData);
+
+        if (parsedTelegramData.User == null) throw new NullReferenceException(nameof(parsedTelegramData));
 
         var user = new ApplicationUser()
         {
@@ -49,6 +58,14 @@ public class AddTelegramUserCommandHandler : IRequestHandler<AddTelegramUserComm
 
         await _userRepository.AddAsync(user);
         await _telegramAccountRepository.AddAsync(telegramAccount);
+
+        await _mediator.Send(new CreatePersonCommand(user.Id, new PersonRequestDto
+        {
+            Name = $"{user.FirstName} {user.LastName} (вы)",
+            Avatar = null,
+            AvatarUrl = user.PhotoUrl
+        }), cancellationToken);
+
 
         return user;
     }

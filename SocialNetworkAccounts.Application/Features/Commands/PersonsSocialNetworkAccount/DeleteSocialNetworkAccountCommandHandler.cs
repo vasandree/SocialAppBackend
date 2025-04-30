@@ -2,21 +2,25 @@ using MediatR;
 using Shared.Domain.Exceptions;
 using SocialNetworkAccounts.Contracts.Commands.PersonSocialNetworkAccount;
 using SocialNetworkAccounts.Contracts.Repositories;
+using User.Contracts.Repositories;
 
 namespace SocialNetworkAccounts.Application.Features.Commands.PersonsSocialNetworkAccount;
 
 public class DeleteSocialNetworkAccountCommandHandler: IRequestHandler<DeleteSocialNetworkAccountCommand, Unit>
 {
     private readonly IPersonsAccountRepository _personsAccountRepository;
+    private readonly IUserRepository _userRepository;
 
-    public DeleteSocialNetworkAccountCommandHandler(IPersonsAccountRepository personsAccountRepository)
+    public DeleteSocialNetworkAccountCommandHandler(IPersonsAccountRepository personsAccountRepository, IUserRepository userRepository)
     {
         _personsAccountRepository = personsAccountRepository;
+        _userRepository = userRepository;
     }
 
     public async Task<Unit> Handle(DeleteSocialNetworkAccountCommand request, CancellationToken cancellationToken)
     {
-        //todo: check user existence
+        if (!await _userRepository.CheckIfExists(request.UserId))
+            throw new BadRequest("User does not exist");
         
         if (!await _personsAccountRepository.CheckIfAccountAddedByIdAsync(request.AccountId))
             throw new NotFound($"Account with id={request.AccountId} not found");

@@ -11,11 +11,11 @@ namespace User.Application.Helpers
 {
     public class TelegramHelper : ITelegramHelper
     {
-        private readonly string? _botToken;
+        private readonly string _botToken;
 
         public TelegramHelper(IConfiguration configuration)
         {
-            _botToken = configuration.GetSection("TelegramBotApiKey").Value;
+            _botToken = configuration.GetSection("TelegramBotApiKey").Value ?? throw new InvalidOperationException();
         }
 
         public TelegramInitData ParseInitData(string? initData)

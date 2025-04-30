@@ -10,4 +10,5 @@ public interface IUsersAccountRepository : IGenericRepository<UsersAccount>
     Task<bool> CheckIfAccountAddedByIdAsync(Guid id);
     Task<UsersAccount?> GetById(Guid id);
     Task<bool> CheckIfAccountIsAddedAsync(Guid userId, SocialNetwork type);
+    Task<UsersAccount?> GetByUserIdAndTypeAsync(Guid userId, SocialNetwork type);
 }
