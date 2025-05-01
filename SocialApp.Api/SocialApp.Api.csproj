@@ -18,6 +18,7 @@
       <ProjectReference Include="..\Auth.Controllers\Auth.Controllers.csproj" />
       <ProjectReference Include="..\SocialNetworkAccounts.Controllers\SocialNetworkAccounts.Controllers.csproj" />
       <ProjectReference Include="..\SocialNode.Controllers\SocialNode.Controllers.csproj" />
+      <ProjectReference Include="..\TaskModule.Controllers\TaskModule.Controllers.csproj" />
       <ProjectReference Include="..\User.Controllers\User.Controllers.csproj" />
     </ItemGroup>
 

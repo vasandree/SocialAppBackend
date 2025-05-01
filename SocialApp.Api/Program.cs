@@ -1,8 +1,8 @@
-using System.Reflection;
 using Auth.Controllers;
 using Shared.Configurations.Configurations;
 using SocialNetworkAccounts.Controllers;
 using SocialNode.Controllers;
+using TaskModule.Controllers;
 using User.Controllers;
 
 var builder = WebApplication.CreateSlimBuilder(args);
@@ -19,6 +19,7 @@ builder.AddUserModule();
 builder.AddAuthModule();
 builder.AddSocialNetworkAccountsModule();
 builder.AddSocialNodeModule();
+builder.AddTaskModule();
 
 builder.Services.AddCors(options =>
 {
@@ -44,6 +45,7 @@ app.UseUserModule();
 app.UseAuthModule();
 app.UseSocialNetworkAccountsModule();
 app.UseSocialNodeModule();
+app.UseTaskModule();
 
 app.UseHttpsRedirection();
 

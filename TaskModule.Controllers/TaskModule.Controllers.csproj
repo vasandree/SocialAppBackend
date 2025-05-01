@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Swashbuckle.AspNetCore" Version="8.1.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Shared.Configurations\Shared.Configurations.csproj" />
+      <ProjectReference Include="..\TaskModule.Application\TaskModule.Application.csproj" />
+      <ProjectReference Include="..\TaskModule.Infrastructure\TaskModule.Infrastructure.csproj" />
+      <ProjectReference Include="..\TaskModule.Persistence\TaskModule.Persistence.csproj" />
+    </ItemGroup>
+
+</Project>
