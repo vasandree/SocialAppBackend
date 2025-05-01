@@ -11,7 +11,8 @@ public class DeleteSocialNetworkAccountCommandHandler : IRequestHandler<DeleteSo
     private readonly IUsersAccountRepository _usersAccountRepository;
     private readonly IUserRepository _userRepository;
 
-    public DeleteSocialNetworkAccountCommandHandler(IUsersAccountRepository usersAccountRepository, IUserRepository userRepository)
+    public DeleteSocialNetworkAccountCommandHandler(IUsersAccountRepository usersAccountRepository,
+        IUserRepository userRepository)
     {
         _usersAccountRepository = usersAccountRepository;
         _userRepository = userRepository;
@@ -19,9 +20,6 @@ public class DeleteSocialNetworkAccountCommandHandler : IRequestHandler<DeleteSo
 
     public async Task<Unit> Handle(DeleteSocialNetworkAccountCommand request, CancellationToken cancellationToken)
     {
-        if (!await _userRepository.CheckIfExists(request.UserId))
-            throw new BadRequest("User does not exist");
-
         if (!await _usersAccountRepository.CheckIfAccountAddedByIdAsync(request.SocialNetworkAccountId))
             throw new NotFound($"Account with id={request.SocialNetworkAccountId} not found");
 

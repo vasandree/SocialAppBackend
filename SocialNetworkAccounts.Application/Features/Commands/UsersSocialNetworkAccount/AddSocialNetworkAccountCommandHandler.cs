@@ -12,7 +12,8 @@ public class AddSocialNetworkAccountCommandHandler : IRequestHandler<AddSocialNe
     private readonly IUsersAccountRepository _usersAccountRepository;
     private readonly IUserRepository _userRepository;
 
-    public AddSocialNetworkAccountCommandHandler(IUsersAccountRepository usersAccountRepository, IUserRepository userRepository)
+    public AddSocialNetworkAccountCommandHandler(IUsersAccountRepository usersAccountRepository,
+        IUserRepository userRepository)
     {
         _usersAccountRepository = usersAccountRepository;
         _userRepository = userRepository;
@@ -21,9 +22,6 @@ public class AddSocialNetworkAccountCommandHandler : IRequestHandler<AddSocialNe
 
     public async Task<Unit> Handle(AddSocialNetworkAccountCommand request, CancellationToken cancellationToken)
     {
-        if (!await _userRepository.CheckIfExists(request.UserId))
-            throw new BadRequest("User does not exist");
-        
         if (await _usersAccountRepository.CheckIfAccountIsAddedAsync(request.UserId,
                 request.AddSocialNetworkAccountDto.Type))
             throw new BadRequest($"{request.AddSocialNetworkAccountDto.Type} account already added");

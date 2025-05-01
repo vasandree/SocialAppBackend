@@ -16,7 +16,8 @@ public class
     private readonly IUserRepository _userRepository;
     private readonly IUsersAccountRepository _usersAccountRepository;
 
-    public GetUsersSocialNetworkAccountsCommandHandler(IMapper mapper, IUsersAccountRepository usersAccountRepository, IUserRepository userRepository)
+    public GetUsersSocialNetworkAccountsCommandHandler(IMapper mapper, IUsersAccountRepository usersAccountRepository,
+        IUserRepository userRepository)
     {
         _mapper = mapper;
         _usersAccountRepository = usersAccountRepository;
@@ -27,10 +28,6 @@ public class
     public async Task<List<SocialNetworkAccountDto>> Handle(GetUsersSocialNetworkAccountsQuery request,
         CancellationToken cancellationToken)
     {
-        
-        if (!await _userRepository.CheckIfExists(request.UserId))
-            throw new BadRequest("User does not exist");
-
         var accounts = await _usersAccountRepository.GetAllByUserId(request.UserId);
 
         return _mapper.Map(accounts, new List<SocialNetworkAccountDto>());

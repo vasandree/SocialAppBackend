@@ -19,6 +19,7 @@
       <ProjectReference Include="..\Shared.Contracts\Shared.Contracts.csproj" />
       <ProjectReference Include="..\Shared.Domain\Shared.Domain.csproj" />
       <ProjectReference Include="..\Shared.Persistence\Shared.Persistence.csproj" />
+      <ProjectReference Include="..\User.Contracts\User.Contracts.csproj" />
     </ItemGroup>
 
 </Project>

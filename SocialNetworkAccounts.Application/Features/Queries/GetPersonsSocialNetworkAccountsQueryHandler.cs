@@ -30,10 +30,7 @@ public class
     public async Task<List<SocialNetworkAccountDto>> Handle(GetPersonsSocialNetworkAccountsQuery request,
         CancellationToken cancellationToken)
     {
-        if (!await _userRepository.CheckIfExists(request.UserId))
-            throw new BadRequest("User does not exist");
-
-        if(!await _personRepository.CheckIfExists(request.PersonId))
+        if (!await _personRepository.CheckIfExists(request.PersonId))
             throw new NotFound("Person does not exist");
 
         var accounts =

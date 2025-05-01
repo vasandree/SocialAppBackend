@@ -24,13 +24,10 @@ public class CreatePersonCommandHandler : IRequestHandler<CreatePersonCommand, U
 
     public async Task<Unit> Handle(CreatePersonCommand request, CancellationToken cancellationToken)
     {
-        if (!await _userRepostory.CheckIfExists(request.UserId))
-            throw new BadRequest("Provided user does not exist");
-
         var id = Guid.NewGuid();
 
         string? avatarUrl = null;
-        
+
         if (request.PersonRequestDto.AvatarUrl != null)
             avatarUrl = request.PersonRequestDto.AvatarUrl;
         else if (request.PersonRequestDto.Avatar != null)

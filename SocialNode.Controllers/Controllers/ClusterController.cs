@@ -8,7 +8,7 @@ using SocialNode.Contracts.Queries;
 
 namespace SocialNode.Controllers.Controllers;
 
-[Authorize]
+[Authorize(Policy = "UserExists")]
 [ApiController]
 [Route("clusters")]
 public class ClusterController : ControllerBase
@@ -25,27 +25,27 @@ public class ClusterController : ControllerBase
     {
         return Ok(await _mediator.Send(new GetClustersQuery(User.GetUserId()!.Value, page, searchTerm)));
     }
-    
+
     [HttpGet]
     [Route("{clusterId:guid}")]
     public async Task<IActionResult> GetCluster(Guid clusterId)
     {
         return Ok(await _mediator.Send(new GetClusterQuery(clusterId, User.GetUserId()!.Value)));
     }
-    
+
     [HttpPost]
     public async Task<IActionResult> CreateCluster([FromBody] ClusterRequestDto clusterDto)
     {
         return Ok(await _mediator.Send(new CreateClusterCommand(User.GetUserId()!.Value, clusterDto)));
     }
-    
+
     [HttpPut]
     [Route("{clusterId:guid}")]
     public async Task<IActionResult> UpdateCluster(Guid clusterId, [FromBody] ClusterRequestDto clusterDto)
     {
         return Ok(await _mediator.Send(new EditClusterCommand(User.GetUserId()!.Value, clusterId, clusterDto)));
     }
-    
+
     [HttpDelete]
     [Route("{clusterId:guid}")]
     public async Task<IActionResult> DeleteCluster(Guid clusterId)

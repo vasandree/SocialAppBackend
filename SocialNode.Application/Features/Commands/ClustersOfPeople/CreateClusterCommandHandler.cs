@@ -24,9 +24,6 @@ public class CreateClusterCommandHandler : IRequestHandler<CreateClusterCommand,
 
     public async Task<Unit> Handle(CreateClusterCommand request, CancellationToken cancellationToken)
     {
-        if (!await _userRepository.CheckIfExists(request.UserId))
-            throw new BadRequest("User does not exist");
-
         var id = Guid.NewGuid();
 
         await _clusterRepository.AddAsync(new ClusterOfPeople

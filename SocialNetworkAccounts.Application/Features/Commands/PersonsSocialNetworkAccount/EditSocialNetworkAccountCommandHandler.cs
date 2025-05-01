@@ -11,7 +11,8 @@ public class EditSocialNetworkAccountCommandHandler : IRequestHandler<EditSocial
     private readonly IPersonsAccountRepository _personsAccountRepository;
     private readonly IUserRepository _userRepository;
 
-    public EditSocialNetworkAccountCommandHandler(IPersonsAccountRepository personsAccountRepository, IUserRepository userRepository)
+    public EditSocialNetworkAccountCommandHandler(IPersonsAccountRepository personsAccountRepository,
+        IUserRepository userRepository)
     {
         _personsAccountRepository = personsAccountRepository;
         _userRepository = userRepository;
@@ -21,10 +22,7 @@ public class EditSocialNetworkAccountCommandHandler : IRequestHandler<EditSocial
     {
         if (!await _personsAccountRepository.CheckIfAccountAddedByIdAsync(request.AccountId))
             throw new NotFound($"Account with id={request.AccountId} not found");
-
-        if (!await _userRepository.CheckIfExists(request.UserId))
-            throw new BadRequest("User does not exist");
-
+        
         var account = await _personsAccountRepository.GetById(request.AccountId);
 
         if (account.CreatorId != request.UserId) throw new Forbidden("You are not allowed to edit");

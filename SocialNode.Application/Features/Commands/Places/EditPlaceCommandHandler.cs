@@ -25,9 +25,6 @@ public class EditPlaceCommandHandler : IRequestHandler<EditPlaceCommand, Unit>
 
     public async Task<Unit> Handle(EditPlaceCommand request, CancellationToken cancellationToken)
     {
-        if (!await _userRepository.CheckIfExists(request.UserId))
-            throw new BadRequest("User does not exist");
-
         if (!await _placeRepository.CheckIfExists(request.PlaceId))
             throw new NotFound($"Place with id={request.PlaceId} not found");
 

@@ -24,9 +24,6 @@ public class CreatePlaceCommandHandler : IRequestHandler<CreatePlaceCommand, Uni
 
     public async Task<Unit> Handle(CreatePlaceCommand request, CancellationToken cancellationToken)
     {
-        if (!await _userRepository.CheckIfExists(request.UserId))
-            throw new BadRequest("User does not exist");
-
         var id = Guid.NewGuid();
         await _placeRepository.AddAsync(new Place
         {

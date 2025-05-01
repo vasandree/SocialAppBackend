@@ -20,9 +20,6 @@ public class GetClusterQueryHandler : IRequestHandler<GetClusterQuery, ClusterOf
 
     public async Task<ClusterOfPeopleDto> Handle(GetClusterQuery request, CancellationToken cancellationToken)
     {
-        if (!await _clusterRepository.CheckIfExists(request.ClusterId))
-            throw new NotFound("Provided cluster does not exist");
-
         if (!await _clusterRepository.CheckIfUserIsCreator(request.UserId, request.ClusterId))
             throw new Forbidden("You are not allowed to view this cluster");
 

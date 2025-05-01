@@ -19,18 +19,15 @@ public class DeletePlaceCommandHandler : IRequestHandler<DeletePlaceCommand, Uni
 
     public async Task<Unit> Handle(DeletePlaceCommand request, CancellationToken cancellationToken)
     {
-        if (!await _userRepository.CheckIfExists(request.UserId))
-            throw new BadRequest("User does not exist");
-        
         if (!await _placeRepository.CheckIfExists(request.PlaceId))
             throw new NotFound($"Place with id={request.PlaceId} not found");
-        
+
         var place = await _placeRepository.GetByIdAsync(request.PlaceId);
-        
+
         if (place!.CreatorId != request.UserId) throw new Forbidden("You are not allowed to delete");
-        
+
         await _placeRepository.DeleteAsync(place);
-        
+
         return Unit.Value;
     }
 }

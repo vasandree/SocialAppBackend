@@ -9,7 +9,7 @@ using SocialNetworkAccounts.Contracts.Queries;
 
 namespace SocialNetworkAccounts.Controllers.Controllers;
 
-[Authorize]
+[Authorize(Policy = "UserExists")]
 [ApiController]
 [Route("users")]
 public class UsersSocialNetworkAccountsController : ControllerBase
@@ -33,12 +33,11 @@ public class UsersSocialNetworkAccountsController : ControllerBase
     public async Task<IActionResult> AddSocialNetworkAccount(Guid id,
         [FromBody] AddSocialNetworkAccountDto addSocialNetworkAccountDto)
     {
-        
         var userId = User.GetUserId();
 
         if (userId != null && userId.Value != id)
             throw new Forbidden("This is not the same user id.");
-        
+
         return Ok(await _mediator.Send(
             new AddSocialNetworkAccountCommand(User.GetUserId()!.Value, addSocialNetworkAccountDto)));
     }

@@ -9,7 +9,7 @@ using TaskModule.Domain.Enums;
 
 namespace TaskModule.Controllers.Controllers;
 
-[Authorize]
+[Authorize(Policy = "UserExists")]
 [ApiController]
 [Route("tasks")]
 public class TasksController : ControllerBase
@@ -60,5 +60,4 @@ public class TasksController : ControllerBase
     {
         return Ok(await _mediator.Send(new GetTasksQuery(User.GetUserId()!.Value)));
     }
-    
 }

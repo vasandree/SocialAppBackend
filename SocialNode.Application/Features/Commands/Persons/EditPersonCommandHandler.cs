@@ -25,9 +25,6 @@ public class EditPersonCommandHandler : IRequestHandler<EditPersonCommand, Unit>
 
     public async Task<Unit> Handle(EditPersonCommand request, CancellationToken cancellationToken)
     {
-        if (!await _userRepository.CheckIfExists(request.UserId))
-            throw new BadRequest("User does not exist");
-
         if (!await _personRepository.CheckIfExists(request.PersonId))
             throw new NotFound($"Person with id={request.PersonId} not found");
 

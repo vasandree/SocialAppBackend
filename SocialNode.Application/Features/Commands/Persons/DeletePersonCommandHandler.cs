@@ -19,9 +19,6 @@ public class DeletePersonCommandHandler : IRequestHandler<DeletePersonCommand, U
 
     public async Task<Unit> Handle(DeletePersonCommand request, CancellationToken cancellationToken)
     {
-        if (!await _userRepository.CheckIfExists(request.UserId))
-            throw new BadRequest("User does not exist");
-
         if (!await _personRepository.CheckIfExists(request.PersonId))
             throw new NotFound($"Person with id={request.PersonId} not found");
 

@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using Shared.Configurations.AuthPolicy;
 
 namespace Shared.Configurations.Configurations;
 
@@ -31,10 +32,15 @@ public static class AuthConfiguration
                 };
             });
 
-        builder.Services.AddAuthorization(options => options.DefaultPolicy =
-            new AuthorizationPolicyBuilder
-                    (JwtBearerDefaults.AuthenticationScheme)
+        builder.Services.AddAuthorization(options =>
+        {
+            options.DefaultPolicy = new AuthorizationPolicyBuilder(JwtBearerDefaults.AuthenticationScheme)
                 .RequireAuthenticatedUser()
-                .Build());
+                .Build();
+
+            options.AddPolicy("UserExists", policy =>
+                policy.Requirements.Add(new UserExistsRequirement()));
+        });
+
     }
 }

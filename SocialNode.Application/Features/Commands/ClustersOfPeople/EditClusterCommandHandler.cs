@@ -25,9 +25,6 @@ public class EditClusterCommandHandler : IRequestHandler<EditClusterCommand, Uni
 
     public async Task<Unit> Handle(EditClusterCommand request, CancellationToken cancellationToken)
     {
-        if (!await _userRepository.CheckIfExists(request.UserId))
-            throw new BadRequest("User does not exist");
-
         if (!await _clusterRepository.CheckIfExists(request.ClusterId))
             throw new NotFound($"Cluster with id={request.ClusterId} not found");
 

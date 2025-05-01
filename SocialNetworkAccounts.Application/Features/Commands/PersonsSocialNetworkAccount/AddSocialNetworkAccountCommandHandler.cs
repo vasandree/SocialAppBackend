@@ -21,9 +21,6 @@ public class AddSocialNetworkAccountCommandHandler : IRequestHandler<AddSocialNe
 
     public async Task<Unit> Handle(AddSocialNetworkAccountCommand request, CancellationToken cancellationToken)
     {
-        if (!await _userRepository.CheckIfExists(request.UserId))
-            throw new BadRequest("User does not exist");
-
         if (await _personsAccountRepository.CheckIfAccountIsAddedAsync(request.UserId,
                 request.SocialNetworkAccountDto.Type))
             throw new BadRequest($"{request.SocialNetworkAccountDto.Type} account already added");
