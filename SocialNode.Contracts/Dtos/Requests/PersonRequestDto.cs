@@ -16,5 +16,5 @@ public class PersonRequestDto
     
     public IFormFile? Avatar { get; set; }
     
-    public string AvatarUrl { get; set; }
+    public string? AvatarUrl { get; set; }
 }

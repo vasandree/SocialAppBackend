@@ -7,5 +7,4 @@ public class ClusterOfPeopleDto : BaseSocialNodeDto
 {
     [Required]
     public List<PersonDto> Persons { get; set;}
-    
 }
