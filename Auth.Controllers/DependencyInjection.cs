@@ -2,20 +2,22 @@ using Auth.Application;
 using Auth.Infrastructure;
 using Auth.Persistence;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Auth.Controllers;
 
 public static class DependencyInjection
 {
-    public static void AddAuthModule(this WebApplicationBuilder builder)
+    public static void AddAuthModule(this IServiceCollection services, IConfiguration configuration)
     {
-        builder.AddApplication();
-        builder.AddPersistence();
-        builder.AddInfrastructure();
+        services.AddApplication();
+        services.AddPersistence();
+        services.AddInfrastructure(configuration);
     }
     
-    public static void UseAuthModule(this WebApplication app)
+    public static void UseAuthModule(this IServiceProvider services)
     {
-        app.UseInfrastructure();
+        services.UseInfrastructure();
     }
 }

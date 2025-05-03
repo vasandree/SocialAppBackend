@@ -12,11 +12,11 @@ public class TelegramAccount
     [Required] 
     public string Userneme { get; set; }
     
-    public string FirstName { get; set; }
-    public string LastName { get; set; }
-    public string LanguageCode { get; set; }
+    public string? FirstName { get; set; }
+    public string? LastName { get; set; }
+    public string? LanguageCode { get; set; }
     public bool AllowsWriteToPm { get; set; }
-    public string PhotoUrl { get; set; }
+    public string? PhotoUrl { get; set; }
 
     [Required]
     public ApplicationUser User { get; set; }

@@ -5,21 +5,17 @@ namespace User.Contracts.Dtos.Responses;
 
 public class UserDto
 {
-    [Required]
-    public Guid Id {get; set;} 
-    
-    [Required]
-    public long TelegramId {get; set;}
-    
-    public string? FirstName {get; set;}
-    
-    public string? LastName {get; set;}
-    
-    [Required]
-    public string UserName {get; set;}
-    
-    public string? PhotoUrl {get; set;}
-    
-    [Required]
-    public Language LanguageCode {get; set;}
+    [Required] public required Guid Id { get; init; }
+
+    [Required] public required long TelegramId { get; init; }
+
+    public string? FirstName { get; init; }
+
+    public string? LastName { get; init; }
+
+    [Required] public required string UserName { get; init; }
+
+    public string? PhotoUrl { get; init; }
+
+    [Required] public Language LanguageCode { get; set; }
 }

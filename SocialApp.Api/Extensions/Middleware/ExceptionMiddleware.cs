@@ -1,13 +1,12 @@
-using Microsoft.AspNetCore.Http;
 using Shared.Domain.Exceptions;
 
-namespace Shared.Configurations.Middleware;
+namespace SocialApp.Api.Extensions.Middleware;
 
-public class Middleware
+public class ExceptionMiddleware
 {
     private readonly RequestDelegate _next;
 
-    public Middleware(RequestDelegate next)
+    public ExceptionMiddleware(RequestDelegate next)
     {
         _next = next;
     }

@@ -1,16 +1,15 @@
 using System.Reflection;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace SocialNode.Application;
 
 public static class DependencyInjection
 {
-    public static void AddSocialNodeApplication(this WebApplicationBuilder builder)
+    public static void AddSocialNodeApplication(this IServiceCollection services)
     {
-        builder.Services.AddMediatR(config
+        services.AddMediatR(config
             => config.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
         
-        builder.Services.AddAutoMapper(typeof(MappingProfile));
+        services.AddAutoMapper(typeof(MappingProfile));
     }
 }

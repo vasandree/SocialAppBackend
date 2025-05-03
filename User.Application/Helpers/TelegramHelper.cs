@@ -90,7 +90,7 @@ namespace User.Application.Helpers
             return true;
         }
 
-        public Language GetLanguage(string code)
+        public Language GetLanguage(string? code)
         {
             return code == "ru" ? Language.Ru : Language.En;
         }

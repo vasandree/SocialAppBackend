@@ -1,16 +1,15 @@
 using System.Reflection;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace TaskModule.Application;
 
 public static class DependencyInjection
 {
-    public static void AddApplication(this WebApplicationBuilder builder)
+    public static void AddApplication(this IServiceCollection services)
     {
-        builder.Services.AddMediatR(config
+        services.AddMediatR(config
             => config.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
-        
-        builder.Services.AddAutoMapper(typeof(MappingProfile));
+
+        services.AddAutoMapper(typeof(MappingProfile));
     }
 }

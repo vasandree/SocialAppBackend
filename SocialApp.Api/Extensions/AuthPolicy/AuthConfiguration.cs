@@ -1,18 +1,15 @@
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
-using Shared.Configurations.AuthPolicy;
 
-namespace Shared.Configurations.Configurations;
+namespace SocialApp.Api.Extensions.AuthPolicy;
 
 public static class AuthConfiguration
 {
-    public static void AddAuth(this WebApplicationBuilder builder)
+    public static void AddAuth(this IServiceCollection services, IConfiguration configuration)
     {
-        builder.Services.AddAuthentication(options =>
+        services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -25,22 +22,18 @@ public static class AuthConfiguration
                     ValidateAudience = false,
                     ValidateLifetime = true,
                     ValidateIssuerSigningKey = true,
-                    ValidIssuer = builder.Configuration["Jwt:Issuer"]!,
-                    ValidAudience = builder.Configuration["Jwt:Audience"]!,
+                    ValidIssuer = configuration["Jwt:Issuer"]!,
+                    ValidAudience = configuration["Jwt:Audience"]!,
                     IssuerSigningKey =
-                        new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]!))
+                        new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:Key"]!))
                 };
             });
 
-        builder.Services.AddAuthorization(options =>
-        {
-            options.DefaultPolicy = new AuthorizationPolicyBuilder(JwtBearerDefaults.AuthenticationScheme)
+        services.AddAuthorizationBuilder()
+            .SetDefaultPolicy(new AuthorizationPolicyBuilder(JwtBearerDefaults.AuthenticationScheme)
                 .RequireAuthenticatedUser()
-                .Build();
-
-            options.AddPolicy("UserExists", policy =>
+                .Build())
+            .AddPolicy("UserExists", policy =>
                 policy.Requirements.Add(new UserExistsRequirement()));
-        });
-
     }
 }

@@ -4,15 +4,11 @@ namespace TaskModule.Contracts.Dtos.Responses;
 
 public class ListedTaskDto
 {
-    [Required]
-    public Guid Id { get; set; }
-    
-    [Required]
-    public string Name { get; set; }
-    
-    [Required]
-    public DateTime EndDate { get; set; }
+    [Required] public required Guid Id { get; init; }
 
-    [Required]
-    public Guid SocialNodeId { get; set; }
+    [Required] public required string Name { get; init; }
+
+    [Required] public required DateTime EndDate { get; init; }
+
+    [Required] public required Guid SocialNodeId { get; init; }
 }

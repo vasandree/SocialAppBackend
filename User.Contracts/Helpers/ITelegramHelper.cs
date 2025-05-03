@@ -7,5 +7,5 @@ public interface ITelegramHelper
 {
     TelegramInitData ParseInitData(string data);
     bool ValidateInitData(string data);
-    Language GetLanguage(string code);
+    Language GetLanguage(string? code);
 }

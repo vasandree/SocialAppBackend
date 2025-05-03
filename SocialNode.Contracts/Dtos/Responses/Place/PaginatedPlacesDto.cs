@@ -5,7 +5,7 @@ namespace SocialNode.Contracts.Dtos.Responses.Place;
 
 public class PaginatedPlacesDto
 {
-    [Required] public List<ListedBaseSocialNodeDto> Place { get; set; }
+    [Required] public required List<ListedBaseSocialNodeDto> Place { get; init; }
 
-    [Required] public Pagination Pagination { get; set; }
+    [Required] public required Pagination Pagination { get; init; }
 }

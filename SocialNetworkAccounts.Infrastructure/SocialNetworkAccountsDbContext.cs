@@ -5,7 +5,7 @@ using SocialNetworkAccounts.Domain.Entities;
 
 namespace SocialNetworkAccounts.Infrastructure;
 
-public class SocialNetworkAccountsDbContext: DbContext
+public class SocialNetworkAccountsDbContext : DbContext
 {
     private readonly IConfiguration _configuration;
 
@@ -13,7 +13,8 @@ public class SocialNetworkAccountsDbContext: DbContext
     private DbSet<UsersAccount> UsersAccounts { get; set; }
     private DbSet<SocialNetworkUrls> SocialNetworkUrls { get; set; }
 
-    public SocialNetworkAccountsDbContext(DbContextOptions<SocialNetworkAccountsDbContext> options, IConfiguration configuration) : base(options)
+    public SocialNetworkAccountsDbContext(DbContextOptions<SocialNetworkAccountsDbContext> options,
+        IConfiguration configuration) : base(options)
     {
         _configuration = configuration;
     }
@@ -25,22 +26,8 @@ public class SocialNetworkAccountsDbContext: DbContext
 
         modelBuilder.Entity<UsersAccount>()
             .HasKey(x => x.Id);
-        
+
         modelBuilder.Entity<SocialNetworkUrls>()
             .HasKey(x => x.Type);
-
-        var socialNetworkBaseUrls = _configuration.GetSection("SocialNetworkBaseUrls").Get<Dictionary<string, string>>();
-
-        foreach (var baseUrl in socialNetworkBaseUrls)
-        {
-            if (Enum.TryParse<SocialNetwork>(baseUrl.Key, out var socialNetwork))
-            {
-                modelBuilder.Entity<SocialNetworkUrls>().HasData(new SocialNetworkUrls
-                {
-                    Type = socialNetwork,
-                    Url = baseUrl.Value
-                });
-            }
-        }
     }
 }

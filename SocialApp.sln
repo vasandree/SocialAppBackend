@@ -82,7 +82,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared.Contracts", "Shared.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared.Domain", "Shared.Domain\Shared.Domain.csproj", "{58CC1349-26E6-495C-9FEA-B3C502CFC7B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared.Configurations", "Shared.Configurations\Shared.Configurations.csproj", "{1C46D49F-B000-4BD2-A5F5-F2108CD76AE8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared.Extensions", "Shared.Extensions\Shared.Extensions.csproj", "{1C46D49F-B000-4BD2-A5F5-F2108CD76AE8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared.Persistence", "Shared.Persistence\Shared.Persistence.csproj", "{E6E29805-1E8E-4261-A302-82B2756DD0C8}"
 EndProject

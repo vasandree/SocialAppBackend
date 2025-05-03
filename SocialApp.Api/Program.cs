@@ -1,27 +1,22 @@
-using Auth.Controllers;
-using Event.Controllers;
-using Shared.Configurations.Configurations;
-using SocialNetworkAccounts.Controllers;
-using SocialNode.Controllers;
-using TaskModule.Controllers;
-using User.Controllers;
+using SocialApp.Api.Extensions;
+using SocialApp.Api.Extensions.AuthPolicy;
+using SocialApp.Api.Extensions.Configurations;
+using SocialApp.Api.Extensions.Middleware;
+using SocialApp.Api.Extensions.Swagger;
 
 var builder = WebApplication.CreateSlimBuilder(args);
 
 builder.Services.AddOpenApi();
 
-builder.AddGenericRepository();
+builder.Services.AddConfigurations(builder.Configuration);
 
-builder.AddAuth();
-builder.AddLoggingConfiguration();
-builder.AddSwaggerConfiguration();
+builder.Services.AddGenericRepository();
 
-builder.AddUserModule();
-builder.AddAuthModule();
-builder.AddSocialNetworkAccountsModule();
-builder.AddSocialNodeModule();
-builder.AddTaskModule();
-builder.Services.AddEventModule(builder.Configuration);
+builder.Services.AddAuth(builder.Configuration);
+builder.Services.AddLoggingConfiguration();
+builder.Services.AddSwaggerConfiguration();
+
+builder.Services.AddAppModules(builder.Configuration);
 
 builder.Services.AddCors(options =>
 {
@@ -37,18 +32,14 @@ var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwaggerConfiguration();
+    app.UseSwagger();
+    app.UseSwaggerUI();
     app.UseCors("AllowAll");
 }
 
 app.UseMiddleware();
 
-app.UseUserModule();
-app.UseAuthModule();
-app.UseSocialNetworkAccountsModule();
-app.UseSocialNodeModule();
-app.UseTaskModule();
-app.Services.UseEventModule();
+await app.Services.UseAppModules();
 
 app.UseHttpsRedirection();
 

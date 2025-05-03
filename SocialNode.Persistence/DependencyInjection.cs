@@ -7,12 +7,12 @@ namespace SocialNode.Persistence;
 
 public static class DependencyInjection
 {
-    public static void AddSocialNodePersistence(this WebApplicationBuilder builder)
+    public static void AddSocialNodePersistence(this IServiceCollection services)
 
     {
-        builder.Services.AddTransient(typeof(ISocialNodeRepository<>), typeof(SocialNodeRepository<>));
-        builder.Services.AddTransient<IPersonRepository, PersonRepository>();
-        builder.Services.AddTransient<IPlaceRepository, PlaceRepository>();
-        builder.Services.AddTransient<IClusterRepository, ClusterRepository>();
+        services.AddTransient(typeof(ISocialNodeRepository<>), typeof(SocialNodeRepository<>));
+        services.AddTransient<IPersonRepository, PersonRepository>();
+        services.AddTransient<IPlaceRepository, PlaceRepository>();
+        services.AddTransient<IClusterRepository, ClusterRepository>();
     }
 }

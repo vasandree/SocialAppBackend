@@ -1,7 +1,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Shared.Configurations.Extensions;
+using Shared.Extensions.Extensions;
 using SocialNode.Contracts.Commands.Person;
 using SocialNode.Contracts.Dtos.Requests;
 using SocialNode.Contracts.Queries;

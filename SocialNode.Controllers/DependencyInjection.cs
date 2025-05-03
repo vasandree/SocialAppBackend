@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using SocialNode.Application;
 using SocialNode.Infrastructure;
 using SocialNode.Persistence;
@@ -7,15 +9,15 @@ namespace SocialNode.Controllers;
 
 public static class DependencyInjection
 {
-    public static void AddSocialNodeModule(this WebApplicationBuilder builder)
+    public static void AddSocialNodeModule(this IServiceCollection services, IConfiguration configuration)
     {
-        builder.AddSocialNodeApplication();
-        builder.AddSocialNodePersistence();
-        builder.AddSocialNodeInfrastructure();
+        services.AddSocialNodeApplication();
+        services.AddSocialNodePersistence();
+        services.AddSocialNodeInfrastructure(configuration);
     }
 
-    public static void UseSocialNodeModule(this WebApplication app)
+    public static void UseSocialNodeModule(this IServiceProvider services)
     {
-        app.UseSocialNodeInfrastructure();
+        services.UseSocialNodeInfrastructure();
     }
 }

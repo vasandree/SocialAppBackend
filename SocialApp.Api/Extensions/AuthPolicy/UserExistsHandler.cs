@@ -2,7 +2,7 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using User.Contracts.Repositories;
 
-namespace Shared.Configurations.AuthPolicy;
+namespace SocialApp.Api.Extensions.AuthPolicy;
 
 public class UserExistsHandler : AuthorizationHandler<UserExistsRequirement>
 {

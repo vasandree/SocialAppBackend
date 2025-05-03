@@ -8,10 +8,11 @@
 
     <ItemGroup>
       <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.4" />
-      <PackageReference Include="Swashbuckle.AspNetCore" Version="8.1.1" />
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Shared.Extensions\Shared.Extensions.csproj" />
+      <ProjectReference Include="..\SocialNetworkAccounts.Contracts\SocialNetworkAccounts.Contracts.csproj" />
       <ProjectReference Include="..\SocialNetworkAccounts.Domain\SocialNetworkAccounts.Domain.csproj" />
     </ItemGroup>
 

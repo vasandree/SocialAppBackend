@@ -1,7 +1,9 @@
 using AutoMapper;
 using MediatR;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 using Shared.Contracts.Dtos;
+using Shared.Extensions.Configs;
 using SocialNode.Contracts.Dtos.Responses;
 using SocialNode.Contracts.Dtos.Responses.ClusterOfPeople;
 using SocialNode.Contracts.Queries;
@@ -15,11 +17,12 @@ public class GetClustersQueryHandler : IRequestHandler<GetClustersQuery, Paginat
     private readonly IMapper _mapper;
     private readonly int _pageSize;
 
-    public GetClustersQueryHandler(IClusterRepository clusterRepository, IConfiguration configuration, IMapper mapper)
+    public GetClustersQueryHandler(IClusterRepository clusterRepository, IMapper mapper,
+        IOptions<PaginationConfig> config)
     {
         _clusterRepository = clusterRepository;
         _mapper = mapper;
-        _pageSize = configuration.GetValue<int>("PageSize");
+        _pageSize = config.Value.PageSize;
     }
 
     public async Task<PaginatedClusterDto> Handle(GetClustersQuery request, CancellationToken cancellationToken)
@@ -28,11 +31,12 @@ public class GetClustersQueryHandler : IRequestHandler<GetClustersQuery, Paginat
 
         if (!string.IsNullOrEmpty(request.Name))
         {
-            clusters = clusters.Where(cluster => cluster.Name.Contains(request.Name, StringComparison.OrdinalIgnoreCase));
+            clusters = clusters.Where(
+                cluster => cluster.Name.Contains(request.Name, StringComparison.OrdinalIgnoreCase));
         }
-        
+
         var totalPages = (int)Math.Ceiling((double)clusters.Count() / _pageSize);
-        
+
         clusters = clusters
             .Skip((request.Page - 1) * _pageSize)
             .Take(_pageSize);

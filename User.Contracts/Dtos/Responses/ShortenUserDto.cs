@@ -4,16 +4,13 @@ namespace User.Contracts.Dtos.Responses;
 
 public class ShortenUserDto
 {
-    [Required]
-    public Guid Id {get; set;} 
-    
-    public string? FirstName {get; set;}
-    
-    public string? LastName {get; set;}
-    
-    [Required]
-    public string UserName {get; set;}
-    
-    public string? PhotoUrl {get; set;}
-    
+    [Required] public required Guid Id { get; init; }
+
+    public string? FirstName { get; init; }
+
+    public string? LastName { get; init; }
+
+    [Required] public required string UserName { get; init; }
+
+    public string? PhotoUrl { get; init; }
 }

@@ -5,12 +5,11 @@ namespace SocialNode.Contracts.Dtos.Requests;
 
 public class ClusterRequestDto
 {
-    [Required]
-    public string Name { get; set; }
-    
-    public string? Description { get; set; }
-    
-    public IFormFile? Avatar { get; set; }
+    [Required] public required string Name { get; init; }
 
-    public List<Guid>? Users { get; set; } = [];
+    public string? Description { get; init; }
+
+    public IFormFile? Avatar { get; init; }
+
+    public List<Guid>? Users { get; init; } = [];
 }

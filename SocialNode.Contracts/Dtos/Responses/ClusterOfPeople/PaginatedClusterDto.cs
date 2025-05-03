@@ -6,8 +6,8 @@ namespace SocialNode.Contracts.Dtos.Responses.ClusterOfPeople;
 public class PaginatedClusterDto
 {
     [Required] 
-    public List<ListedBaseSocialNodeDto> Cluster { get; set; }
+    public required List<ListedBaseSocialNodeDto> Cluster { get; init; }
     
     [Required]
-    public Pagination Pagination { get; set; }
+    public required Pagination Pagination { get; init; }
 }

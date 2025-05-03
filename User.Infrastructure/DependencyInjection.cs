@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -7,15 +6,15 @@ namespace User.Infrastructure;
 
 public static class DependencyInjection
 {
-    public static void AddInfrastructure(this WebApplicationBuilder builder)
+    public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
-        builder.Services.AddDbContext<UserDbContext>(options =>
-            options.UseNpgsql(builder.Configuration.GetConnectionString("SocialAppDb")));
+        services.AddDbContext<UserDbContext>(options =>
+            options.UseNpgsql(configuration.GetConnectionString("SocialAppDb")));
     }
 
-    public static void UseInfrastructure(this WebApplication app)
+    public static void UseInfrastructure(this IServiceProvider services)
     {
-        using var serviceScope = app.Services.CreateScope();
+        using var serviceScope = services.CreateScope();
         var dbContext = serviceScope.ServiceProvider.GetService<UserDbContext>();
         dbContext?.Database.Migrate();
     }

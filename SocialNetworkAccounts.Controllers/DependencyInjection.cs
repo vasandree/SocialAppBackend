@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using SocialNetworkAccounts.Application;
 using SocialNetworkAccounts.Infrastructure;
 using SocialNetworkAccounts.Persistence;
@@ -7,15 +8,15 @@ namespace SocialNetworkAccounts.Controllers;
 
 public static class DependencyInjection
 {
-    public static void AddSocialNetworkAccountsModule(this WebApplicationBuilder builder)
+    public static void AddSocialNetworkAccountsModule(this IServiceCollection services, IConfiguration configuration)
     {
-        builder.AddSocialNetworkAccountsApplication();
-        builder.AddSocialNetworkAccountsInfrastructure();
-        builder.AddSocialNetworkAccountsPersistence();
+        services.AddSocialNetworkAccountsApplication();
+        services.AddSocialNetworkAccountsInfrastructure(configuration);
+        services.AddSocialNetworkAccountsPersistence();
     }
     
-    public static void UseSocialNetworkAccountsModule(this WebApplication application)
+    public static async Task UseSocialNetworkAccountsModule(this IServiceProvider services)
     {
-        application.UseSocialNetworkAccountsInfrastructure();
+        await services.UseSocialNetworkAccountsInfrastructure();
     }
 }

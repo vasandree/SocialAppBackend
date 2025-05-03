@@ -34,7 +34,7 @@ public class AddTelegramUserCommandHandler : IRequestHandler<AddTelegramUserComm
 
         if (parsedTelegramData.User == null) throw new NullReferenceException(nameof(parsedTelegramData));
 
-        var user = new ApplicationUser()
+        var user = new ApplicationUser
         {
             FirstName = parsedTelegramData.User.First_Name,
             LastName = parsedTelegramData.User.Last_Name,
@@ -56,6 +56,8 @@ public class AddTelegramUserCommandHandler : IRequestHandler<AddTelegramUserComm
             UserId = user.Id,
         };
 
+        user.TelegramAccount = telegramAccount;
+        
         await _userRepository.AddAsync(user);
         await _telegramAccountRepository.AddAsync(telegramAccount);
 

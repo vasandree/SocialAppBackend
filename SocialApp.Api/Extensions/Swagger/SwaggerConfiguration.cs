@@ -1,16 +1,15 @@
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
+using SocialApp.Api.Extensions.Configurations;
 
-namespace Shared.Configurations.Configurations;
+namespace SocialApp.Api.Extensions.Swagger;
 
 public static class SwaggerConfiguration
 {
-    public static void AddSwaggerConfiguration(this WebApplicationBuilder builder)
+    public static void AddSwaggerConfiguration(this IServiceCollection services)
     {
-        builder.Services.AddControllers();
-        builder.Services.AddEndpointsApiExplorer();
-        builder.Services.AddSwaggerGen(options =>
+        services.AddControllers();
+        services.AddEndpointsApiExplorer();
+        services.AddSwaggerGen(options =>
         {
             options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
             {
@@ -23,11 +22,5 @@ public static class SwaggerConfiguration
             });
             options.OperationFilter<SwaggerFilter>();
         });
-    }
-
-    public static void UseSwaggerConfiguration(this WebApplication app)
-    {
-        app.UseSwagger();
-        app.UseSwaggerUI();
     }
 }

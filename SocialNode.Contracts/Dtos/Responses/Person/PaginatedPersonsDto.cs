@@ -5,9 +5,7 @@ namespace SocialNode.Contracts.Dtos.Responses.Person;
 
 public class PaginatedPersonsDto
 {
-    [Required]
-    public List<ListedBaseSocialNodeDto> Person { get; set; }
-    
-    [Required]
-    public Pagination Pagination { get; set; }
+    [Required] public required List<ListedBaseSocialNodeDto> Person { get; init; }
+
+    [Required] public required Pagination Pagination { get; init; }
 }

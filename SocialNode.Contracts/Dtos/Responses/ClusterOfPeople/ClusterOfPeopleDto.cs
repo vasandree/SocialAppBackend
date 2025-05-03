@@ -6,5 +6,5 @@ namespace SocialNode.Contracts.Dtos.Responses.ClusterOfPeople;
 public class ClusterOfPeopleDto : BaseSocialNodeDto
 {
     [Required]
-    public List<PersonDto> Persons { get; set;}
+    public required List<PersonDto> Persons { get; init;}
 }

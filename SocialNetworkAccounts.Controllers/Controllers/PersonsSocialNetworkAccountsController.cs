@@ -1,7 +1,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Shared.Configurations.Extensions;
+using Shared.Extensions.Extensions;
 using SocialNetworkAccounts.Contracts.Commands.PersonSocialNetworkAccount;
 using SocialNetworkAccounts.Contracts.Dtos.Requests;
 using SocialNetworkAccounts.Contracts.Queries;

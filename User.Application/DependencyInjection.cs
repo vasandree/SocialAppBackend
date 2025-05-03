@@ -8,12 +8,12 @@ namespace User.Application;
 
 public static class DependencyInjection
 {
-    public static void AddApplication(this WebApplicationBuilder builder)
+    public static void AddApplication(this IServiceCollection services)
     {
-        builder.Services.AddMediatR(config
+        services.AddMediatR(config
             => config.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
-        
-        builder.Services.AddScoped<ITelegramHelper, TelegramHelper>();
-        builder.Services.AddAutoMapper(typeof(MappingProfile));
+
+        services.AddScoped<ITelegramHelper, TelegramHelper>();
+        services.AddAutoMapper(typeof(MappingProfile));
     }
 }

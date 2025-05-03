@@ -1,7 +1,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Shared.Configurations.Extensions;
+using Shared.Extensions.Extensions;
 using TaskModule.Contracts.Commands;
 using TaskModule.Contracts.Dtos.Requests;
 using TaskModule.Contracts.Queries;

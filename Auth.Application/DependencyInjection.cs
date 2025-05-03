@@ -1,7 +1,6 @@
 using System.Reflection;
 using Auth.Application.BackgroundTasks;
 using Auth.Application.Helpers;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Quartz;
 using User.Contracts.Helpers;
@@ -10,14 +9,14 @@ namespace Auth.Application;
 
 public static class DependencyInjection
 {
-    public static void AddApplication(this WebApplicationBuilder builder)
+    public static void AddApplication(this IServiceCollection services)
     {
-        builder.Services.AddMediatR(config
+        services.AddMediatR(config
             => config.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
-        
-        builder.Services.AddScoped<IJwtService, JwtService>();
-        
-        builder.Services.AddQuartz(q =>
+
+        services.AddScoped<IJwtService, JwtService>();
+
+        services.AddQuartz(q =>
         {
             var jobKey = new JobKey("CleanupExpiredTokensJob");
 
@@ -26,10 +25,10 @@ public static class DependencyInjection
                 .ForJob(jobKey)
                 .WithIdentity("CleanupExpiredTokensTrigger")
                 .WithSimpleSchedule(schedule => schedule
-                    .WithIntervalInHours(1) 
+                    .WithIntervalInHours(1)
                     .RepeatForever()));
         });
 
-        builder.Services.AddQuartzHostedService(q => q.WaitForJobsToComplete = true);
+        services.AddQuartzHostedService(q => q.WaitForJobsToComplete = true);
     }
 }

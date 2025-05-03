@@ -5,10 +5,8 @@ namespace SocialNetworkAccounts.Contracts.Dtos.Requests;
 
 public class AddSocialNetworkAccountDto
 {
-    [Required]
-    public SocialNetwork Type { get; set; }
-    
-    
-    [Required]
-    public string Username { get; set; }
+    [Required] public SocialNetwork Type { get; init; }
+
+
+    [Required] public required string Username { get; init; }
 }

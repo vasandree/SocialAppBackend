@@ -4,9 +4,7 @@ namespace Auth.Contracts.Responses;
 
 public class TokensDto
 {
-    [Required]
-    public string AccessToken { get; set; }
-    
-    [Required]
-    public string RefreshToken { get; set; }
+    [Required] public required string AccessToken { get; init; }
+
+    [Required] public required string RefreshToken { get; init; }
 }

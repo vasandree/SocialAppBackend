@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Authorization;
 
-namespace Shared.Configurations.AuthPolicy;
+namespace SocialApp.Api.Extensions.AuthPolicy;
 
 public class UserExistsRequirement : IAuthorizationRequirement { }

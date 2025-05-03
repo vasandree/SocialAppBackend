@@ -9,21 +9,21 @@ namespace SocialNode.Infrastructure;
 
 public static class DependencyInjection
 {
-    public static void AddSocialNodeInfrastructure(this WebApplicationBuilder builder)
+    public static void AddSocialNodeInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
         CloudServiceConfig.Initialize();
         var cloudinary = CloudServiceConfig.GetCloudinaryInstance();
-        builder.Services.AddSingleton(cloudinary);
+        services.AddSingleton(cloudinary);
 
-        builder.Services.AddScoped<ICloudStorageService, CloudStorageServiceService>();
+        services.AddScoped<ICloudStorageService, CloudStorageServiceService>();
 
-        builder.Services.AddDbContext<SocialNodeDbContext>(options =>
-            options.UseNpgsql(builder.Configuration.GetConnectionString("SocialAppDb")));
+        services.AddDbContext<SocialNodeDbContext>(options =>
+            options.UseNpgsql(configuration.GetConnectionString("SocialAppDb")));
     }
-    
-    public static void UseSocialNodeInfrastructure(this WebApplication app)
+
+    public static void UseSocialNodeInfrastructure(this IServiceProvider services)
     {
-        using var serviceScope = app.Services.CreateScope();
+        using var serviceScope = services.CreateScope();
         var dbContext = serviceScope.ServiceProvider.GetService<SocialNodeDbContext>();
         dbContext?.Database.Migrate();
     }

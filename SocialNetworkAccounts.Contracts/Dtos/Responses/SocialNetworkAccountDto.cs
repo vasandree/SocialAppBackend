@@ -6,14 +6,14 @@ namespace SocialNetworkAccounts.Contracts.Dtos.Responses;
 public class SocialNetworkAccountDto
 {
     [Required]
-    public Guid Id { get; set; }
+    public Guid Id { get; init; }
     
     [Required]
-    public SocialNetwork Type { get; set; }
+    public SocialNetwork Type { get; init; }
     
     [Required]
-    public string Url { get; set; }
+    public required string Url { get; init; }
     
     [Required]
-    public string Username { get; set; }
+    public required string Username { get; init; }
 }

@@ -5,10 +5,9 @@ namespace SocialNode.Contracts.Dtos.Requests;
 
 public class PlaceRequestDto
 {
-    [Required]
-    public string Name { get; set;}
-    
-    public string? Description { get; set;}
+    [Required] public required string Name { get; init; }
 
-    public IFormFile? Avatar { get; set; }
+    public string? Description { get; init; }
+
+    public IFormFile? Avatar { get; init; }
 }

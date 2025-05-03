@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using User.Application;
 using User.Infrastructure;
 using User.Persistence;
@@ -7,15 +9,15 @@ namespace User.Controllers;
 
 public static class DependencyInjection
 {
-    public static void AddUserModule(this WebApplicationBuilder builder)
+    public static void AddUserModule(this IServiceCollection services, IConfiguration configuration)
     {
-        builder.AddApplication();
-        builder.AddPersistence();
-        builder.AddInfrastructure();
+        services.AddApplication();
+        services.AddPersistence();
+        services.AddInfrastructure(configuration);
     }
 
-    public static void UseUserModule(this WebApplication app)
+    public static void UseUserModule(this IServiceProvider services)
     {
-        app.UseInfrastructure();
+        services.UseInfrastructure();
     }
 }

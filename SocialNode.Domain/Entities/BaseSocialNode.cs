@@ -5,7 +5,7 @@ namespace SocialNode.Domain.Entities;
 
 public class BaseSocialNode : BaseEntity
 {
-    [Required] public string Name { get; set; }
+    [Required] public required string Name { get; set; }
 
     public string? Description { get; set; }
 

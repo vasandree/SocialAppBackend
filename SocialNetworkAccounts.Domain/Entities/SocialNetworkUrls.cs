@@ -8,8 +8,8 @@ public class SocialNetworkUrls
 
     [Required]
     [EnumDataType(typeof(SocialNetwork))]
-    public SocialNetwork Type { get; set; }
+    public SocialNetwork Type { get; init; }
     
     [Required]
-    public string Url { get; set; }
+    public required string Url { get; set; }
 }

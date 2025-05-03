@@ -5,5 +5,5 @@ namespace SocialNetworkAccounts.Domain.Entities;
 public class UsersAccount : SocialNetworkAccount
 {
     [Required]
-    public Guid UserId { get; set; }
+    public Guid UserId { get; init; }
 }
