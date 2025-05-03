@@ -1,4 +1,5 @@
 using Auth.Controllers;
+using Event.Controllers;
 using Shared.Configurations.Configurations;
 using SocialNetworkAccounts.Controllers;
 using SocialNode.Controllers;
@@ -20,6 +21,7 @@ builder.AddAuthModule();
 builder.AddSocialNetworkAccountsModule();
 builder.AddSocialNodeModule();
 builder.AddTaskModule();
+builder.Services.AddEventModule(builder.Configuration);
 
 builder.Services.AddCors(options =>
 {
@@ -46,6 +48,7 @@ app.UseAuthModule();
 app.UseSocialNetworkAccountsModule();
 app.UseSocialNodeModule();
 app.UseTaskModule();
+app.Services.UseEventModule();
 
 app.UseHttpsRedirection();
 

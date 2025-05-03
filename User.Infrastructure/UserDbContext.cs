@@ -5,9 +5,9 @@ namespace User.Infrastructure;
 
 public class UserDbContext : DbContext
 {
-    public DbSet<ApplicationUser> Users { get; set; }
+    private DbSet<ApplicationUser> Users { get; set; }
 
-    public DbSet<TelegramAccount> TelegramAccounts { get; set; }
+    private DbSet<TelegramAccount> TelegramAccounts { get; set; }
 
     public UserDbContext(DbContextOptions<UserDbContext> options) : base(options)
     {

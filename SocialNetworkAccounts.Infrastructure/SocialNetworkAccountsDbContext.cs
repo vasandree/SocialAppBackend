@@ -9,9 +9,9 @@ public class SocialNetworkAccountsDbContext: DbContext
 {
     private readonly IConfiguration _configuration;
 
-    public DbSet<PersonsAccount> PersonsAccounts { get; set; }
-    public DbSet<UsersAccount> UsersAccounts { get; set; }
-    public DbSet<SocialNetworkUrls> SocialNetworkUrls { get; set; }
+    private DbSet<PersonsAccount> PersonsAccounts { get; set; }
+    private DbSet<UsersAccount> UsersAccounts { get; set; }
+    private DbSet<SocialNetworkUrls> SocialNetworkUrls { get; set; }
 
     public SocialNetworkAccountsDbContext(DbContextOptions<SocialNetworkAccountsDbContext> options, IConfiguration configuration) : base(options)
     {

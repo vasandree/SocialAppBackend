@@ -8,21 +8,19 @@ namespace SocialNode.Persistence.Repositories;
 
 public class SocialNodeRepository<T> : BaseEntityRepository<T>, ISocialNodeRepository<T> where T : BaseSocialNode
 {
-    private readonly SocialNodeDbContext _context;
 
     public SocialNodeRepository(SocialNodeDbContext context) : base(context)
     {
-        _context = context;
     }
 
     public Task<IQueryable<T>> GetAllAsQueryable(Guid userId)
     {
-        return Task.FromResult(_context.Set<T>().Where(x => x.CreatorId == userId).AsNoTracking()
+        return Task.FromResult(DbSet.Where(x => x.CreatorId == userId).AsNoTracking()
             .AsQueryable());
     }
 
     public async Task<bool> CheckIfUserIsCreator(Guid userId, Guid nodeId)
     {
-        return await _context.Set<T>().AnyAsync(x => x.Id == nodeId && x.CreatorId == userId);
+        return await DbSet.AnyAsync(x => x.Id == nodeId && x.CreatorId == userId);
     }
 }

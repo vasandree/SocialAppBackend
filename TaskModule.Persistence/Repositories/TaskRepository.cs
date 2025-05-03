@@ -8,34 +8,33 @@ namespace TaskModule.Persistence.Repositories;
 
 public class TaskRepository : BaseEntityRepository<TaskEntity>, ITaskRepository
 {
-    private readonly TaskDbContext _context;
-
+    
     public TaskRepository(TaskDbContext context) : base(context)
     {
-        _context = context;
+       
     }
 
     public async Task<IReadOnlyList<TaskEntity>> GetAllByUserIdAsync(Guid userId)
     {
-        return await _context.Tasks.Where(x => x.SocialNodeId == userId).ToListAsync();
+        return await DbSet.Where(x => x.SocialNodeId == userId).ToListAsync();
     }
 
     public async Task ChangeStatusAsync(Guid id,  Domain.Enums.StatusOfTask status)
     {
-        var task = await _context.Tasks.FirstOrDefaultAsync(x => x.Id == id);
+        var task = await DbSet.FirstOrDefaultAsync(x => x.Id == id);
         if (task != null) task.Status = status;
-        await _context.SaveChangesAsync();
+        await Context.SaveChangesAsync();
     }
 
     public async Task<bool> CheckIfBelongsToUserAsync(Guid userId, Guid taskId)
     {
-        return await _context.Tasks.AnyAsync(x => x.Id == taskId && x.CreatorId == userId);
+        return await DbSet.AnyAsync(x => x.Id == taskId && x.CreatorId == userId);
     }
 
     public async Task DeleteByIdAsync(Guid id)
     {
-        var task = await _context.Tasks.FirstOrDefaultAsync(x => x.Id == id);
-        if (task != null) _context.Tasks.Remove(task);
-        await _context.SaveChangesAsync();
+        var task = await DbSet.FirstOrDefaultAsync(x => x.Id == id);
+        if (task != null) DbSet.Remove(task);
+        await Context.SaveChangesAsync();
     }
 }

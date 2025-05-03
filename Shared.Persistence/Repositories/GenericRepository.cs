@@ -6,40 +6,40 @@ namespace Shared.Persistence.Repositories;
 
 public class GenericRepository<T> : IGenericRepository<T> where T : class
 {
-    private readonly DbSet<T> _dbSet;
-    private readonly DbContext _context;
+    protected readonly DbSet<T> DbSet;
+    protected readonly DbContext Context;
 
     public GenericRepository(DbContext context)
     {
-        _context = context;
-        _dbSet = context.Set<T>();
+        Context = context;
+        DbSet = context.Set<T>();
     }
 
     public async Task<IEnumerable<T>?> GetAllAsync()
     {
-        return await _dbSet.AsNoTracking().ToListAsync();
+        return await DbSet.AsNoTracking().ToListAsync();
     }
 
     public async Task AddAsync(T entity)
     {
-        await _dbSet.AddAsync(entity);
-        await _context.SaveChangesAsync();
+        await DbSet.AddAsync(entity);
+        await Context.SaveChangesAsync();
     }
 
     public async Task UpdateAsync(T entity)
     {
-        _context.Entry(entity).State = EntityState.Modified;
-        await _context.SaveChangesAsync();
+        Context.Entry(entity).State = EntityState.Modified;
+        await Context.SaveChangesAsync();
     }
 
     public async Task DeleteAsync(T entity)
     {
-        _dbSet.Remove(entity);
-        await _context.SaveChangesAsync();
+        DbSet.Remove(entity);
+        await Context.SaveChangesAsync();
     }
 
     public async Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> predicate)
     {
-        return await _dbSet.AsNoTracking().Where(predicate).ToListAsync();
+        return await DbSet.AsNoTracking().Where(predicate).ToListAsync();
     }
 }

@@ -9,9 +9,9 @@ public class SocialNodeDbContext : DbContext
     {
     }
 
-    public DbSet<PersonEntity> Persons { get; set; }
-    public DbSet<Place> Places { get; set; }
-    public DbSet<ClusterOfPeople> ClustersOfPeople { get; set; }
+    private DbSet<PersonEntity> Persons { get; set; }
+    private DbSet<Place> Places { get; set; }
+    private DbSet<ClusterOfPeople> ClustersOfPeople { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
