@@ -6,7 +6,7 @@ namespace Event.Infrastructure;
 public class EventDbContext : DbContext
 {
     private DbSet<EventEntity> Events { get; set; }
-    private DbSet<EventType> EventTypes { get; set; }
+    private DbSet<EventTypeEntity> EventTypes { get; set; }
 
     public EventDbContext(DbContextOptions<EventDbContext> options) : base(options)
     {
@@ -19,5 +19,4 @@ public class EventDbContext : DbContext
             .WithMany()
             .HasForeignKey(e => e.EventTypeId);
     }
-
 }

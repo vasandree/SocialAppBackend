@@ -3,12 +3,13 @@ using Shared.Domain;
 
 namespace Event.Domain.Entities;
 
-public class EventType : BaseEntity
+public class EventTypeEntity : BaseEntity
 {
-    [Required]
-    public Guid CreatorId { get; set; }
+
 
     [Required]
     public string Name { get; set; }
     
+    [Required]
+    public Guid CreatorId{ get; set; }
 }

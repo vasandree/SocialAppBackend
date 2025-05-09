@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using SocialNode.Contracts.Repositories;
 using SocialNode.Persistence.Repositories;

@@ -4,6 +4,7 @@ using Shared.Domain.Exceptions;
 using SocialNode.Contracts.Dtos.Responses.Person;
 using SocialNode.Contracts.Queries;
 using SocialNode.Contracts.Repositories;
+using SocialNode.Domain.Entities;
 
 namespace SocialNode.Application.Features.Queries;
 

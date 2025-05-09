@@ -28,6 +28,11 @@ builder.Services.AddCors(options =>
     });
 });
 
+builder.Services.AddControllers(options =>
+{
+    options.Conventions.Add(new GlobalRoutePrefixConvention("api/social_app"));
+});
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
@@ -45,6 +50,7 @@ app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
 
 app.MapControllers();
 

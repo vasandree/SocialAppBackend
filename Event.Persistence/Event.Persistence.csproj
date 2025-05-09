@@ -6,4 +6,11 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Event.Contracts\Event.Contracts.csproj" />
+      <ProjectReference Include="..\Event.Domain\Event.Domain.csproj" />
+      <ProjectReference Include="..\Event.Infrastructure\Event.Infrastructure.csproj" />
+      <ProjectReference Include="..\Shared.Persistence\Shared.Persistence.csproj" />
+    </ItemGroup>
+
 </Project>

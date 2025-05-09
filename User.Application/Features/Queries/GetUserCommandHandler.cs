@@ -4,6 +4,7 @@ using Shared.Domain.Exceptions;
 using User.Contracts.Dtos.Responses;
 using User.Contracts.Queries;
 using User.Contracts.Repositories;
+using User.Domain.Entities;
 
 namespace User.Application.Features.Queries;
 

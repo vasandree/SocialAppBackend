@@ -14,7 +14,7 @@ public class EventEntity : BaseEntity
     
     public Guid? EventTypeId { get; set; }
 
-    public EventType? EventType { get; set; }
+    public EventTypeEntity? EventType { get; set; }
     
     [Required]
     public DateTime Date { get; set; }

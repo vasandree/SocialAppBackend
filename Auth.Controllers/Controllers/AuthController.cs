@@ -8,7 +8,7 @@ using User.Contracts.Dtos.Requests;
 namespace Auth.Controllers.Controllers;
 
 [ApiController]
-[Route("/auth")]
+[Route("auth")]
 public class AuthController : ControllerBase
 {
     private readonly ISender _mediator;

@@ -5,6 +5,7 @@ using MediatR;
 using Shared.Domain.Exceptions;
 using User.Contracts.Helpers;
 using User.Contracts.Repositories;
+using User.Domain.Entities;
 
 namespace Auth.Application.Features.Commands;
 

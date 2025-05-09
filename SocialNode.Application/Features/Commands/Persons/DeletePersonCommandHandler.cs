@@ -2,6 +2,7 @@ using MediatR;
 using Shared.Domain.Exceptions;
 using SocialNode.Contracts.Commands.Person;
 using SocialNode.Contracts.Repositories;
+using SocialNode.Domain.Entities;
 using User.Contracts.Repositories;
 
 namespace SocialNode.Application.Features.Commands.Persons;

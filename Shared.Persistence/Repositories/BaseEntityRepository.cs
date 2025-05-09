@@ -10,7 +10,7 @@ public class BaseEntityRepository<T> : GenericRepository<T>, IBaseEntityReposito
     {
     }
 
-    public async Task<T?> GetByIdAsync(Guid id)
+    public async Task<T> GetByIdAsync(Guid id)
     {
         return await DbSet.FirstOrDefaultAsync(x => x.Id == id);
     }
