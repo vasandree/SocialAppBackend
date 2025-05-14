@@ -13,4 +13,6 @@ public abstract record CreateTaskDto
     [Required] public required DateTime EndDate { get; init; }
 
     [Required] public required Guid SocialNodeId { get; init; }
+
+    [Required] public Guid WorkspaceId { get; init; }
 }

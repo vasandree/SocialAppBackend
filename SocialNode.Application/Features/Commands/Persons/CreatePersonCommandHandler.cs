@@ -1,25 +1,21 @@
 using MediatR;
-using Shared.Domain.Exceptions;
 using SocialNode.Contracts.Commands.Person;
 using SocialNode.Contracts.Repositories;
 using SocialNode.Contracts.Services;
 using SocialNode.Domain.Entities;
-using User.Contracts.Repositories;
 
 namespace SocialNode.Application.Features.Commands.Persons;
 
 public class CreatePersonCommandHandler : IRequestHandler<CreatePersonCommand, Unit>
 {
     private readonly IPersonRepository _personRepository;
-    private readonly IUserRepository _userRepostory;
     private readonly ICloudStorageService _cloudStorageService;
 
     public CreatePersonCommandHandler(IPersonRepository personRepository,
-        ICloudStorageService cloudStorageService, IUserRepository userRepostory)
+        ICloudStorageService cloudStorageService)
     {
         _personRepository = personRepository;
         _cloudStorageService = cloudStorageService;
-        _userRepostory = userRepostory;
     }
 
     public async Task<Unit> Handle(CreatePersonCommand request, CancellationToken cancellationToken)

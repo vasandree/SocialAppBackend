@@ -12,7 +12,7 @@ using SocialNode.Infrastructure;
 namespace SocialNode.Infrastructure.Migrations
 {
     [DbContext(typeof(SocialNodeDbContext))]
-    [Migration("20250423155016_init")]
+    [Migration("20250509193904_init")]
     partial class init
     {
         /// <inheritdoc />

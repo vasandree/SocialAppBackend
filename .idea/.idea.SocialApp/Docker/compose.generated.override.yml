@@ -1,0 +1,20 @@
+# This is a generated file. Not intended for manual editing.
+services:
+  socialapp.api:
+    build:
+      context: "/Users/andreivasilev/Desktop/SocialAppBackend"
+      dockerfile: "SocialApp.Api/Dockerfile"
+      target: "base"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net9.0/SocialApp.Api.dll"
+    environment:
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+    image: "socialapp.api:dev"
+    ports: []
+    volumes:
+    - "/Users/andreivasilev/Desktop/SocialAppBackend/SocialApp.Api:/app:rw"
+    - "/Users/andreivasilev/Desktop/SocialAppBackend:/src:rw"
+    - "/Users/andreivasilev/.nuget/packages:/root/.nuget/packages"
+    working_dir: "/app"

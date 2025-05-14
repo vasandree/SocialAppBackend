@@ -23,33 +23,33 @@ public class PlaceController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetPlaces([FromQuery] string? searchTerm = null, [FromQuery] int page = 1)
     {
-        return Ok(await _mediator.Send(new GetPlacesQuery(User.GetUserId()!.Value, page, searchTerm)));
+        return Ok(await _mediator.Send(new GetPlacesQuery(User.GetUserId(), page, searchTerm)));
     }
 
     [HttpGet]
     [Route("{placeId:guid}")]
     public async Task<IActionResult> GetPlace(Guid placeId)
     {
-        return Ok(await _mediator.Send(new GetPlaceQuery(placeId, User.GetUserId()!.Value)));
+        return Ok(await _mediator.Send(new GetPlaceQuery(placeId, User.GetUserId())));
     }
 
     [HttpPut]
     [Route("{placeId:guid}")]
     public async Task<IActionResult> UpdatePlace(Guid placeId, [FromBody] PlaceRequestDto placeDto)
     {
-        return Ok(await _mediator.Send(new EditPlaceCommand(placeId, User.GetUserId()!.Value, placeDto)));
+        return Ok(await _mediator.Send(new EditPlaceCommand(placeId, User.GetUserId(), placeDto)));
     }
 
     [HttpDelete]
     [Route("{placeId:guid}")]
     public async Task<IActionResult> DeletePlace(Guid placeId)
     {
-        return Ok(await _mediator.Send(new DeletePlaceCommand(User.GetUserId()!.Value, placeId)));
+        return Ok(await _mediator.Send(new DeletePlaceCommand(User.GetUserId(), placeId)));
     }
 
     [HttpPost]
     public async Task<IActionResult> CreatePlace([FromBody] PlaceRequestDto createPlaceDto)
     {
-        return Ok(await _mediator.Send(new CreatePlaceCommand(User.GetUserId()!.Value, createPlaceDto)));
+        return Ok(await _mediator.Send(new CreatePlaceCommand(User.GetUserId(), createPlaceDto)));
     }
 }

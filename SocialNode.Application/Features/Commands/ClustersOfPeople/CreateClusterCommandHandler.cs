@@ -1,25 +1,21 @@
 using MediatR;
-using Shared.Domain.Exceptions;
 using SocialNode.Contracts.Commands.ClusterOfPeople;
 using SocialNode.Contracts.Repositories;
 using SocialNode.Contracts.Services;
 using SocialNode.Domain.Entities;
-using User.Contracts.Repositories;
 
 namespace SocialNode.Application.Features.Commands.ClustersOfPeople;
 
 public class CreateClusterCommandHandler : IRequestHandler<CreateClusterCommand, Unit>
 {
     private readonly IClusterRepository _clusterRepository;
-    private readonly IUserRepository _userRepository;
     private readonly ICloudStorageService _cloudStorageService;
 
     public CreateClusterCommandHandler(IClusterRepository clusterRepository,
-        ICloudStorageService cloudStorageService, IUserRepository userRepository)
+        ICloudStorageService cloudStorageService)
     {
         _clusterRepository = clusterRepository;
         _cloudStorageService = cloudStorageService;
-        _userRepository = userRepository;
     }
 
     public async Task<Unit> Handle(CreateClusterCommand request, CancellationToken cancellationToken)

@@ -2,20 +2,16 @@ using MediatR;
 using Shared.Domain.Exceptions;
 using SocialNode.Contracts.Commands.ClusterOfPeople;
 using SocialNode.Contracts.Repositories;
-using SocialNode.Domain.Entities;
-using User.Contracts.Repositories;
 
 namespace SocialNode.Application.Features.Commands.ClustersOfPeople;
 
 public class DeleteClusterCommandHandler : IRequestHandler<DeleteClusterCommand, Unit>
 {
     private readonly IClusterRepository _clusterRepository;
-    private readonly IUserRepository _userRepository;
 
-    public DeleteClusterCommandHandler(IClusterRepository clusterRepository, IUserRepository userRepository)
+    public DeleteClusterCommandHandler(IClusterRepository clusterRepository)
     {
         _clusterRepository = clusterRepository;
-        _userRepository = userRepository;
     }
 
     public async Task<Unit> Handle(DeleteClusterCommand request, CancellationToken cancellationToken)

@@ -2,20 +2,16 @@ using MediatR;
 using Shared.Domain.Exceptions;
 using SocialNode.Contracts.Commands.Person;
 using SocialNode.Contracts.Repositories;
-using SocialNode.Domain.Entities;
-using User.Contracts.Repositories;
 
 namespace SocialNode.Application.Features.Commands.Persons;
 
 public class DeletePersonCommandHandler : IRequestHandler<DeletePersonCommand, Unit>
 {
-    private readonly IUserRepository _userRepository;
     private readonly IPersonRepository _personRepository;
 
-    public DeletePersonCommandHandler(IPersonRepository personRepository, IUserRepository userRepository)
+    public DeletePersonCommandHandler(IPersonRepository personRepository)
     {
         _personRepository = personRepository;
-        _userRepository = userRepository;
     }
 
     public async Task<Unit> Handle(DeletePersonCommand request, CancellationToken cancellationToken)

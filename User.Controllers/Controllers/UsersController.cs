@@ -24,7 +24,7 @@ public class UsersController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetUsers([FromQuery] string? searchTerm = null)
     {
-        return Ok(await _mediator.Send(new GetUsersQuery(User.GetUserId()!.Value, searchTerm)));
+        return Ok(await _mediator.Send(new GetUsersQuery(User.GetUserId(), searchTerm)));
     }
 
     [HttpGet]
@@ -46,6 +46,6 @@ public class UsersController : ControllerBase
     [Route("profile")]
     public async Task<IActionResult> GetProfile()
     {
-        return Ok(await _mediator.Send(new GetUserQuery(User.GetUserId()!.Value)));
+        return Ok(await _mediator.Send(new GetUserQuery(User.GetUserId())));
     }
 }

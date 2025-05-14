@@ -1,9 +1,8 @@
 using System.ComponentModel.DataAnnotations;
-using Shared.Domain;
 
-namespace Event.Domain.Entities;
+namespace Event.Contracts.Dtos.Requests;
 
-public class EventEntity : BaseEntity
+public abstract record CreateEventDto
 {
     [Required] public string Title { get; set; }
 
@@ -13,13 +12,9 @@ public class EventEntity : BaseEntity
 
     public Guid? EventTypeId { get; set; }
 
-    public EventTypeEntity? EventType { get; set; }
-
     [Required] public DateTime Date { get; set; }
 
-    [Required] public  List<Guid> SocialNodeId { get; set; } = [];
+    [Required] public List<Guid> SocialNodeId { get; set; }
 
     [Required] public Guid WorkspaceId { get; set; }
-
-    [Required] public Guid CreatorId { get; set; }
 }

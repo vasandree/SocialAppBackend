@@ -1,25 +1,21 @@
 using MediatR;
-using Shared.Domain.Exceptions;
 using SocialNode.Contracts.Commands.Place;
 using SocialNode.Contracts.Repositories;
 using SocialNode.Contracts.Services;
 using SocialNode.Domain.Entities;
-using User.Contracts.Repositories;
 
 namespace SocialNode.Application.Features.Commands.Places;
 
 public class CreatePlaceCommandHandler : IRequestHandler<CreatePlaceCommand, Unit>
 {
     private readonly IPlaceRepository _placeRepository;
-    private readonly IUserRepository _userRepository;
     private readonly ICloudStorageService _cloudStorageService;
 
     public CreatePlaceCommandHandler(IPlaceRepository placeRepository,
-        ICloudStorageService cloudStorageService, IUserRepository userRepository)
+        ICloudStorageService cloudStorageService)
     {
         _placeRepository = placeRepository;
         _cloudStorageService = cloudStorageService;
-        _userRepository = userRepository;
     }
 
     public async Task<Unit> Handle(CreatePlaceCommand request, CancellationToken cancellationToken)

@@ -1,10 +1,12 @@
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Event.Controllers.Controllers;
 
 [ApiController]
 [Route("events")]
+[Authorize(Policy = "UserExists")]
 public class EventsController : ControllerBase
 {
     private readonly ISender _sender;

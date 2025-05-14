@@ -35,11 +35,11 @@ public class UsersSocialNetworkAccountsController : ControllerBase
     {
         var userId = User.GetUserId();
 
-        if (userId != null && userId.Value != id)
+        if (userId != id)
             throw new Forbidden("This is not the same user id.");
 
         return Ok(await _mediator.Send(
-            new AddSocialNetworkAccountCommand(User.GetUserId()!.Value, addSocialNetworkAccountDto)));
+            new AddSocialNetworkAccountCommand(User.GetUserId(), addSocialNetworkAccountDto)));
     }
 
     [HttpPut]
@@ -48,13 +48,13 @@ public class UsersSocialNetworkAccountsController : ControllerBase
         [FromBody] EditSocialNetworkAccountDto editSocialNetworkAccountDto)
     {
         return Ok(await _mediator.Send(
-            new EditSocialNetworkAccountCommand(User.GetUserId()!.Value, id, editSocialNetworkAccountDto)));
+            new EditSocialNetworkAccountCommand(User.GetUserId(), id, editSocialNetworkAccountDto)));
     }
 
     [HttpDelete]
     [Route("social_networks/{id:guid}")]
     public async Task<IActionResult> DeleteSocialNetworkAccount(Guid id)
     {
-        return Ok(await _mediator.Send(new DeleteSocialNetworkAccountCommand(User.GetUserId()!.Value, id)));
+        return Ok(await _mediator.Send(new DeleteSocialNetworkAccountCommand(User.GetUserId(), id)));
     }
 }

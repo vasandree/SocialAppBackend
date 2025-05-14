@@ -16,6 +16,8 @@ public class CreateTaskCommandHandler : IRequestHandler<CreateTaskCommand, Unit>
 
     public async Task<Unit> Handle(CreateTaskCommand request, CancellationToken cancellationToken)
     {
+        //todo: check workspace 
+        
         await _repository.AddAsync(new TaskEntity
         {
             Name = request.CreateTaskDto.Name,

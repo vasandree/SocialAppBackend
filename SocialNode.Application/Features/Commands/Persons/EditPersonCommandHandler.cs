@@ -5,22 +5,19 @@ using SocialNode.Contracts.Dtos.Requests;
 using SocialNode.Contracts.Repositories;
 using SocialNode.Contracts.Services;
 using SocialNode.Domain.Entities;
-using User.Contracts.Repositories;
 
 namespace SocialNode.Application.Features.Commands.Persons;
 
 public class EditPersonCommandHandler : IRequestHandler<EditPersonCommand, Unit>
 {
-    private readonly IUserRepository _userRepository;
     private readonly IPersonRepository _personRepository;
     private readonly ICloudStorageService _cloudStorageService;
 
     public EditPersonCommandHandler(IPersonRepository personRepository,
-        ICloudStorageService cloudStorageService, IUserRepository userRepository)
+        ICloudStorageService cloudStorageService)
     {
         _personRepository = personRepository;
         _cloudStorageService = cloudStorageService;
-        _userRepository = userRepository;
     }
 
     public async Task<Unit> Handle(EditPersonCommand request, CancellationToken cancellationToken)

@@ -23,33 +23,33 @@ public class ClusterController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetClusters([FromQuery] string? searchTerm = null, [FromQuery] int page = 1)
     {
-        return Ok(await _mediator.Send(new GetClustersQuery(User.GetUserId()!.Value, page, searchTerm)));
+        return Ok(await _mediator.Send(new GetClustersQuery(User.GetUserId(), page, searchTerm)));
     }
 
     [HttpGet]
     [Route("{clusterId:guid}")]
     public async Task<IActionResult> GetCluster(Guid clusterId)
     {
-        return Ok(await _mediator.Send(new GetClusterQuery(clusterId, User.GetUserId()!.Value)));
+        return Ok(await _mediator.Send(new GetClusterQuery(clusterId, User.GetUserId())));
     }
 
     [HttpPost]
     public async Task<IActionResult> CreateCluster([FromBody] ClusterRequestDto clusterDto)
     {
-        return Ok(await _mediator.Send(new CreateClusterCommand(User.GetUserId()!.Value, clusterDto)));
+        return Ok(await _mediator.Send(new CreateClusterCommand(User.GetUserId(), clusterDto)));
     }
 
     [HttpPut]
     [Route("{clusterId:guid}")]
     public async Task<IActionResult> UpdateCluster(Guid clusterId, [FromBody] ClusterRequestDto clusterDto)
     {
-        return Ok(await _mediator.Send(new EditClusterCommand(User.GetUserId()!.Value, clusterId, clusterDto)));
+        return Ok(await _mediator.Send(new EditClusterCommand(User.GetUserId(), clusterId, clusterDto)));
     }
 
     [HttpDelete]
     [Route("{clusterId:guid}")]
     public async Task<IActionResult> DeleteCluster(Guid clusterId)
     {
-        return Ok(await _mediator.Send(new DeleteClusterCommand(User.GetUserId()!.Value, clusterId)));
+        return Ok(await _mediator.Send(new DeleteClusterCommand(User.GetUserId(), clusterId)));
     }
 }

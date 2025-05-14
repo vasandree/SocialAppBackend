@@ -24,7 +24,7 @@ public class PersonsSocialNetworkAccountsController : ControllerBase
     [Route("{id:guid}/social_networks")]
     public async Task<IActionResult> GetPersonsSocialNetworkAccounts(Guid id)
     {
-        return Ok(await _mediator.Send(new GetPersonsSocialNetworkAccountsQuery(User.GetUserId()!.Value, id)));
+        return Ok(await _mediator.Send(new GetPersonsSocialNetworkAccountsQuery(User.GetUserId(), id)));
     }
 
     [HttpPost]
@@ -33,7 +33,7 @@ public class PersonsSocialNetworkAccountsController : ControllerBase
         [FromBody] AddSocialNetworkAccountDto addSocialNetworkAccountDto)
     {
         return Ok(await _mediator.Send(
-            new AddSocialNetworkAccountCommand(User.GetUserId()!.Value, id, addSocialNetworkAccountDto)));
+            new AddSocialNetworkAccountCommand(User.GetUserId(), id, addSocialNetworkAccountDto)));
     }
 
     [HttpPut]
@@ -42,13 +42,13 @@ public class PersonsSocialNetworkAccountsController : ControllerBase
         [FromBody] EditSocialNetworkAccountDto editSocialNetworkAccountDto)
     {
         return Ok(await _mediator.Send(
-            new EditSocialNetworkAccountCommand(User.GetUserId()!.Value, id, editSocialNetworkAccountDto)));
+            new EditSocialNetworkAccountCommand(User.GetUserId()!, id, editSocialNetworkAccountDto)));
     }
 
     [HttpDelete]
     [Route("{id:guid}/social_networks")]
     public async Task<IActionResult> DeleteSocialNetworkAccount(Guid id)
     {
-        return Ok(await _mediator.Send(new DeleteSocialNetworkAccountCommand(User.GetUserId()!.Value, id)));
+        return Ok(await _mediator.Send(new DeleteSocialNetworkAccountCommand(User.GetUserId(), id)));
     }
 }

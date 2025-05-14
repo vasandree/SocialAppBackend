@@ -18,5 +18,7 @@ public class TaskEntity : BaseEntity
 
     [Required] public required Guid SocialNodeId { get; set; }
 
-    [Required] public required Guid CreatorId { get; set; }
+    [Required] public required Guid CreatorId { get; init; }
+
+    [Required] public Guid WorkspaceId { get; set; }
 }
