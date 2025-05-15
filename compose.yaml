@@ -9,6 +9,7 @@
       - CloudStorageConfig__ApiKey=${CLOUDINARY_API_KEY}
       - CloudStorageConfig__ApiSecret=${CLOUDINARY_API_SECRET}
       - CloudStorageConfig__CloudName=${CLOUDINARY_CLOUD_NAME}
+      - ASPNETCORE_ENVIRONMENT=Production
     ports:
       - "8081:8080"
     networks:
