@@ -6,6 +6,8 @@ using SocialApp.Api.Extensions.Swagger;
 
 var builder = WebApplication.CreateSlimBuilder(args);
 
+builder.Configuration.AddEnvironmentVariables();
+
 builder.Services.AddOpenApi();
 
 builder.Services.AddConfigurations(builder.Configuration);
@@ -37,10 +39,11 @@ var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
     app.UseCors("AllowAll");
 }
+
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseMiddleware();
 
