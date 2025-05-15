@@ -27,7 +27,7 @@ jobs:
         docker system prune -af
 
     - name: Build and Start Containers
-      run: docker-compose up -d --build
+      run: docker-compose up -d 
 
     - name: Wait for DB to be ready
       run: |
