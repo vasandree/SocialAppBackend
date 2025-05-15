@@ -23,4 +23,4 @@ jobs:
           POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
           POSTGRES_EMAIL: ${{ secrets.POSTGRES_EMAIL }}
           TELEGRAM_BOT_API_KEY: ${{ secrets.TELEGRAM_BOT_API_KEY }}
-          
+          DOCKER_BUILDKIT: 1
