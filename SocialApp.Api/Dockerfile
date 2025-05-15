@@ -10,17 +10,16 @@ ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 
 # Copy solution and project files
-COPY *.sln .
+COPY *.sln ./
 COPY */*.csproj ./
 
 # Restore dependencies
-RUN for file in *.csproj; do mkdir -p ${file%/*} && mv "$file" "${file%/*}/"; done && \
-    dotnet restore
+RUN dotnet restore
 
 # Copy everything else
 COPY . .
 
-# Build the project
+# Build
 WORKDIR /src/SocialApp.Api
 RUN dotnet build -c $BUILD_CONFIGURATION -o /app/build
 
@@ -29,8 +28,6 @@ ARG BUILD_CONFIGURATION=Release
 RUN dotnet publish -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
-# Set user only if created at runtime (avoid build-time issues)
-# USER $APP_UID
 WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "SocialApp.Api.dll"]
