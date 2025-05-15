@@ -4,7 +4,11 @@
       context: .
       dockerfile: SocialApp.Api/Dockerfile
     environment:
-      DATABASE_CONNECTION_STRING: Server=db;Port=5432;Database=${POSTGRES_DB};Username=${POSTGRES_USER};Password=${POSTGRES_PASSWORD}
+      - ConnectionStrings__SocialAppDb=Server=db;Port=5432;Database=${POSTGRES_DB};Username=${POSTGRES_USER};Password=${POSTGRES_PASSWORD}
+      - TelegramBotApiKey=${TELEGRAM_BOT_API_KEY}
+      - CloudStorageConfig__ApiKey=y${CLOUDINARY_API_KEY}
+      - CloudStorageConfig__ApiSecret=${CLOUDINARY_API_SECRET}
+      - CloudStorageConfig__CloudName=${CLOUDINARY_CLOUD_NAME}
     ports:
       - "8081:8080"
     networks:

@@ -37,10 +37,7 @@ builder.Services.AddControllers(options =>
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseCors("AllowAll");
-}
+app.UseCors("AllowAll");
 
 app.UseSwagger();
 app.UseSwaggerUI();
