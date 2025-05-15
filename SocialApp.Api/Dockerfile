@@ -14,7 +14,7 @@ COPY *.sln ./
 COPY */*.csproj ./
 
 # Restore dependencies
-RUN dotnet restore
+RUN dotnet restore SocialApp.sln
 
 # Copy everything else
 COPY . .
