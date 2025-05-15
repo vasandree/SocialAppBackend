@@ -6,7 +6,7 @@
     environment:
       - ConnectionStrings__SocialAppDb=Server=db;Port=5432;Database=${POSTGRES_DB};Username=${POSTGRES_USER};Password=${POSTGRES_PASSWORD}
       - TelegramBotApiKey=${TELEGRAM_BOT_API_KEY}
-      - CloudStorageConfig__ApiKey=y${CLOUDINARY_API_KEY}
+      - CloudStorageConfig__ApiKey=${CLOUDINARY_API_KEY}
       - CloudStorageConfig__ApiSecret=${CLOUDINARY_API_SECRET}
       - CloudStorageConfig__CloudName=${CLOUDINARY_CLOUD_NAME}
     ports:
