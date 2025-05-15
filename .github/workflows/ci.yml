@@ -17,3 +17,10 @@ jobs:
           docker-compose down
           docker system prune -af
           docker-compose up -d --build
+        env:
+          POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
+          POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+          POSTGRES_EMAIL: ${{ secrets.POSTGRES_EMAIL }}
+          TELEGRAM_BOT_API_KEY: ${{ TELEGRAM_BOT_API_KEY }}
+          
