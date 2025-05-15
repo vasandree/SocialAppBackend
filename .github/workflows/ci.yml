@@ -5,33 +5,18 @@ on:
     branches:  
       - main 
       
-jobs:
-  build:
-    runs-on: self-hosted
+jobs:  
+  build:  
+    runs-on: self-hosted 
+    steps:  
+      - name: Checkout code  
+        uses: actions/checkout@v2  
 
-    steps:
-    - name: Checkout source
-      uses: actions/checkout@v3
-
-
-    - name: Docker Compose Down (clean state)
-      run: |
-        docker-compose down || true
-        docker system prune -af
-
-    - name: Build and Start Containers
-      run: docker-compose up -d 
-
-    - name: Wait for DB to be ready
-      run: |
-        echo "Waiting for PostgreSQL to be ready..."
-        sleep 15
-
-    - name: Run .NET Tests (if any)
-      run: dotnet test
-
-    - name: Stop and Clean Up
-      run: docker-compose down
+      - name: Build and Start Services  
+        run: |
+          docker-compose down
+          docker system prune -af
+          docker-compose up -d --build
       
     env:
           POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
