@@ -6,11 +6,11 @@ using SocialNode.Contracts.Services;
 
 namespace SocialNode.Infrastructure.CloudStorage;
 
-public class CloudStorageServiceService : ICloudStorageService
+public class CloudStorageService : ICloudStorageService
 {
     private readonly Cloudinary _cloudinary;
 
-    public CloudStorageServiceService(Cloudinary cloudinary)
+    public CloudStorageService(Cloudinary cloudinary)
     {
         _cloudinary = cloudinary ??
                       throw new ArgumentNullException(nameof(cloudinary), "Cloudinary instance cannot be null.");
