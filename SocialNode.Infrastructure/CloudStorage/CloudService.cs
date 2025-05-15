@@ -21,18 +21,20 @@ public class CloudService
             var config = GetConfig();
 
 
-            if (config != null)
-            {
-                Account account = new Account(
-                    config.CloudName,
-                    config.ApiKey,
-                    config.ApiSecret
-                );
+            if (config == null) return;
+            var account = new Account(
+                config.CloudName,
+                config.ApiKey,
+                config.ApiSecret
+            );
 
-                _cloudinary = new Cloudinary(account);
-                _cloudinary.Api.Secure = true;
-            }
-           
+            _cloudinary = new Cloudinary(account)
+            {
+                Api =
+                {
+                    Secure = true
+                }
+            };
         }
         catch (Exception ex)
         {
@@ -41,7 +43,7 @@ public class CloudService
         }
     }
 
-    public static Cloudinary? GetCloudinaryInstance()
+    public static Cloudinary GetCloudinaryInstance()
     {
         if (_cloudinary == null)
         {
