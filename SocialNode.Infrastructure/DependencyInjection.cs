@@ -1,4 +1,3 @@
-using CloudinaryDotNet;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -11,9 +10,7 @@ public static class DependencyInjection
 {
     public static void AddSocialNodeInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
-        services.Configure<CloudStorageConfig>(configuration.GetSection("CloudStorageConfig"));
-
-        CloudService.Initialize();
+        CloudService.Initialize(configuration);
         var cloudinary = CloudService.GetCloudinaryInstance();
         services.AddSingleton(cloudinary);
 

@@ -1,27 +1,24 @@
 using CloudinaryDotNet;
 using dotenv.net;
-using Microsoft.Extensions.Options;
+using Microsoft.Extensions.Configuration;
 
 namespace SocialNode.Infrastructure.CloudStorage;
 
-public class CloudService
+public static class CloudService
 {
     private static Cloudinary? _cloudinary;
-    private static IOptions<CloudStorageConfig>? _cloudStorageConfig;
 
-    public CloudService(IOptions<CloudStorageConfig>? cloudStorageConfig)
-    {
-        _cloudStorageConfig = cloudStorageConfig;
-    }
-
-    public static void Initialize()
+    public static void Initialize(IConfiguration configuration)
     {
         try
         {
-            var config = GetConfig();
+            var config = GetConfig(configuration);
 
+            if (config == null)
+            {
+                throw new Exception("Cloudinary configuration not found.");
+            }
 
-            if (config == null) return;
             var account = new Account(
                 config.CloudName,
                 config.ApiKey,
@@ -30,15 +27,12 @@ public class CloudService
 
             _cloudinary = new Cloudinary(account)
             {
-                Api =
-                {
-                    Secure = true
-                }
+                Api = { Secure = true }
             };
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Error during initialization: {ex.Message}");
+            Console.WriteLine($"Error during Cloudinary initialization: {ex.Message}");
             throw;
         }
     }
@@ -47,13 +41,14 @@ public class CloudService
     {
         if (_cloudinary == null)
         {
-            throw new InvalidOperationException("Cloudinary has not been initialized. Call Initialize() first.");
+            throw new InvalidOperationException(
+                "Cloudinary has not been initialized. Call Initialize(configuration) first.");
         }
 
         return _cloudinary;
     }
 
-    private static CloudStorageConfig? GetConfig()
+    private static CloudStorageConfig? GetConfig(IConfiguration configuration)
     {
         var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
 
@@ -68,21 +63,17 @@ public class CloudService
             if (string.IsNullOrEmpty(apiKey) || string.IsNullOrEmpty(apiSecret) ||
                 string.IsNullOrEmpty(cloudName))
             {
-                throw new Exception("API Key or API Secret or Cloud name is not set.");
+                throw new Exception("API Key, Secret or Cloud name is missing in Development.");
             }
 
             return new CloudStorageConfig()
             {
                 ApiKey = apiKey,
                 ApiSecret = apiSecret,
-                CloudName = cloudName,
+                CloudName = cloudName
             };
         }
-        else
-        {
-            if (_cloudStorageConfig != null) return _cloudStorageConfig.Value;
-        }
 
-        return null;
+        return configuration.GetSection("CloudStorageConfig").Get<CloudStorageConfig>();
     }
 }
