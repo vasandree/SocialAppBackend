@@ -1,8 +1,9 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Workspace.Domain.Entities;
 
-public abstract class WorkspaceUnit
+public class WorkspaceUnit
 {
     [Key] 
     public Guid Id { get; init; } = Guid.NewGuid();
@@ -11,4 +12,10 @@ public abstract class WorkspaceUnit
     
     [Required]
     public string Name { get; set; }
+    
+    [Required]
+    public Guid WorkspaceEntityId { get; set; }
+    
+    [ForeignKey("WorkspaceEntityId")]
+    public WorkspaceEntity WorkspaceEntity { get; set; } 
 }

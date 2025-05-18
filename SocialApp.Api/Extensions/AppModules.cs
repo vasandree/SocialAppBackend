@@ -4,6 +4,7 @@ using SocialNetworkAccounts.Controllers;
 using SocialNode.Controllers;
 using TaskModule.Controllers;
 using User.Controllers;
+using Workspace.Controllers;
 
 namespace SocialApp.Api.Extensions;
 
@@ -17,6 +18,7 @@ public static class AppModules
         services.AddSocialNodeModule(configuration);
         services.AddTaskModule(configuration);
         services.AddEventModule(configuration);
+        services.AddWorkspaceModule(configuration);
     }
 
     public static async Task UseAppModules(this IServiceProvider services)
@@ -27,5 +29,6 @@ public static class AppModules
         services.UseSocialNodeModule();
         services.UseTaskModule();
         services.UseEventModule();
+        services.UseWorkspaceModule();
     }
 }

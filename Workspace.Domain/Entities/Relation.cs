@@ -26,5 +26,5 @@ public class Relation
     public Guid WorkspaceId { get; set; }
     
     [Required]
-    public Workspace Workspace { get; set; }
+    public WorkspaceEntity WorkspaceEntity { get; set; }
 }
