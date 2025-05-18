@@ -1,9 +1,10 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Shared.Domain;
 
 namespace Workspace.Domain.Entities;
 
-public class WorkspacePerson
+public class WorkspacePerson : BaseEntity
 {
     private WorkspacePerson() { }
     public WorkspacePerson(WorkspaceEntity workspaceEntity, Guid personId)

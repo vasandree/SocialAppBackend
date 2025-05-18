@@ -13,6 +13,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Workspace.Infrastructure\Workspace.Infrastructure.csproj" />
+      <ProjectReference Include="..\Workspace.Persistence\Workspace.Persistence.csproj" />
     </ItemGroup>
 
 </Project>

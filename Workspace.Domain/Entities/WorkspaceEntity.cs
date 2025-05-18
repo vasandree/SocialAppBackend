@@ -2,14 +2,12 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json;
 using System.Text.Json.Nodes;
+using Shared.Domain;
 
 namespace Workspace.Domain.Entities;
 
-public class WorkspaceEntity
+public class WorkspaceEntity : BaseEntity
 {
-    [Key]
-    public Guid Id { get; init; } = Guid.NewGuid();
-    
     [Required]
     public string Name { get; set; }
     

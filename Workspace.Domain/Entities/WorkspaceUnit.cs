@@ -1,13 +1,11 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Shared.Domain;
 
 namespace Workspace.Domain.Entities;
 
-public class WorkspaceUnit
+public class WorkspaceUnit : BaseEntity
 {
-    [Key] 
-    public Guid Id { get; init; } = Guid.NewGuid();
-    
     public string? Description { get; set; }
     
     [Required]

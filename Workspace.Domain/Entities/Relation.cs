@@ -1,13 +1,11 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Shared.Domain;
 
 namespace Workspace.Domain.Entities;
 
-public class Relation
+public class Relation : BaseEntity
 {
-    [Key] 
-    public Guid Id { get; init; } = Guid.NewGuid();
-    
     [Required]
     public string Name { get; set; }
     
