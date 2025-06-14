@@ -10,7 +10,8 @@ namespace Event.Controllers.Controllers;
 
 [ApiController]
 [Route("events")]
-[Authorize(Policy = "UserExists")]
+[Authorize]
+[UserExists]
 public class EventsController : ControllerBase
 {
     private readonly ISender _sender;

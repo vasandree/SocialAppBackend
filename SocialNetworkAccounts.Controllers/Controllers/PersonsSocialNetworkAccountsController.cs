@@ -8,7 +8,8 @@ using SocialNetworkAccounts.Contracts.Queries;
 
 namespace SocialNetworkAccounts.Controllers.Controllers;
 
-[Authorize(Policy = "UserExists")]
+[Authorize]
+[UserExists]
 [ApiController]
 [Route("persons")]
 public class PersonsSocialNetworkAccountsController : ControllerBase

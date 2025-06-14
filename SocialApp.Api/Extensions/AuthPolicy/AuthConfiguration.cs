@@ -32,8 +32,6 @@ public static class AuthConfiguration
         services.AddAuthorizationBuilder()
             .SetDefaultPolicy(new AuthorizationPolicyBuilder(JwtBearerDefaults.AuthenticationScheme)
                 .RequireAuthenticatedUser()
-                .Build())
-            .AddPolicy("UserExists", policy =>
-                policy.Requirements.Add(new UserExistsRequirement()));
+                .Build());
     }
 }

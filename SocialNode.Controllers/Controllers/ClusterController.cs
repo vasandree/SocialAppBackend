@@ -8,7 +8,8 @@ using SocialNode.Contracts.Queries;
 
 namespace SocialNode.Controllers.Controllers;
 
-[Authorize(Policy = "UserExists")]
+[Authorize]
+[UserExists]
 [ApiController]
 [Route("clusters")]
 public class ClusterController : ControllerBase

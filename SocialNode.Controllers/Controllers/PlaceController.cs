@@ -8,7 +8,8 @@ using SocialNode.Contracts.Queries;
 
 namespace SocialNode.Controllers.Controllers;
 
-[Authorize(Policy = "UserExists")]
+[Authorize]
+[UserExists]
 [ApiController]
 [Route("places")]
 public class PlaceController : ControllerBase

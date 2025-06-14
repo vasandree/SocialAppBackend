@@ -6,7 +6,7 @@ namespace Event.Application;
 
 public class MappingProfile : Profile
 {
-    MappingProfile()
+    public MappingProfile()
     {
         CreateMap<EventTypeEntity, EventTypeResponseDto>();
     }

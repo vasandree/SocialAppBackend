@@ -48,6 +48,11 @@ COPY ["Event.Persistence/Event.Persistence.csproj", "Event.Persistence/"]
 COPY ["Event.Contracts/Event.Contracts.csproj", "Event.Contracts/"]
 COPY ["Event.Application/Event.Application.csproj", "Event.Application/"]
 COPY ["Event.Controllers/Event.Controllers.csproj", "Event.Controllers/"]
+COPY ["Workspace.Persistence/Workspace.Persistence.csproj", "Workspace.Persistence/"]
+COPY ["Workspace.Contracts/Workspace.Contracts.csproj", "Workspace.Contracts/"]
+COPY ["Workspace.Domain/Workspace.Domain.csproj", "Workspace.Domain/"]
+COPY ["Workspace.Infrastructure/Workspace.Infrastructure.csproj", "Workspace.Infrastructure/"]
+COPY ["Workspace.Controllers/Workspace.Controllers.csproj", "Workspace.Controllers/"]
 RUN dotnet restore "SocialApp.Api/SocialApp.Api.csproj"
 COPY . .
 WORKDIR "/src/SocialApp.Api"

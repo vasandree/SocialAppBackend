@@ -9,7 +9,8 @@ using TaskModule.Domain.Enums;
 
 namespace TaskModule.Controllers.Controllers;
 
-[Authorize(Policy = "UserExists")]
+[Authorize]
+[UserExists]
 [ApiController]
 [Route("tasks")]
 public class TasksController : ControllerBase

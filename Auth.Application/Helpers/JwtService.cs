@@ -22,7 +22,8 @@ public class JwtService : IJwtService
         var claims = new List<Claim>
         {
             new Claim("UserId", id.ToString()),
-            new Claim("Username", username)
+            new Claim("Username", username),
+            new Claim(ClaimTypes.NameIdentifier, id.ToString()),
         };
 
         var staticKey = _config.GetSection("Jwt:Key").Value;

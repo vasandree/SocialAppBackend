@@ -9,7 +9,8 @@ using User.Contracts.Queries;
 
 namespace User.Controllers.Controllers;
 
-[Authorize(Policy = "UserExists")]
+[Authorize]
+[UserExists]
 [ApiController]
 [Route("users")]
 public class UsersController : ControllerBase
