@@ -3,4 +3,4 @@ using Workspace.Contracts.Dtos.Requests;
 
 namespace Workspace.Contracts.Commands;
 
-public record CreateWorkspaceCommand(Guid UserId, WorkspaceRequestDto WorkspaceRequestDto) : IRequest<Unit>;
+public record CreateWorkspaceCommand(Guid UserId, ShortenWorkspaceDto WorkspaceRequestDto) : IRequest<Guid>;

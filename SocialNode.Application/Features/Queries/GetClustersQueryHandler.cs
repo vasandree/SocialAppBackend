@@ -3,6 +3,7 @@ using MediatR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using Shared.Contracts.Dtos;
+using Shared.Domain.Exceptions;
 using Shared.Extensions.Configs;
 using SocialNode.Contracts.Dtos.Responses;
 using SocialNode.Contracts.Dtos.Responses.ClusterOfPeople;
@@ -35,7 +36,9 @@ public class GetClustersQueryHandler : IRequestHandler<GetClustersQuery, Paginat
                 cluster => cluster.Name.Contains(request.Name, StringComparison.OrdinalIgnoreCase));
         }
 
-        var totalPages = (int)Math.Ceiling((double)clusters.Count() / _pageSize);
+        if (request.Page <= 0) throw new BadRequest("Page must be greater than 0");
+        
+        var totalPages = Math.Max(1, (int)Math.Ceiling((double)clusters.Count() / _pageSize));
 
         clusters = clusters
             .Skip((request.Page - 1) * _pageSize)

@@ -1,5 +1,6 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Workspace.Application;
 using Workspace.Infrastructure;
 using Workspace.Persistence;
 
@@ -11,7 +12,7 @@ public static class DependencyInjection
     {
         services.AddInfrastructure(configuration); 
         services.AddPersistence();
-        //services.AddApplication();
+        services.AddApplication();
     }
 
     public static void UseWorkspaceModule(this IServiceProvider services)

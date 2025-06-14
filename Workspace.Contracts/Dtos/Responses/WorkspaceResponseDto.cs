@@ -1,11 +1,11 @@
-using System.Net.Http.Json;
+using Event.Contracts.Dtos.Responses;
+using TaskModule.Contracts.Dtos.Responses;
 
 namespace Workspace.Contracts.Dtos.Responses;
 
 public record WorkspaceResponseDto
 {
-    public Guid WorkspaceId { get; set; }
-    public string Name { get; set; }
-    public string? Description { get; set; }
-    public JsonContent Content { get; set; }
+    public WorkspaceInfoDto Info { get; set; }
+    public TasksDto Tasks { get; set; }
+    public IReadOnlyList<ListedEventDto> Events { get; set; }
 }

@@ -7,7 +7,9 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Event.Contracts\Event.Contracts.csproj" />
       <ProjectReference Include="..\Shared.Contracts\Shared.Contracts.csproj" />
+      <ProjectReference Include="..\TaskModule.Contracts\TaskModule.Contracts.csproj" />
       <ProjectReference Include="..\Workspace.Domain\Workspace.Domain.csproj" />
     </ItemGroup>
 

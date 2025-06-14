@@ -42,4 +42,15 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
         return await DbSet.AsNoTracking().Where(predicate).ToListAsync();
     }
+
+    public Task RemoveRangeAsync(IEnumerable<T> entities)
+    {
+        DbSet.RemoveRange(entities);
+        return Context.SaveChangesAsync();
+    }
+
+    public Task<IQueryable<T>> GetQueryableAsync()
+    {
+        return Task.FromResult(DbSet.AsNoTracking().AsQueryable());
+    }
 }
