@@ -1,5 +1,6 @@
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Shared.Extensions.Extensions;
 using User.Contracts.Commands;
@@ -22,6 +23,7 @@ public class UserSettingsController : ControllerBase
     }
 
     [HttpGet]
+    [ProducesResponseType(typeof(UserSettingsDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> Get()
     {
         return Ok(await _mediator.Send(new GetUserSettingsQuery(User.GetUserId())));

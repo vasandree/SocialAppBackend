@@ -1,9 +1,11 @@
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Shared.Extensions.Extensions;
 using SocialNode.Contracts.Commands.ClusterOfPeople;
 using SocialNode.Contracts.Dtos.Requests;
+using SocialNode.Contracts.Dtos.Responses.ClusterOfPeople;
 using SocialNode.Contracts.Queries;
 
 namespace SocialNode.Controllers.Controllers;
@@ -22,6 +24,7 @@ public class ClusterController : ControllerBase
     }
 
     [HttpGet]
+    [ProducesResponseType(typeof(PaginatedClusterDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetClusters([FromQuery] string? searchTerm = null, [FromQuery] int page = 1)
     {
         return Ok(await _mediator.Send(new GetClustersQuery(User.GetUserId(), page, searchTerm)));
@@ -29,6 +32,7 @@ public class ClusterController : ControllerBase
 
     [HttpGet]
     [Route("{clusterId:guid}")]
+    [ProducesResponseType(typeof(ClusterOfPeopleDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetCluster(Guid clusterId)
     {
         return Ok(await _mediator.Send(new GetClusterQuery(clusterId, User.GetUserId())));

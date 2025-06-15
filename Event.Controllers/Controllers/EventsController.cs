@@ -1,8 +1,10 @@
 using Event.Contracts.Commands.Event;
 using Event.Contracts.Dtos.Requests;
+using Event.Contracts.Dtos.Responses;
 using Event.Contracts.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Shared.Extensions.Extensions;
 
@@ -22,6 +24,7 @@ public class EventsController : ControllerBase
     }
 
     [HttpGet]
+    [ProducesResponseType(typeof(IReadOnlyList<ListedEventDto>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetEvents()
     {
         return Ok(await _sender.Send(new GetEventsQuery(User.GetUserId())));
@@ -29,6 +32,7 @@ public class EventsController : ControllerBase
 
     [HttpGet]
     [Route("{id}")]
+    [ProducesResponseType(typeof(EventDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetEvent(Guid id)
     {
         return Ok(await _sender.Send(new GetEventQuery(User.GetUserId(), id)));

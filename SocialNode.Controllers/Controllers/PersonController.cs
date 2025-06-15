@@ -1,9 +1,11 @@
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Shared.Extensions.Extensions;
 using SocialNode.Contracts.Commands.Person;
 using SocialNode.Contracts.Dtos.Requests;
+using SocialNode.Contracts.Dtos.Responses.Person;
 using SocialNode.Contracts.Queries;
 
 namespace SocialNode.Controllers.Controllers;
@@ -22,12 +24,14 @@ public class PersonController : ControllerBase
     }
 
     [HttpGet]
+    [ProducesResponseType(typeof(PaginatedPersonsDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetPersons([FromQuery] string? searchTerm = null, [FromQuery] int page = 1)
     {
         return Ok(await _mediator.Send(new GetPersonsQuery(User.GetUserId(), page, searchTerm)));
     }
 
     [HttpGet("{personId:guid}")]
+    [ProducesResponseType(typeof(PersonDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetPerson(Guid personId)
     {
         return Ok(await _mediator.Send(new GetPersonQuery(personId, User.GetUserId())));

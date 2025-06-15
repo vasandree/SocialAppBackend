@@ -1,8 +1,10 @@
 using Event.Contracts.Commands.EventType;
 using Event.Contracts.Dtos.Requests;
+using Event.Contracts.Dtos.Responses;
 using Event.Contracts.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Shared.Extensions.Extensions;
 
@@ -22,6 +24,7 @@ public class EventTypesController : ControllerBase
     }
 
     [HttpGet]
+    [ProducesResponseType(typeof(List<EventTypeResponseDto>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetEventTypes([FromQuery] string? name = null)
     {
         return Ok(await _sender.Send(new GetEventTypesQuery(User.GetUserId(), name)));

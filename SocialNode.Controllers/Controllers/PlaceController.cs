@@ -1,9 +1,11 @@
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Shared.Extensions.Extensions;
 using SocialNode.Contracts.Commands.Place;
 using SocialNode.Contracts.Dtos.Requests;
+using SocialNode.Contracts.Dtos.Responses.Place;
 using SocialNode.Contracts.Queries;
 
 namespace SocialNode.Controllers.Controllers;
@@ -22,6 +24,7 @@ public class PlaceController : ControllerBase
     }
 
     [HttpGet]
+    [ProducesResponseType(typeof(PaginatedPlacesDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetPlaces([FromQuery] string? searchTerm = null, [FromQuery] int page = 1)
     {
         return Ok(await _mediator.Send(new GetPlacesQuery(User.GetUserId(), page, searchTerm)));
@@ -29,6 +32,7 @@ public class PlaceController : ControllerBase
 
     [HttpGet]
     [Route("{placeId:guid}")]
+    [ProducesResponseType(typeof(PlaceDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetPlace(Guid placeId)
     {
         return Ok(await _mediator.Send(new GetPlaceQuery(placeId, User.GetUserId())));

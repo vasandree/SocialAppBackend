@@ -1,9 +1,11 @@
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Shared.Extensions.Extensions;
 using Workspace.Contracts.Commands;
 using Workspace.Contracts.Dtos.Requests;
+using Workspace.Contracts.Dtos.Responses;
 using Workspace.Contracts.Queries;
 
 namespace Workspace.Controllers;
@@ -22,12 +24,14 @@ public class WorkspaceController : ControllerBase
     }
 
     [HttpGet]
+    [ProducesResponseType(typeof(WorkspacesDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetWorkspaces([FromQuery] int page = 1)
     {
         return Ok(await _sender.Send(new GetWorkspacesQuery(User.GetUserId(), page)));
     }
 
     [HttpGet("{id}")]
+    [ProducesResponseType(typeof(WorkspaceResponseDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetWorkspace(Guid id)
     {
         return Ok(await _sender.Send(new GetWorkspaceQuery(User.GetUserId(), id)));
@@ -41,6 +45,7 @@ public class WorkspaceController : ControllerBase
     }
 
     [HttpPut("{id}")]
+    [ProducesResponseType(typeof(ListedWorkspaceDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> UpdateWorkspace(Guid id, [FromBody] ShortenWorkspaceDto dto)
     {
         return Ok(await _sender.Send(new EditWorkspaceCommand(User.GetUserId(), id, dto)));
@@ -53,6 +58,7 @@ public class WorkspaceController : ControllerBase
     }
 
     [HttpPatch("{id}")]
+    [ProducesResponseType(typeof(WorkspaceResponseDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> UpdateWorkspace(Guid id, [FromBody] string content)
     {
         return Ok(await _sender.Send(new EditWorkspaceContentCommand(User.GetUserId(), id, content)));

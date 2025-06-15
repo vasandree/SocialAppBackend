@@ -1,6 +1,7 @@
 using Auth.Contracts.Commands;
 using Auth.Contracts.Responses;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Shared.Domain;
 using User.Contracts.Dtos.Requests;
@@ -19,12 +20,14 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost("login")]
+    [ProducesResponseType(typeof(List<TokensDto>), StatusCodes.Status200OK)]
     public async Task<IActionResult> Login([FromBody] InitDataDto initData, [FromQuery] SocialNetwork socialNetwork)
     {
         return Ok(await _mediator.Send(new LoginCommand(socialNetwork, initData)));
     }
 
     [HttpPost("refresh")]
+    [ProducesResponseType(typeof(List<TokensDto>), StatusCodes.Status200OK)]
     public async Task<IActionResult> Refresh([FromBody] TokensDto tokensDto)
     {
         return Ok(await _mediator.Send(new RefreshTokensCommand(tokensDto)));

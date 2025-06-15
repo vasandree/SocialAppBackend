@@ -1,9 +1,11 @@
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Shared.Extensions.Extensions;
 using SocialNetworkAccounts.Contracts.Commands.PersonSocialNetworkAccount;
 using SocialNetworkAccounts.Contracts.Dtos.Requests;
+using SocialNetworkAccounts.Contracts.Dtos.Responses;
 using SocialNetworkAccounts.Contracts.Queries;
 
 namespace SocialNetworkAccounts.Controllers.Controllers;
@@ -23,6 +25,7 @@ public class PersonsSocialNetworkAccountsController : ControllerBase
 
     [HttpGet]
     [Route("{id:guid}/social_networks")]
+    [ProducesResponseType(typeof(List<SocialNetworkAccountDto>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetPersonsSocialNetworkAccounts(Guid id)
     {
         return Ok(await _mediator.Send(new GetPersonsSocialNetworkAccountsQuery(User.GetUserId(), id)));
