@@ -119,6 +119,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4192C247-5D53-4AF0-A3D8-2F2F9CCBAF03}"
 	ProjectSection(SolutionItems) = preProject
 		compose.yaml = compose.yaml
+		docker-compose-dev.yaml = docker-compose-dev.yaml
 	EndProjectSection
 EndProject
 Global

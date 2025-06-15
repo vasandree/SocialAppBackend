@@ -6,9 +6,9 @@
     environment:
       - ConnectionStrings__SocialAppDb=Server=db;Port=5432;Database=${POSTGRES_DB};Username=${POSTGRES_USER};Password=${POSTGRES_PASSWORD}
       - TelegramBotApiKey=${TELEGRAM_BOT_API_KEY}
-      - CloudStorageConfig__ApiKey=${CLOUDINARY_API_KEY}
-      - CloudStorageConfig__ApiSecret=${CLOUDINARY_API_SECRET}
-      - CloudStorageConfig__CloudName=${CLOUDINARY_CLOUD_NAME}
+      - CloudStorageConfig__User=${MINIO_ACCESS_KEY}
+      - CloudStorageConfig__Password=${MINIO_SECRET_KEY}
+      - CloudStorageConfig__Endpoint=${MINIO_ENDPOINT}
       - ASPNETCORE_ENVIRONMENT=Production
     ports:
       - "8081:8080"
@@ -30,7 +30,8 @@
       - pgdata:/var/lib/postgresql/data
     networks:
       - network
-
+    profiles: [ "infra" ]
+  
   pgadmin:
     image: dpage/pgadmin4
     restart: always
@@ -43,6 +44,24 @@
       - network
     depends_on:
       - db
+    profiles: [ "infra" ]
+  
+  minio:
+    image: minio/minio
+    container_name: minio
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - minio_data:/data
+    environment:
+      MINIO_ENDPOINT: ${MINIO_ENDPOINT}
+      MINIO_ROOT_USER: ${MINIO_ACCESS_KEY}
+      MINIO_ROOT_PASSWORD: ${MINIO_SECRET_KEY}
+    command: server /data --console-address ":9001"
+    networks:
+      - network
+    profiles: [ "infra" ]
 
 networks:
   network:
@@ -50,3 +69,4 @@ networks:
 
 volumes:
   pgdata:
+  minio_data:

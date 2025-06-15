@@ -1,7 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using SocialNode.Contracts.Services;
 using SocialNode.Infrastructure.CloudStorage;
 
 namespace SocialNode.Infrastructure;
@@ -10,12 +9,10 @@ public static class DependencyInjection
 {
     public static void AddSocialNodeInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
-        CloudService.Initialize(configuration);
-        var cloudinary = CloudService.GetCloudinaryInstance();
-        services.AddSingleton(cloudinary);
+        services.Configure<CloudStorageSettings>(configuration.GetSection("CloudStorageConfig"));
 
-        services.AddScoped<ICloudStorageService, CloudStorageService>();
-
+        services.AddScoped<CloudStorageContext>();
+        
         services.AddDbContext<SocialNodeDbContext>(options =>
             options.UseNpgsql(configuration.GetConnectionString("SocialAppDb")));
     }
