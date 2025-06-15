@@ -35,14 +35,14 @@ public class ClusterController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> CreateCluster([FromBody] ClusterRequestDto clusterDto)
+    public async Task<IActionResult> CreateCluster([FromForm] ClusterRequestDto clusterDto)
     {
         return Ok(await _mediator.Send(new CreateClusterCommand(User.GetUserId(), clusterDto)));
     }
 
     [HttpPut]
     [Route("{clusterId:guid}")]
-    public async Task<IActionResult> UpdateCluster(Guid clusterId, [FromBody] ClusterRequestDto clusterDto)
+    public async Task<IActionResult> UpdateCluster(Guid clusterId, [FromForm] ClusterRequestDto clusterDto)
     {
         return Ok(await _mediator.Send(new EditClusterCommand(User.GetUserId(), clusterId, clusterDto)));
     }

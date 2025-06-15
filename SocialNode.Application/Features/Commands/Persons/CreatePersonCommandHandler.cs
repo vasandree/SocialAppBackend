@@ -27,7 +27,7 @@ public class CreatePersonCommandHandler : IRequestHandler<CreatePersonCommand, U
         if (request.PersonRequestDto.AvatarUrl != null)
             avatarUrl = request.PersonRequestDto.AvatarUrl;
         else if (request.PersonRequestDto.Avatar != null)
-            await _cloudStorageService.UploadFileAsync(request.PersonRequestDto.Avatar, id);
+            avatarUrl = await _cloudStorageService.UploadFileAsync(request.PersonRequestDto.Avatar, id);
 
         var person = new PersonEntity
         {

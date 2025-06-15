@@ -27,7 +27,7 @@ public class EditPlaceCommandHandler : IRequestHandler<EditPlaceCommand, Unit>
 
         var place = await _placeRepository.GetByIdAsync(request.PlaceId);
 
-        if (place!.CreatorId != request.UserId) throw new Forbidden("You are not allowed to edit");
+        if (place.CreatorId != request.UserId) throw new Forbidden("You are not allowed to edit");
 
         EditPlace(place, request.PlaceRequestDto);
 

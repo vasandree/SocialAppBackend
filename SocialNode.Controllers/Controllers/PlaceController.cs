@@ -36,7 +36,7 @@ public class PlaceController : ControllerBase
 
     [HttpPut]
     [Route("{placeId:guid}")]
-    public async Task<IActionResult> UpdatePlace(Guid placeId, [FromBody] PlaceRequestDto placeDto)
+    public async Task<IActionResult> UpdatePlace(Guid placeId, [FromForm] PlaceRequestDto placeDto)
     {
         return Ok(await _mediator.Send(new EditPlaceCommand(placeId, User.GetUserId(), placeDto)));
     }
@@ -49,7 +49,7 @@ public class PlaceController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> CreatePlace([FromBody] PlaceRequestDto createPlaceDto)
+    public async Task<IActionResult> CreatePlace([FromForm] PlaceRequestDto createPlaceDto)
     {
         return Ok(await _mediator.Send(new CreatePlaceCommand(User.GetUserId(), createPlaceDto)));
     }

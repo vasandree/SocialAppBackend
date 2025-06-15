@@ -35,7 +35,7 @@ public class PersonController : ControllerBase
 
     [HttpPut]
     [Route("{personId:guid}")]
-    public async Task<IActionResult> UpdatePerson(Guid personId, [FromBody] PersonRequestDto personDto)
+    public async Task<IActionResult> UpdatePerson(Guid personId, [FromForm] PersonRequestDto personDto)
     {
         return Ok(await _mediator.Send(new EditPersonCommand(User.GetUserId(), personId, personDto)));
     }
@@ -48,7 +48,7 @@ public class PersonController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> CreatePerson([FromBody] PersonRequestDto createPersonDto)
+    public async Task<IActionResult> CreatePerson([FromForm] PersonRequestDto createPersonDto)
     {
         return Ok(await _mediator.Send(new CreatePersonCommand(User.GetUserId(), createPersonDto)));
     }
