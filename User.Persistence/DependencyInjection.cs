@@ -10,5 +10,6 @@ public static class DependencyInjection
     {
         services.AddTransient<IUserRepository, UserRepository>();
         services.AddTransient<ITelegramAccountRepository, TelegramAccountRepository>();
+        services.AddTransient<IUserSettingsRepository, UserSettingsRepository>();
     }
 }

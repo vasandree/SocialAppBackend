@@ -16,6 +16,5 @@ public class UserDto
     [Required] public required string UserName { get; init; }
 
     public string? PhotoUrl { get; init; }
-
-    [Required] public Language LanguageCode { get; set; }
+    
 }

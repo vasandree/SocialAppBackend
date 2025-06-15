@@ -7,12 +7,8 @@ using User.Infrastructure;
 
 namespace User.Persistence.Repositories;
 
-public class UserRepository : BaseEntityRepository<ApplicationUser>, IUserRepository
+public class UserRepository(UserDbContext context) : BaseEntityRepository<ApplicationUser>(context), IUserRepository
 {
-    public UserRepository(UserDbContext context) : base(context)
-    {
-    }
-
     public async Task<ApplicationUser> GetByUsernameAsync(string username)
     {
         return await DbSet.FirstOrDefaultAsync(x => x.UserName == username) ??
@@ -32,5 +28,13 @@ public class UserRepository : BaseEntityRepository<ApplicationUser>, IUserReposi
     public IQueryable<ApplicationUser> GetAllUsers()
     {
         return DbSet.AsQueryable();
+    }
+
+    public new async Task<ApplicationUser> GetByIdAsync(Guid id)
+    {
+        return await DbSet
+            .Include(x => x.UserSettings)
+            .Include(x => x.TelegramAccount)
+            .FirstOrDefaultAsync(x => x.Id == id) ?? throw new InvalidOperationException();
     }
 }

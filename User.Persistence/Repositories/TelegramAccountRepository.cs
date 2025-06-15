@@ -7,12 +7,9 @@ using NotFound = Shared.Domain.Exceptions.NotFound;
 
 namespace User.Persistence.Repositories;
 
-public class TelegramAccountRepository : GenericRepository<TelegramAccount>, ITelegramAccountRepository
+public class TelegramAccountRepository(UserDbContext context)
+    : GenericRepository<TelegramAccount>(context), ITelegramAccountRepository
 {
-    public TelegramAccountRepository(UserDbContext context) : base(context)
-    {
-    }
-
     public async Task<bool> CheckIfUserExistsByTelegramIdAsync(long telegramId)
     {
         return await DbSet.AnyAsync(x => x.Id == telegramId);

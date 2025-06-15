@@ -4,4 +4,4 @@ using User.Domain.Entities;
 
 namespace Auth.Contracts.Commands;
 
-public record CreateTokensCommand(ApplicationUser User): IRequest<TokensDto>;
+public record CreateTokensCommand(ApplicationUser? User): IRequest<TokensDto>;

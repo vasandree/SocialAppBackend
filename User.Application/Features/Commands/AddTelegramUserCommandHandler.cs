@@ -8,6 +8,7 @@ using User.Contracts.Commands;
 using User.Contracts.Helpers;
 using User.Contracts.Repositories;
 using User.Domain.Entities;
+using User.Domain.Enums;
 
 namespace User.Application.Features.Commands;
 
@@ -40,7 +41,6 @@ public class AddTelegramUserCommandHandler : IRequestHandler<AddTelegramUserComm
             LastName = parsedTelegramData.User.Last_Name,
             UserName = parsedTelegramData.User.Username,
             PhotoUrl = parsedTelegramData.User.Photo_Url,
-            Language = _telegramHelper.GetLanguage(parsedTelegramData.User.Language_Code),
         };
 
         var telegramAccount = new TelegramAccount
@@ -56,8 +56,18 @@ public class AddTelegramUserCommandHandler : IRequestHandler<AddTelegramUserComm
             UserId = user.Id,
         };
 
+        var userSettings = new UserSettings
+        {
+            UserId = user.Id,
+            User = user,
+            Language = _telegramHelper.GetLanguage(parsedTelegramData.User.Language_Code),
+            ChatInstance = parsedTelegramData.ChatInstance,
+            Theme = Theme.Light
+        };
+
         user.TelegramAccount = telegramAccount;
-        
+        user.UserSettings = userSettings;
+
         await _userRepository.AddAsync(user);
         await _telegramAccountRepository.AddAsync(telegramAccount);
 

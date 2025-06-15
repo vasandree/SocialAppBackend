@@ -42,7 +42,7 @@ public class LoginWithTelegramCommandHandler : IRequestHandler<LoginWithTelegram
 
         if (parsedInitData.User == null) throw new BadRequest("Invalid InitData");
 
-        ApplicationUser user;
+        ApplicationUser? user;
 
         if (await _telegramAccountRepository.CheckIfUserExistsByTelegramIdAsync(parsedInitData.User.Id))
         {

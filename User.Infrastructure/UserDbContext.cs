@@ -9,6 +9,8 @@ public class UserDbContext : DbContext
 
     private DbSet<TelegramAccount> TelegramAccounts { get; set; }
 
+    private DbSet<UserSettings> UserSettings { get; set; }
+
     public UserDbContext(DbContextOptions<UserDbContext> options) : base(options)
     {
     }
@@ -19,6 +21,13 @@ public class UserDbContext : DbContext
             .HasOne(a => a.User)
             .WithOne(u => u.TelegramAccount)
             .HasForeignKey<TelegramAccount>(a => a.UserId)
+            .IsRequired()
+            .OnDelete(DeleteBehavior.Cascade);
+
+        modelBuilder.Entity<UserSettings>()
+            .HasOne(u => u.User)
+            .WithOne(s => s.UserSettings)
+            .HasForeignKey<UserSettings>(s => s.UserId)
             .IsRequired()
             .OnDelete(DeleteBehavior.Cascade);
     }
