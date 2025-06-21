@@ -5,6 +5,7 @@ using MediatR;
 using Shared.Domain.Exceptions;
 using SocialNode.Contracts.Repositories;
 using SocialNode.Domain.Entities;
+using Workspace.Contracts.Repositories;
 
 namespace Event.Application.Features.Commands.Event;
 
@@ -13,18 +14,26 @@ public class CreateEventCommandHandler : IRequestHandler<CreateEventCommand, Uni
     private readonly IEventEntityRepository _eventRepository;
     private readonly IEventTypeRepository _eventTypeRepository;
     private readonly IBaseSocialNodeRepository<BaseSocialNode> _nodeRepository;
+    private readonly IWorkspaceEntityRepository _workspaceRepository;
 
     public CreateEventCommandHandler(IEventEntityRepository eventRepository,
-        IBaseSocialNodeRepository<BaseSocialNode> nodeRepository, IEventTypeRepository eventTypeRepository)
+        IBaseSocialNodeRepository<BaseSocialNode> nodeRepository, IEventTypeRepository eventTypeRepository,
+        IWorkspaceEntityRepository workspaceRepository)
     {
         _eventRepository = eventRepository;
         _nodeRepository = nodeRepository;
         _eventTypeRepository = eventTypeRepository;
+        _workspaceRepository = workspaceRepository;
     }
 
     public async Task<Unit> Handle(CreateEventCommand request, CancellationToken cancellationToken)
     {
-        //todo: check workspace
+        if (!await _workspaceRepository.CheckIfExists(request.CreateEventDto.WorkspaceId))
+            throw new NotFound("Workspace not found");
+
+        var workspace = await _workspaceRepository.GetByIdAsync(request.CreateEventDto.WorkspaceId);
+        if (workspace.CreatorId != request.UserId)
+            throw new Forbidden("You are not allowed to create an event in this workspace");
 
         foreach (var nodeId in request.CreateEventDto.SocialNodeId)
         {
