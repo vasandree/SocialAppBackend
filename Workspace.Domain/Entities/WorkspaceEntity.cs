@@ -29,7 +29,8 @@ public class WorkspaceEntity : BaseEntity
     [Required]
     public Guid CreatorId { get; set; }
     
-    public ICollection<WorkspacePerson> WorkspacePersons { get; set; } = [];
-    public ICollection<Relation> Relations { get; set; } = [];
-    public ICollection<WorkspaceUnit> Units { get; set; } = [];
+    public ICollection<Guid> SocialNodes { get; set; } = [];
+    public ICollection<RelationEntity> Relations { get; set; } = [];
+    public ICollection<Guid> Tasks { get; set; } = [];
+    public ICollection<Guid> Events { get; set; } = [];
 }

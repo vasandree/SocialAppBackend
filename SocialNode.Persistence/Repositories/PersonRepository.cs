@@ -4,7 +4,7 @@ using SocialNode.Infrastructure;
 
 namespace SocialNode.Persistence.Repositories;
 
-public class PersonRepository : SocialNodeRepository<PersonEntity>, IPersonRepository
+public class PersonRepository : BaseSocialNodeRepository<PersonEntity>, IPersonRepository
 {
     public PersonRepository(SocialNodeDbContext context) : base(context)
     {

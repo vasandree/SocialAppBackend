@@ -5,21 +5,20 @@ using Workspace.Contracts.Commands;
 using Workspace.Contracts.Dtos.Responses;
 using Workspace.Contracts.Repositories;
 
-namespace Workspace.Application.Features.Commands;
+namespace Workspace.Application.Features.Commands.Workspace;
 
-public class EditWorkspaceContentCommandHandler : IRequestHandler<EditWorkspaceContentCommand, WorkspaceResponseDto>
+public class EditWorkspaceCommandHandler : IRequestHandler<EditWorkspaceCommand, ListedWorkspaceDto>
 {
     private readonly IMapper _mapper;
     private readonly IWorkspaceEntityRepository _workspaceRepository;
 
-    public EditWorkspaceContentCommandHandler(IMapper mapper, IWorkspaceEntityRepository workspaceRepository)
+    public EditWorkspaceCommandHandler(IWorkspaceEntityRepository workspaceRepository, IMapper mapper)
     {
-        _mapper = mapper;
         _workspaceRepository = workspaceRepository;
+        _mapper = mapper;
     }
 
-    public async Task<WorkspaceResponseDto> Handle(EditWorkspaceContentCommand request,
-        CancellationToken cancellationToken)
+    public async Task<ListedWorkspaceDto> Handle(EditWorkspaceCommand request, CancellationToken cancellationToken)
     {
         if (!await _workspaceRepository.CheckIfExists(request.WorkspaceId))
             throw new NotFound("Workspace not found");
@@ -27,11 +26,12 @@ public class EditWorkspaceContentCommandHandler : IRequestHandler<EditWorkspaceC
         var workspace = await _workspaceRepository.GetByIdAsync(request.WorkspaceId);
 
         if (workspace.CreatorId != request.UserId) throw new Forbidden("You are not allowed to edit this workspace");
-        
-        workspace.ContentJson = request.Content;
-        
+
+        workspace.Name = request.WorkspaceRequestDto.Name;
+        workspace.Description = request.WorkspaceRequestDto.Description;
+
         await _workspaceRepository.UpdateAsync(workspace);
 
-        return _mapper.Map<WorkspaceResponseDto>(workspace);
+        return _mapper.Map<ListedWorkspaceDto>(workspace);
     }
 }

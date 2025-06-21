@@ -2,24 +2,24 @@ using AutoMapper;
 using MediatR;
 using Shared.Domain.Exceptions;
 using Workspace.Contracts.Commands;
-using Workspace.Contracts.Dtos.Requests;
 using Workspace.Contracts.Dtos.Responses;
 using Workspace.Contracts.Repositories;
 
-namespace Workspace.Application.Features.Commands;
+namespace Workspace.Application.Features.Commands.Workspace;
 
-public class EditWorkspaceCommandHandler : IRequestHandler<EditWorkspaceCommand, ListedWorkspaceDto>
+public class EditWorkspaceContentCommandHandler : IRequestHandler<EditWorkspaceContentCommand, WorkspaceResponseDto>
 {
     private readonly IMapper _mapper;
     private readonly IWorkspaceEntityRepository _workspaceRepository;
 
-    public EditWorkspaceCommandHandler(IWorkspaceEntityRepository workspaceRepository, IMapper mapper)
+    public EditWorkspaceContentCommandHandler(IMapper mapper, IWorkspaceEntityRepository workspaceRepository)
     {
-        _workspaceRepository = workspaceRepository;
         _mapper = mapper;
+        _workspaceRepository = workspaceRepository;
     }
 
-    public async Task<ListedWorkspaceDto> Handle(EditWorkspaceCommand request, CancellationToken cancellationToken)
+    public async Task<WorkspaceResponseDto> Handle(EditWorkspaceContentCommand request,
+        CancellationToken cancellationToken)
     {
         if (!await _workspaceRepository.CheckIfExists(request.WorkspaceId))
             throw new NotFound("Workspace not found");
@@ -27,12 +27,11 @@ public class EditWorkspaceCommandHandler : IRequestHandler<EditWorkspaceCommand,
         var workspace = await _workspaceRepository.GetByIdAsync(request.WorkspaceId);
 
         if (workspace.CreatorId != request.UserId) throw new Forbidden("You are not allowed to edit this workspace");
-
-        workspace.Name = request.WorkspaceRequestDto.Name;
-        workspace.Description = request.WorkspaceRequestDto.Description;
-
+        
+        workspace.ContentJson = request.Content;
+        
         await _workspaceRepository.UpdateAsync(workspace);
 
-        return _mapper.Map<ListedWorkspaceDto>(workspace);
+        return _mapper.Map<WorkspaceResponseDto>(workspace);
     }
 }

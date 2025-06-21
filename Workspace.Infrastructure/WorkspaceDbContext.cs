@@ -6,9 +6,8 @@ namespace Workspace.Infrastructure;
 public class WorkspaceDbContext : DbContext
 {
     private DbSet<WorkspaceEntity> Workspaces { get; set; }
-    private DbSet<Relation> WorkspaceRelations { get; set; }
-    private DbSet<WorkspaceUnit> WorkspaceUnits { get; set; }
-    private DbSet<WorkspacePerson> WorkspacePersons { get; set; }
+    private DbSet<RelationEntity> WorkspaceRelations { get; set; }
+
 
     public WorkspaceDbContext(DbContextOptions<WorkspaceDbContext> options) : base(options)
     {
@@ -16,16 +15,5 @@ public class WorkspaceDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<WorkspaceUnit>()
-            .HasOne(x => x.WorkspaceEntity)
-            .WithMany(x => x.Units)
-            .HasForeignKey(x => x.WorkspaceEntityId)
-            .OnDelete(DeleteBehavior.Cascade);
-
-        modelBuilder.Entity<WorkspacePerson>()
-            .HasOne(x => x.WorkspaceEntity)
-            .WithMany(x => x.WorkspacePersons)
-            .HasForeignKey(x => x.WorkspaceEntityId)
-            .OnDelete(DeleteBehavior.Cascade);
     }
 }

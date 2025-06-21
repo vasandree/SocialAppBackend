@@ -12,5 +12,6 @@ public class MappingProfile : Profile
         CreateMap<WorkspaceEntity, ShortenWorkspaceDto>();
         CreateMap<WorkspaceEntity, ListedWorkspaceDto>();
         CreateMap<WorkspaceEntity, WorkspaceResponseDto>();
+        CreateMap<RelationEntity, RelationDto>();
     }
 }

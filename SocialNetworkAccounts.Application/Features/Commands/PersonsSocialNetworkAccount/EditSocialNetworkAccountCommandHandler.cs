@@ -20,6 +20,7 @@ public class EditSocialNetworkAccountCommandHandler : IRequestHandler<EditSocial
 
     public async Task<Unit> Handle(EditSocialNetworkAccountCommand request, CancellationToken cancellationToken)
     {
+        
         if (!await _personsAccountRepository.CheckIfAccountAddedByIdAsync(request.AccountId))
             throw new NotFound($"Account with id={request.AccountId} not found");
         

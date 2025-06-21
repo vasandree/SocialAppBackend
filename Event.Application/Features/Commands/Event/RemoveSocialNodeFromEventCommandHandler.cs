@@ -10,10 +10,10 @@ namespace Event.Application.Features.Commands.Event;
 public class RemoveSocialNodeFromEventCommandHandler : IRequestHandler<RemoveSocialNodeFromEventCommand, Unit>
 {
     private readonly IEventEntityRepository _eventRepository;
-    private readonly ISocialNodeRepository<BaseSocialNode> _nodeRepository;
+    private readonly IBaseSocialNodeRepository<BaseSocialNode> _nodeRepository;
 
     public RemoveSocialNodeFromEventCommandHandler(IEventEntityRepository eventRepository,
-        ISocialNodeRepository<BaseSocialNode> nodeRepository)
+        IBaseSocialNodeRepository<BaseSocialNode> nodeRepository)
     {
         _eventRepository = eventRepository;
         _nodeRepository = nodeRepository;

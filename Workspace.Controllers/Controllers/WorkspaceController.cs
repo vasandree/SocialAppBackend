@@ -8,7 +8,7 @@ using Workspace.Contracts.Dtos.Requests;
 using Workspace.Contracts.Dtos.Responses;
 using Workspace.Contracts.Queries;
 
-namespace Workspace.Controllers;
+namespace Workspace.Controllers.Controllers;
 
 [Authorize]
 [UserExists]

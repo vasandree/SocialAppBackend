@@ -3,7 +3,7 @@ using Workspace.Contracts.Commands;
 using Workspace.Contracts.Repositories;
 using Workspace.Domain.Entities;
 
-namespace Workspace.Application.Features.Commands;
+namespace Workspace.Application.Features.Commands.Workspace;
 
 public class CreateWorkspaceCommandHandler : IRequestHandler<CreateWorkspaceCommand, Guid>
 {

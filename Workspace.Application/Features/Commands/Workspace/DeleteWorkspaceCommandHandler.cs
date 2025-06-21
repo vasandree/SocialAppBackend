@@ -5,7 +5,7 @@ using TaskModule.Contracts.Commands;
 using Workspace.Contracts.Commands;
 using Workspace.Contracts.Repositories;
 
-namespace Workspace.Application.Features.Commands;
+namespace Workspace.Application.Features.Commands.Workspace;
 
 public class DeleteWorkspaceCommandHandler : IRequestHandler<DeleteWorkspaceCommand, Unit>
 {

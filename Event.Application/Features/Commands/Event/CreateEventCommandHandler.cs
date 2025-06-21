@@ -12,10 +12,10 @@ public class CreateEventCommandHandler : IRequestHandler<CreateEventCommand, Uni
 {
     private readonly IEventEntityRepository _eventRepository;
     private readonly IEventTypeRepository _eventTypeRepository;
-    private readonly ISocialNodeRepository<BaseSocialNode> _nodeRepository;
+    private readonly IBaseSocialNodeRepository<BaseSocialNode> _nodeRepository;
 
     public CreateEventCommandHandler(IEventEntityRepository eventRepository,
-        ISocialNodeRepository<BaseSocialNode> nodeRepository, IEventTypeRepository eventTypeRepository)
+        IBaseSocialNodeRepository<BaseSocialNode> nodeRepository, IEventTypeRepository eventTypeRepository)
     {
         _eventRepository = eventRepository;
         _nodeRepository = nodeRepository;

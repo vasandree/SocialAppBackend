@@ -3,7 +3,7 @@ using Workspace.Domain.Entities;
 
 namespace Workspace.Contracts.Repositories;
 
-public interface IRelationRepository : IBaseEntityRepository<Relation>
+public interface IRelationRepository : IBaseEntityRepository<RelationEntity>
 {
     
 }

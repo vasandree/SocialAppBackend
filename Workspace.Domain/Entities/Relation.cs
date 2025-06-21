@@ -4,7 +4,7 @@ using Shared.Domain;
 
 namespace Workspace.Domain.Entities;
 
-public class Relation : BaseEntity
+public class RelationEntity : BaseEntity
 {
     [Required]
     public string Name { get; set; }
@@ -14,10 +14,10 @@ public class Relation : BaseEntity
     public string? Color { get; set; }
     
     [Required]
-    public WorkspaceUnit FirstUnit { get; set; }
+    public Guid FirstSocialNode { get; set; }
     
     [Required]
-    public WorkspaceUnit SecondUnit { get; set; }
+    public Guid SecondSocialNode { get; set; }
     
     [Required]
     [ForeignKey("Workspace")]
@@ -25,4 +25,7 @@ public class Relation : BaseEntity
     
     [Required]
     public WorkspaceEntity WorkspaceEntity { get; set; }
+    
+    [Required]
+    public Guid CreatorId { get; set; }
 }

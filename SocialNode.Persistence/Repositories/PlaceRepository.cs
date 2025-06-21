@@ -4,7 +4,7 @@ using SocialNode.Infrastructure;
 
 namespace SocialNode.Persistence.Repositories;
 
-public class PlaceRepository : SocialNodeRepository<Place>, IPlaceRepository
+public class PlaceRepository : BaseSocialNodeRepository<Place>, IPlaceRepository
 {
     public PlaceRepository(SocialNodeDbContext context) : base(context)
     {

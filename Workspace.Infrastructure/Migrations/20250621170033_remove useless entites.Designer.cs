@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Workspace.Infrastructure;
@@ -11,9 +12,11 @@ using Workspace.Infrastructure;
 namespace Workspace.Infrastructure.Migrations
 {
     [DbContext(typeof(WorkspaceDbContext))]
-    partial class WorkspaceDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250621170033_remove useless entites")]
+    partial class removeuselessentites
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,9 +33,6 @@ namespace Workspace.Infrastructure.Migrations
 
                     b.Property<string>("Color")
                         .HasColumnType("text");
-
-                    b.Property<Guid>("CreatorId")
-                        .HasColumnType("uuid");
 
                     b.Property<string>("Description")
                         .HasColumnType("text");

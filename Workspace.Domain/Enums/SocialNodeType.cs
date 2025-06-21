@@ -1,4 +1,4 @@
-namespace SocialNode.Domain.Enums;
+namespace Workspace.Domain.Enums;
 
 public enum SocialNodeType
 {

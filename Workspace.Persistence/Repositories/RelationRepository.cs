@@ -5,7 +5,7 @@ using Workspace.Infrastructure;
 
 namespace Workspace.Persistence.Repositories;
 
-public class RelationRepository : BaseEntityRepository<Relation>, IRelationRepository
+public class RelationRepository : BaseEntityRepository<RelationEntity>, IRelationRepository
 {
     public RelationRepository(WorkspaceDbContext context) : base(context)
     {

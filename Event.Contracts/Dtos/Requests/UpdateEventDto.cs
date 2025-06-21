@@ -13,4 +13,6 @@ public abstract record UpdateEventDto
     public Guid? EventTypeId { get; set; }
 
     [Required] public DateTime Date { get; set; }
+
+    [Required] public List<Guid> SocialNodeId { get; set; }
 }

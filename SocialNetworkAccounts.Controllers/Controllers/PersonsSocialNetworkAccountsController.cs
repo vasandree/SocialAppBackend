@@ -41,16 +41,16 @@ public class PersonsSocialNetworkAccountsController : ControllerBase
     }
 
     [HttpPut]
-    [Route("{id:guid}/social_networks")]
+    [Route("social_networks/{id:guid}")]
     public async Task<IActionResult> EditSocialNetworkAccount(Guid id,
         [FromBody] EditSocialNetworkAccountDto editSocialNetworkAccountDto)
     {
         return Ok(await _mediator.Send(
-            new EditSocialNetworkAccountCommand(User.GetUserId()!, id, editSocialNetworkAccountDto)));
+            new EditSocialNetworkAccountCommand(User.GetUserId(), id, editSocialNetworkAccountDto)));
     }
 
     [HttpDelete]
-    [Route("{id:guid}/social_networks")]
+    [Route("social_networks/{id:guid}")]
     public async Task<IActionResult> DeleteSocialNetworkAccount(Guid id)
     {
         return Ok(await _mediator.Send(new DeleteSocialNetworkAccountCommand(User.GetUserId(), id)));
