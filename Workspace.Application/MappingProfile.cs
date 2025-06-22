@@ -7,7 +7,7 @@ namespace Workspace.Application;
 
 public class MappingProfile : Profile
 {
-    MappingProfile()
+    public MappingProfile()
     {
         CreateMap<WorkspaceEntity, ShortenWorkspaceDto>();
         CreateMap<WorkspaceEntity, ListedWorkspaceDto>();
