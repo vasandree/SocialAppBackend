@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using SocialNode.Contracts.Dtos.Responses;
 
 namespace TaskModule.Contracts.Dtos.Responses;
 
@@ -10,5 +11,5 @@ public class ListedTaskDto
 
     [Required] public required DateTime EndDate { get; init; }
 
-    [Required] public required Guid SocialNodeId { get; init; }
+    [Required] public required ListedBaseSocialNodeDto SocialNode { get; set; }
 }

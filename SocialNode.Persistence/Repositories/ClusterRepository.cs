@@ -9,4 +9,9 @@ public class ClusterRepository : BaseSocialNodeRepository<ClusterOfPeople>, IClu
     public ClusterRepository(SocialNodeDbContext context) : base(context)
     {
     }
+
+    public Task<IQueryable<ClusterOfPeople>> GetAllByUserId(Guid userId)
+    {
+        return Task.FromResult(DbSet.Where(x => x.CreatorId == userId).AsQueryable());
+    }
 }

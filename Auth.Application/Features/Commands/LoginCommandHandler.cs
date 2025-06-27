@@ -6,7 +6,7 @@ using Shared.Domain.Exceptions;
 
 namespace Auth.Application.Features.Commands;
 
-public class LoginCommandHandler : IRequestHandler<LoginCommand, TokensDto>
+public class LoginCommandHandler : IRequestHandler<LoginCommand, AuthResponse>
 {
     private readonly ISender _mediator;
 
@@ -15,7 +15,7 @@ public class LoginCommandHandler : IRequestHandler<LoginCommand, TokensDto>
         _mediator = mediator;
     }
 
-    public async Task<TokensDto> Handle(LoginCommand request, CancellationToken cancellationToken)
+    public async Task<AuthResponse> Handle(LoginCommand request, CancellationToken cancellationToken)
     {
         return request.Type switch
         {

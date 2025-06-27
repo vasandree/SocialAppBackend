@@ -9,4 +9,9 @@ public class PersonRepository : BaseSocialNodeRepository<PersonEntity>, IPersonR
     public PersonRepository(SocialNodeDbContext context) : base(context)
     {
     }
+
+    public Task<IQueryable<PersonEntity>> GetAllByUserId(Guid userId)
+    {
+        return Task.FromResult(DbSet.Where(x=>x.CreatorId == userId).AsQueryable());
+    }
 }

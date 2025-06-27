@@ -4,4 +4,4 @@ using User.Contracts.Dtos.Requests;
 
 namespace Auth.Contracts.Commands;
 
-public record LoginWithTelegramCommand(InitDataDto? InitData): IRequest<TokensDto>;
+public record LoginWithTelegramCommand(InitDataDto? InitData): IRequest<AuthResponse>;

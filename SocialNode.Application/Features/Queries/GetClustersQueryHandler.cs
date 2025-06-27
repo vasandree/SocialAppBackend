@@ -1,6 +1,6 @@
 using AutoMapper;
 using MediatR;
-using Microsoft.Extensions.Configuration;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Shared.Contracts.Dtos;
 using Shared.Domain.Exceptions;
@@ -28,7 +28,7 @@ public class GetClustersQueryHandler : IRequestHandler<GetClustersQuery, Paginat
 
     public async Task<PaginatedClusterDto> Handle(GetClustersQuery request, CancellationToken cancellationToken)
     {
-        var clusters = await _clusterRepository.GetAllAsQueryable(request.UserId);
+        var clusters = await _clusterRepository.GetAllByUserId(request.UserId);
 
         if (!string.IsNullOrEmpty(request.Name))
         {
@@ -37,8 +37,9 @@ public class GetClustersQueryHandler : IRequestHandler<GetClustersQuery, Paginat
         }
 
         if (request.Page <= 0) throw new BadRequest("Page must be greater than 0");
-        
-        var totalPages = Math.Max(1, (int)Math.Ceiling((double)clusters.Count() / _pageSize));
+
+        var totalCount = await clusters.CountAsync(cancellationToken);
+        var totalPages = Math.Max(1, (int)Math.Ceiling((double)totalCount / _pageSize));
 
         clusters = clusters
             .Skip((request.Page - 1) * _pageSize)

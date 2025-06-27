@@ -1,7 +1,10 @@
 using AutoMapper;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 using Shared.Contracts.Dtos;
+using Shared.Extensions.Configs;
 using SocialNode.Contracts.Dtos.Responses;
 using SocialNode.Contracts.Dtos.Responses.Place;
 using SocialNode.Contracts.Queries;
@@ -15,23 +18,25 @@ public class GetPlacesQueryHandler : IRequestHandler<GetPlacesQuery, PaginatedPl
     private readonly IMapper _mapper;
     private readonly int _pageSize;
 
-    public GetPlacesQueryHandler(IPlaceRepository placeRepository, IMapper mapper, IConfiguration configuration)
+    public GetPlacesQueryHandler(IPlaceRepository placeRepository, IMapper mapper, IOptions<PaginationConfig> configuration)
     {
         _placeRepository = placeRepository;
         _mapper = mapper;
-        _pageSize = configuration.GetValue<int>("PageSize");
+        _pageSize = configuration.Value.PageSize;
     }
 
     public async Task<PaginatedPlacesDto> Handle(GetPlacesQuery request, CancellationToken cancellationToken)
     {
-        var places = await _placeRepository.GetAllAsQueryable(request.UserId);
+        var places = await _placeRepository.GetAllByUSerId(request.UserId);
 
         if (!string.IsNullOrEmpty(request.Name))
         {
             places = places.Where(place => place.Name.Contains(request.Name, StringComparison.OrdinalIgnoreCase));
         }
 
-        var totalPages = (int)Math.Ceiling((double)places.Count() / _pageSize);
+
+        var totalCount = await places.CountAsync(cancellationToken);
+        var totalPages = Math.Max(1, (int)Math.Ceiling((double)totalCount / _pageSize));
 
         places = places
             .Skip((request.Page - 1) * _pageSize)

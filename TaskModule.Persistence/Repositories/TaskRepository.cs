@@ -16,7 +16,7 @@ public class TaskRepository : BaseEntityRepository<TaskEntity>, ITaskRepository
 
     public async Task<IReadOnlyList<TaskEntity>> GetAllByUserIdAsync(Guid userId)
     {
-        return await DbSet.Where(x => x.SocialNodeId == userId).ToListAsync();
+        return await DbSet.Where(x => x.CreatorId == userId).ToListAsync();
     }
 
     public async Task ChangeStatusAsync(Guid id,  Domain.Enums.StatusOfTask status)

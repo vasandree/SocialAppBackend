@@ -1,5 +1,6 @@
 using Auth.Contracts.Commands;
 using Auth.Contracts.Responses;
+using AutoMapper;
 using MediatR;
 using Shared.Domain;
 using Shared.Domain.Exceptions;
@@ -7,30 +8,35 @@ using SocialNetworkAccounts.Contracts.Commands.UserSocialNetworkAccount;
 using SocialNetworkAccounts.Contracts.Dtos.Requests;
 using SocialNetworkAccounts.Contracts.Repositories;
 using User.Contracts.Commands;
+using User.Contracts.Dtos;
 using User.Contracts.Helpers;
 using User.Contracts.Repositories;
 using User.Domain.Entities;
 
 namespace Auth.Application.Features.Commands;
 
-public class LoginWithTelegramCommandHandler : IRequestHandler<LoginWithTelegramCommand, TokensDto>
+public class LoginWithTelegramCommandHandler : IRequestHandler<LoginWithTelegramCommand, AuthResponse>
 {
     private readonly ITelegramHelper _telegramHelper;
     private readonly ITelegramAccountRepository _telegramAccountRepository;
     private readonly IUsersAccountRepository _usersAccountRepository;
     private readonly ISender _mediator;
+    private readonly IUserSettingsRepository _userSettingsRepository;
+    private readonly IMapper _mapper;
 
     public LoginWithTelegramCommandHandler(ITelegramHelper telegramHelper,
         ISender mediator, ITelegramAccountRepository telegramAccountRepository,
-        IUsersAccountRepository usersAccountRepository)
+        IUsersAccountRepository usersAccountRepository, IUserSettingsRepository userSettingsRepository, IMapper mapper)
     {
         _telegramHelper = telegramHelper;
         _mediator = mediator;
         _telegramAccountRepository = telegramAccountRepository;
         _usersAccountRepository = usersAccountRepository;
+        _userSettingsRepository = userSettingsRepository;
+        _mapper = mapper;
     }
 
-    public async Task<TokensDto> Handle(LoginWithTelegramCommand request, CancellationToken cancellationToken)
+    public async Task<AuthResponse> Handle(LoginWithTelegramCommand request, CancellationToken cancellationToken)
     {
         if (request.InitData == null)
             throw new BadRequest("No InitData provided");
@@ -71,6 +77,10 @@ public class LoginWithTelegramCommandHandler : IRequestHandler<LoginWithTelegram
             }), cancellationToken);
         }
 
-        return await _mediator.Send(new CreateTokensCommand(user), cancellationToken);
+        return new AuthResponse
+        {
+            Tokens = await _mediator.Send(new CreateTokensCommand(user), cancellationToken),
+            Settings = _mapper.Map<UserSettingsDto>(await _userSettingsRepository.GetByUserIdAsync(user.Id))
+        };
     }
 }

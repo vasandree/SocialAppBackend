@@ -20,14 +20,14 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost("login")]
-    [ProducesResponseType(typeof(List<TokensDto>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(AuthResponse), StatusCodes.Status200OK)]
     public async Task<IActionResult> Login([FromBody] InitDataDto initData, [FromQuery] SocialNetwork socialNetwork)
     {
         return Ok(await _mediator.Send(new LoginCommand(socialNetwork, initData)));
     }
 
     [HttpPost("refresh")]
-    [ProducesResponseType(typeof(List<TokensDto>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(TokensDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> Refresh([FromBody] TokensDto tokensDto)
     {
         return Ok(await _mediator.Send(new RefreshTokensCommand(tokensDto)));

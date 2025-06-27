@@ -1,7 +1,10 @@
 using AutoMapper;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 using Shared.Contracts.Dtos;
+using Shared.Extensions.Configs;
 using SocialNode.Contracts.Dtos.Responses;
 using SocialNode.Contracts.Dtos.Responses.Person;
 using SocialNode.Contracts.Queries;
@@ -15,31 +18,34 @@ public class GetPersonsQueryHandler : IRequestHandler<GetPersonsQuery, Paginated
     private readonly IMapper _mapper;
     private readonly int _pageSize;
 
-    public GetPersonsQueryHandler(IPersonRepository personRepository, IMapper mapper,  IConfiguration configuration)
+    public GetPersonsQueryHandler(IPersonRepository personRepository, IMapper mapper, IOptions<PaginationConfig> config)
     {
         _personRepository = personRepository;
         _mapper = mapper;
-        _pageSize = configuration.GetValue<int>("PageSize");
+        _pageSize = config.Value.PageSize;
     }
 
     public async Task<PaginatedPersonsDto> Handle(GetPersonsQuery request, CancellationToken cancellationToken)
     {
-        var persosns = await _personRepository.GetAllAsQueryable(request.UserId);
-        
+        var persons = await _personRepository.GetAllByUserId(request.UserId);
+
         if (!string.IsNullOrEmpty(request.Name))
         {
-            persosns = persosns.Where(cluster => cluster.Name.Contains(request.Name, StringComparison.OrdinalIgnoreCase));
+            persons = persons.Where(person => person.Name.Contains(request.Name, StringComparison.OrdinalIgnoreCase));
         }
-        
-        var totalPages = (int)Math.Ceiling((double)persosns.Count() / _pageSize);
-        
-        persosns = persosns
+
+
+        var totalCount = await persons.CountAsync(cancellationToken);
+        var totalPages = Math.Max(1, (int)Math.Ceiling((double)totalCount / _pageSize));
+
+        var result = persons
             .Skip((request.Page - 1) * _pageSize)
-            .Take(_pageSize);
-        
+            .Take(_pageSize)
+            .ToList();
+
         return new PaginatedPersonsDto()
         {
-            Person = _mapper.Map<List<ListedBaseSocialNodeDto>>(persosns),
+            Person = _mapper.Map<List<ListedBaseSocialNodeDto>>(result),
             Pagination = new Pagination(_pageSize, request.Page, totalPages)
         };
     }

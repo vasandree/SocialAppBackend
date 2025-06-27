@@ -3,7 +3,7 @@ using Minio.DataModel.Args;
 using SocialNode.Contracts.Services;
 using SocialNode.Infrastructure.CloudStorage;
 
-namespace SocialNode.Application;
+namespace SocialNode.Application.Services;
 
 public class CloudStorageService : ICloudStorageService
 {
