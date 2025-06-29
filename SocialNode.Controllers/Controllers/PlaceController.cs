@@ -25,7 +25,7 @@ public class PlaceController : ControllerBase
 
     [HttpGet]
     [ProducesResponseType(typeof(PaginatedPlacesDto), StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetPlaces([FromQuery] string? searchTerm = null, [FromQuery] int page = 1)
+    public async Task<IActionResult> GetPlaces([FromQuery] string? searchTerm, [FromQuery] int page = 1)
     {
         return Ok(await _mediator.Send(new GetPlacesQuery(User.GetUserId(), page, searchTerm)));
     }

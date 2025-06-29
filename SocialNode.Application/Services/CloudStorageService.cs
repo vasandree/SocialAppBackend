@@ -16,28 +16,51 @@ public class CloudStorageService : ICloudStorageService
 
     public async Task<string> UploadFileAsync(IFormFile file, Guid id)
     {
+        const string bucketName = "avatars";
         var objectName = id.ToString();
+
+        var bucketExists = await _context.Client.BucketExistsAsync(
+            new BucketExistsArgs().WithBucket(bucketName)
+        );
+
+        if (!bucketExists)
+        {
+            await _context.Client.MakeBucketAsync(
+                new MakeBucketArgs().WithBucket(bucketName)
+            );
+
+            var policyJson = $@"
+    {{
+      ""Version"": ""2012-10-17"",
+      ""Statement"": [
+        {{
+          ""Effect"": ""Allow"",
+          ""Principal"": {{ ""AWS"": [ ""*"" ] }},
+          ""Action"": [ ""s3:GetObject"" ],
+          ""Resource"": [ ""arn:aws:s3:::{bucketName}/*"" ]
+        }}
+      ]
+    }}";
+
+            await _context.Client.SetPolicyAsync(new SetPolicyArgs()
+                .WithBucket(bucketName)
+                .WithPolicy(policyJson)
+            );
+        }
+
 
         await using var stream = file.OpenReadStream();
 
-        var encodedName = Uri.EscapeDataString(objectName);
-
-        var args = new PutObjectArgs()
-            .WithBucket("avatars")
+        var putArgs = new PutObjectArgs()
+            .WithBucket(bucketName)
             .WithObject(objectName)
             .WithStreamData(stream)
             .WithObjectSize(file.Length)
-            .WithContentType(file.ContentType)
-            .WithHeaders(new Dictionary<string, string> { { "Name", encodedName } });
+            .WithContentType(file.ContentType);
 
-        await _context.Client.PutObjectAsync(args);
+        await _context.Client.PutObjectAsync(putArgs);
 
-        var url = await _context.Client.PresignedGetObjectAsync(
-            new PresignedGetObjectArgs()
-                .WithBucket("avatars")
-                .WithObject(objectName)
-                .WithExpiry(60 * 60)
-        );
+        var url = $"{_context.BaseUrl}/{bucketName}/{objectName}";
 
         return url;
     }

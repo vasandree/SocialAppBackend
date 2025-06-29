@@ -32,8 +32,7 @@ public class GetClustersQueryHandler : IRequestHandler<GetClustersQuery, Paginat
 
         if (!string.IsNullOrEmpty(request.Name))
         {
-            clusters = clusters.Where(
-                cluster => cluster.Name.Contains(request.Name, StringComparison.OrdinalIgnoreCase));
+            clusters = clusters.Where(person => EF.Functions.Like(person.Name, $"%{request.Name}%"));
         }
 
         if (request.Page <= 0) throw new BadRequest("Page must be greater than 0");

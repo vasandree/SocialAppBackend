@@ -31,7 +31,7 @@ public class GetPlacesQueryHandler : IRequestHandler<GetPlacesQuery, PaginatedPl
 
         if (!string.IsNullOrEmpty(request.Name))
         {
-            places = places.Where(place => place.Name.Contains(request.Name, StringComparison.OrdinalIgnoreCase));
+            places = places.Where(person => EF.Functions.Like(person.Name, $"%{request.Name}%"));
         }
 
 

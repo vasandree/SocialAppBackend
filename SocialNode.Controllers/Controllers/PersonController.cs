@@ -25,7 +25,7 @@ public class PersonController : ControllerBase
 
     [HttpGet]
     [ProducesResponseType(typeof(PaginatedPersonsDto), StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetPersons([FromQuery] string? searchTerm = null, [FromQuery] int page = 1)
+    public async Task<IActionResult> GetPersons([FromQuery] string? searchTerm, [FromQuery] int page = 1)
     {
         return Ok(await _mediator.Send(new GetPersonsQuery(User.GetUserId(), page, searchTerm)));
     }

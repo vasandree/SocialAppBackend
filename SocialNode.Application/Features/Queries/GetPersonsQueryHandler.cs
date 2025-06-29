@@ -31,9 +31,9 @@ public class GetPersonsQueryHandler : IRequestHandler<GetPersonsQuery, Paginated
 
         if (!string.IsNullOrEmpty(request.Name))
         {
-            persons = persons.Where(person => person.Name.Contains(request.Name, StringComparison.OrdinalIgnoreCase));
+            persons = persons.Where(person => EF.Functions.Like(person.Name, $"%{request.Name}%"));
         }
-
+        
 
         var totalCount = await persons.CountAsync(cancellationToken);
         var totalPages = Math.Max(1, (int)Math.Ceiling((double)totalCount / _pageSize));

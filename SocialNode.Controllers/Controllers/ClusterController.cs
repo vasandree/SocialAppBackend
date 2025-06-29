@@ -25,7 +25,7 @@ public class ClusterController : ControllerBase
 
     [HttpGet]
     [ProducesResponseType(typeof(PaginatedClusterDto), StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetClusters([FromQuery] string? searchTerm = null, [FromQuery] int page = 1)
+    public async Task<IActionResult> GetClusters([FromQuery] string? searchTerm, [FromQuery] int page = 1)
     {
         return Ok(await _mediator.Send(new GetClustersQuery(User.GetUserId(), page, searchTerm)));
     }

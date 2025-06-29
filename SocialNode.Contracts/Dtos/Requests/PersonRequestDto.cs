@@ -5,15 +5,15 @@ namespace SocialNode.Contracts.Dtos.Requests;
 
 public class PersonRequestDto
 {
-    [Required] public string Name { get; init; }
+    [Required] public string Name { get; set; }
 
-    public string? Description { get; }
+    public string? Description { get; set; }
 
-    public string? Email { get; }
+    public string? Email { get; set; }
 
-    public string? PhoneNumber { get; }
+    public string? PhoneNumber { get; set; }
 
-    public IFormFile? Avatar { get; init; }
+    public IFormFile? Avatar { get; set; }
 
-    public string? AvatarUrl { get; init; }
+    public string? AvatarUrl { get; set; }
 }
