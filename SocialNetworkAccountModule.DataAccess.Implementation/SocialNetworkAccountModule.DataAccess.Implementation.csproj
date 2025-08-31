@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.4" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Shared.DataAccess.Implementation\Shared.DataAccess.Implementation.csproj" />
+      <ProjectReference Include="..\Shared.Extensions\Shared.Extensions.csproj" />
+      <ProjectReference Include="..\SocialNetworkAccountModule.DataAccess.Interfaces\SocialNetworkAccountModule.DataAccess.Interfaces.csproj" />
+      <ProjectReference Include="..\SocialNetworkAccountModule.Domain\SocialNetworkAccountModule.Domain.csproj" />
+    </ItemGroup>
+
+</Project>

@@ -1,80 +1,78 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "User.Domain", "User.Domain\User.Domain.csproj", "{46D2791E-FB16-459D-B390-D596190B2E08}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserModule.Domain", "UserModule.Domain\UserModule.Domain.csproj", "{46D2791E-FB16-459D-B390-D596190B2E08}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "User.Persistence", "User.Persistence\User.Persistence.csproj", "{DA4F3337-D5A7-407E-B91E-8EB458218C57}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserModule.DataAccess.Interfaces", "UserModule.DataAccess.Interfaces\UserModule.DataAccess.Interfaces.csproj", "{DA4F3337-D5A7-407E-B91E-8EB458218C57}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "User.Infrastructure", "User.Infrastructure\User.Infrastructure.csproj", "{AD4E5FA0-2C37-4CF4-9923-349BBA3598CB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserModule.DataAccess.Implementation", "UserModule.DataAccess.Implementation\UserModule.DataAccess.Implementation.csproj", "{AD4E5FA0-2C37-4CF4-9923-349BBA3598CB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "User.Application", "User.Application\User.Application.csproj", "{7B6AD929-D63B-49A2-A161-2BAD3513F7FB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserModule.UseCases.Implementation", "UserModule.UseCases.Implementation\UserModule.UseCases.Implementation.csproj", "{7B6AD929-D63B-49A2-A161-2BAD3513F7FB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Workspace.Persistence", "Workspace.Persistence\Workspace.Persistence.csproj", "{7A190D55-CE7B-4E2A-A7B9-4AC1C57D5B37}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkspaceModule.DataAccess.Interfaces", "WorkspaceModule.DataAccess.Interfaces\WorkspaceModule.DataAccess.Interfaces.csproj", "{7A190D55-CE7B-4E2A-A7B9-4AC1C57D5B37}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Workspace.Domain", "Workspace.Domain\Workspace.Domain.csproj", "{6479AF90-D753-49AE-A694-0F6CF3BA473E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkspaceModule.Domain", "WorkspaceModule.Domain\WorkspaceModule.Domain.csproj", "{6479AF90-D753-49AE-A694-0F6CF3BA473E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Workspace.Application", "Workspace.Application\Workspace.Application.csproj", "{CBCDA54A-2B03-49BA-80AD-31DAD0CC5A4E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkspaceModule.UseCases.Implementation", "WorkspaceModule.UseCases.Implementation\WorkspaceModule.UseCases.Implementation.csproj", "{CBCDA54A-2B03-49BA-80AD-31DAD0CC5A4E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Workspace.Infrastructure", "Workspace.Infrastructure\Workspace.Infrastructure.csproj", "{D47C68DB-05F1-46B3-B2D6-62CF57F6CF39}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkspaceModule.DataAccess.Implementation", "WorkspaceModule.DataAccess.Implementation\WorkspaceModule.DataAccess.Implementation.csproj", "{D47C68DB-05F1-46B3-B2D6-62CF57F6CF39}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialNetworkAccounts.Domain", "SocialNetworkAccounts.Domain\SocialNetworkAccounts.Domain.csproj", "{5DE2EC47-5ADB-4B07-AC9C-FFD872FEEC9B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialNetworkAccountModule.Domain", "SocialNetworkAccountModule.Domain\SocialNetworkAccountModule.Domain.csproj", "{5DE2EC47-5ADB-4B07-AC9C-FFD872FEEC9B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialNetworkAccounts.Persistence", "SocialNetworkAccounts.Persistence\SocialNetworkAccounts.Persistence.csproj", "{D8740DA2-0778-4ABA-A95F-AF59B35F7EFF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialNetworkAccountModule.DataAccess.Interfaces", "SocialNetworkAccountModule.DataAccess.Interfaces\SocialNetworkAccountModule.DataAccess.Interfaces.csproj", "{D8740DA2-0778-4ABA-A95F-AF59B35F7EFF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialNetworkAccounts.Infrastructure", "SocialNetworkAccounts.Infrastructure\SocialNetworkAccounts.Infrastructure.csproj", "{B5C5518F-042B-447C-B231-A1054AC44E7B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialNetworkAccountModule.DataAccess.Implementation", "SocialNetworkAccountModule.DataAccess.Implementation\SocialNetworkAccountModule.DataAccess.Implementation.csproj", "{B5C5518F-042B-447C-B231-A1054AC44E7B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialNetworkAccounts.Application", "SocialNetworkAccounts.Application\SocialNetworkAccounts.Application.csproj", "{6BE0244A-E42D-4564-AD25-864E8304E1EB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialNetworkAccountModule.UseCases.Implementation", "SocialNetworkAccountModule.UseCases.Implementation\SocialNetworkAccountModule.UseCases.Implementation.csproj", "{6BE0244A-E42D-4564-AD25-864E8304E1EB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialNode.Domain", "SocialNode.Domain\SocialNode.Domain.csproj", "{11840256-2D9E-4439-A9B2-84D04A25D4F5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialNodeModule.Domain", "SocialNodeModule.Domain\SocialNodeModule.Domain.csproj", "{11840256-2D9E-4439-A9B2-84D04A25D4F5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialNode.Persistence", "SocialNode.Persistence\SocialNode.Persistence.csproj", "{B331F8FD-0E37-474F-A11C-0CFDE82D7947}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialNodeModule.DataAccess.Interfaces", "SocialNodeModule.DataAccess.Interfaces\SocialNodeModule.DataAccess.Interfaces.csproj", "{B331F8FD-0E37-474F-A11C-0CFDE82D7947}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialNode.Infrastructure", "SocialNode.Infrastructure\SocialNode.Infrastructure.csproj", "{8963A8CA-F424-4EF7-BDC5-41B1FFDF5E5D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialNodeModule.DataAccess.Implementation", "SocialNodeModule.DataAccess.Implementation\SocialNodeModule.DataAccess.Implementation.csproj", "{8963A8CA-F424-4EF7-BDC5-41B1FFDF5E5D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialNode.Application", "SocialNode.Application\SocialNode.Application.csproj", "{814A65BE-4B70-4C0D-82D4-E6D807688A14}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialNodeModule.UseCases.Implementation", "SocialNodeModule.UseCases.Implementation\SocialNodeModule.UseCases.Implementation.csproj", "{814A65BE-4B70-4C0D-82D4-E6D807688A14}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{3564D285-9E3B-4986-9F64-13EC220ECAAF}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "User", "User", "{7BA0540E-0B79-418C-9EE9-8C40A7A837E2}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UserModule", "UserModule", "{7BA0540E-0B79-418C-9EE9-8C40A7A837E2}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Auth", "Auth", "{D763A55A-448D-4E9D-ADD2-9BB37CE15CB1}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AuthModule", "AuthModule", "{D763A55A-448D-4E9D-ADD2-9BB37CE15CB1}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SocialNode", "SocialNode", "{761A1B20-5A1E-4F54-B552-B352014A8A9E}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SocialNodeModule", "SocialNodeModule", "{761A1B20-5A1E-4F54-B552-B352014A8A9E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TaskModule", "TaskModule", "{2CF8CDE3-213C-4BA0-A501-8F286F81BE02}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SocialNetworkAccount", "SocialNetworkAccount", "{D115A6B7-6399-49C3-B271-95FFE8D14B93}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SocialNetworkAccountModule", "SocialNetworkAccountModule", "{D115A6B7-6399-49C3-B271-95FFE8D14B93}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Workspace", "Workspace", "{B4A3E744-5264-403E-88AE-CF6FC252734C}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WorkspaceModule", "WorkspaceModule", "{B4A3E744-5264-403E-88AE-CF6FC252734C}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Notification", "Notification", "{277F0494-B8AE-444B-BE9B-A8A463DC52B9}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NotificationModule", "NotificationModule", "{277F0494-B8AE-444B-BE9B-A8A463DC52B9}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Subscription", "Subscription", "{C910F767-2DF6-4880-927A-B537ED45E5A6}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SubscriptionModule", "SubscriptionModule", "{C910F767-2DF6-4880-927A-B537ED45E5A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth.Application", "Auth.Application\Auth.Application.csproj", "{F4E1A17F-DBA6-43EC-B49C-2EAE2EF4149E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthModule.UseCases.Implementation", "AuthModule.UseCases.Implementation\AuthModule.UseCases.Implementation.csproj", "{F4E1A17F-DBA6-43EC-B49C-2EAE2EF4149E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth.Domain", "Auth.Domain\Auth.Domain.csproj", "{AA7E4153-7F6A-4D6B-9DF4-C8FA4F4B78E1}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth.Infrastructure", "Auth.Infrastructure\Auth.Infrastructure.csproj", "{F17EAC15-B0AF-47A9-913E-0C98883E5DA1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthModule.Domain", "AuthModule.Domain\AuthModule.Domain.csproj", "{AA7E4153-7F6A-4D6B-9DF4-C8FA4F4B78E1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{3D5EDEE8-B2EB-461A-AB38-0C6D26D9EAB5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth.Contracts", "Auth.Contracts\Auth.Contracts.csproj", "{6F31E2FD-D14F-410B-9D6F-1D9BE98E7962}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthModule.UseCases.Interfaces", "AuthModule.UseCases.Interfaces\AuthModule.UseCases.Interfaces.csproj", "{6F31E2FD-D14F-410B-9D6F-1D9BE98E7962}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "User.Contracts", "User.Contracts\User.Contracts.csproj", "{732739E3-A203-4F29-BD92-C351D95E222A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserModule.UseCases.Interfaces", "UserModule.UseCases.Interfaces\UserModule.UseCases.Interfaces.csproj", "{732739E3-A203-4F29-BD92-C351D95E222A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "User.Controllers", "User.Controllers\User.Controllers.csproj", "{651431F8-8865-43E3-B6A1-41012C85017F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserModule.Controllers", "UserModule.Controllers\UserModule.Controllers.csproj", "{651431F8-8865-43E3-B6A1-41012C85017F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth.Controllers", "Auth.Controllers\Auth.Controllers.csproj", "{A36A452A-F2FF-481C-B2AC-A054C961D9DD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthModule.Controllers", "AuthModule.Controllers\AuthModule.Controllers.csproj", "{A36A452A-F2FF-481C-B2AC-A054C961D9DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth.Persistence", "Auth.Persistence\Auth.Persistence.csproj", "{3AE4F7AF-FD33-4D33-8207-1068E654D98A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthModule.DataAccess.Implementation", "AuthModule.DataAccess.Implementation\AuthModule.DataAccess.Implementation.csproj", "{3AE4F7AF-FD33-4D33-8207-1068E654D98A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialNetworkAccounts.Contracts", "SocialNetworkAccounts.Contracts\SocialNetworkAccounts.Contracts.csproj", "{C4660A76-24AD-4584-85C4-FA7188E02A95}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialNetworkAccountModule.UseCases.Interfaces", "SocialNetworkAccountModule.UseCases.Interfaces\SocialNetworkAccountModule.UseCases.Interfaces.csproj", "{C4660A76-24AD-4584-85C4-FA7188E02A95}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialNetworkAccounts.Controllers", "SocialNetworkAccounts.Controllers\SocialNetworkAccounts.Controllers.csproj", "{AF1AAD6E-E52A-4757-8BFE-96C195CE9E3D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialNetworkAccountModule.Controllers", "SocialNetworkAccountModule.Controllers\SocialNetworkAccountModule.Controllers.csproj", "{AF1AAD6E-E52A-4757-8BFE-96C195CE9E3D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialNode.Contracts", "SocialNode.Contracts\SocialNode.Contracts.csproj", "{137F5CBE-F477-4F7A-AD8E-1BC717548719}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialNodeModule.UseCases.Interfaces", "SocialNodeModule.UseCases.Interfaces\SocialNodeModule.UseCases.Interfaces.csproj", "{137F5CBE-F477-4F7A-AD8E-1BC717548719}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialNode.Controllers", "SocialNode.Controllers\SocialNode.Controllers.csproj", "{6FBA52DA-ACC0-45ED-95E4-A19CD4F963FC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialNodeModule.Controllers", "SocialNodeModule.Controllers\SocialNodeModule.Controllers.csproj", "{6FBA52DA-ACC0-45ED-95E4-A19CD4F963FC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialApp.Api", "SocialApp.Api\SocialApp.Api.csproj", "{FCA67586-64B4-4CB5-AC6A-F793BA447BEC}"
 EndProject
@@ -84,43 +82,47 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared.Domain", "Shared.Dom
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared.Extensions", "Shared.Extensions\Shared.Extensions.csproj", "{1C46D49F-B000-4BD2-A5F5-F2108CD76AE8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared.Persistence", "Shared.Persistence\Shared.Persistence.csproj", "{E6E29805-1E8E-4261-A302-82B2756DD0C8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared.DataAccess.Implementation", "Shared.DataAccess.Implementation\Shared.DataAccess.Implementation.csproj", "{E6E29805-1E8E-4261-A302-82B2756DD0C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Workspace.Contracts", "Workspace.Contracts\Workspace.Contracts.csproj", "{FBC82DFB-C12A-4C40-A96C-1E47A73F5271}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkspaceModule.UseCases.Interfaces", "WorkspaceModule.UseCases.Interfaces\WorkspaceModule.UseCases.Interfaces.csproj", "{FBC82DFB-C12A-4C40-A96C-1E47A73F5271}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Workspace.Controllers", "Workspace.Controllers\Workspace.Controllers.csproj", "{C8D8295E-9785-4CD4-8558-67FC3B084FF8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkspaceModule.Controllers", "WorkspaceModule.Controllers\WorkspaceModule.Controllers.csproj", "{C8D8295E-9785-4CD4-8558-67FC3B084FF8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskModule.Domain", "TaskModule.Domain\TaskModule.Domain.csproj", "{ACE5DA00-44A3-4912-B8F1-5A45970EF302}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskModule.Application", "TaskModule.Application\TaskModule.Application.csproj", "{600B84B4-5349-4A8F-B761-6D623EA738EC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskModule.UseCases.Implementation", "TaskModule.UseCases.Implementation\TaskModule.UseCases.Implementation.csproj", "{600B84B4-5349-4A8F-B761-6D623EA738EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskModule.Persistence", "TaskModule.Persistence\TaskModule.Persistence.csproj", "{4A01C633-A1CA-474A-9BCC-DA0EDBF900CF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskModule.DataAccess.Interfaces", "TaskModule.DataAccess.Interfaces\TaskModule.DataAccess.Interfaces.csproj", "{4A01C633-A1CA-474A-9BCC-DA0EDBF900CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskModule.Contracts", "TaskModule.Contracts\TaskModule.Contracts.csproj", "{7341B05D-BCE4-43CC-8A0F-2D7275738866}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskModule.UseCases.Interfaces", "TaskModule.UseCases.Interfaces\TaskModule.UseCases.Interfaces.csproj", "{7341B05D-BCE4-43CC-8A0F-2D7275738866}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskModule.Infrastructure", "TaskModule.Infrastructure\TaskModule.Infrastructure.csproj", "{071E4183-0926-449A-B7F8-825726B5E5E3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskModule.DataAccess.Implementation", "TaskModule.DataAccess.Implementation\TaskModule.DataAccess.Implementation.csproj", "{071E4183-0926-449A-B7F8-825726B5E5E3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskModule.Controllers", "TaskModule.Controllers\TaskModule.Controllers.csproj", "{74C3B55B-80DE-4D26-9348-529125B9F4B1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EventModule", "EventModule", "{5D4CF7E5-4CB6-491B-B4DE-D33ED6B2EA9C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Event.Domain", "Event.Domain\Event.Domain.csproj", "{5F5B2195-774E-405B-8FCA-3208D788B946}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventModule.Domain", "EventModule.Domain\EventModule.Domain.csproj", "{5F5B2195-774E-405B-8FCA-3208D788B946}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Event.Contracts", "Event.Contracts\Event.Contracts.csproj", "{BCAAB656-C22E-44B4-AB01-108F68032F03}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventModule.UseCases.Interfaces", "EventModule.UseCases.Interfaces\EventModule.UseCases.Interfaces.csproj", "{BCAAB656-C22E-44B4-AB01-108F68032F03}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Event.Persistence", "Event.Persistence\Event.Persistence.csproj", "{791EED47-7A68-4758-82DA-9027E3E61F82}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventModule.DataAccess.Interfaces", "EventModule.DataAccess.Interfaces\EventModule.DataAccess.Interfaces.csproj", "{D366A063-963D-4970-8BFA-79775F30BF5A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Event.Infrastructure", "Event.Infrastructure\Event.Infrastructure.csproj", "{D366A063-963D-4970-8BFA-79775F30BF5A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventModule.UseCases.Implementation", "EventModule.UseCases.Implementation\EventModule.UseCases.Implementation.csproj", "{F820F0F3-E32B-44B8-A949-070FE50404D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Event.Application", "Event.Application\Event.Application.csproj", "{F820F0F3-E32B-44B8-A949-070FE50404D9}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Event.Controllers", "Event.Controllers\Event.Controllers.csproj", "{2C1A968A-1318-42FD-B9BA-43F27BC072C0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventModule.Controllers", "EventModule.Controllers\EventModule.Controllers.csproj", "{2C1A968A-1318-42FD-B9BA-43F27BC072C0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4192C247-5D53-4AF0-A3D8-2F2F9CCBAF03}"
 	ProjectSection(SolutionItems) = preProject
 		compose.yaml = compose.yaml
 		docker-compose-dev.yaml = docker-compose-dev.yaml
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthModule.DataAccess.Interfaces", "AuthModule.DataAccess.Interfaces\AuthModule.DataAccess.Interfaces.csproj", "{A1A44B5D-954E-4FD6-90F4-F70151480A40}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared.DataAccess.Interfaces", "Shared.DataAccess.Interfaces\Shared.DataAccess.Interfaces.csproj", "{6FA88C51-64A4-4CD5-8FB9-15FFDDBA63DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventModule.DataAccess.Implementation", "EventModule.DataAccess.Implementation\EventModule.DataAccess.Implementation.csproj", "{7C10C112-C552-4172-809E-9A479BAEAE9A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -200,10 +202,6 @@ Global
 		{AA7E4153-7F6A-4D6B-9DF4-C8FA4F4B78E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AA7E4153-7F6A-4D6B-9DF4-C8FA4F4B78E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AA7E4153-7F6A-4D6B-9DF4-C8FA4F4B78E1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F17EAC15-B0AF-47A9-913E-0C98883E5DA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F17EAC15-B0AF-47A9-913E-0C98883E5DA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F17EAC15-B0AF-47A9-913E-0C98883E5DA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F17EAC15-B0AF-47A9-913E-0C98883E5DA1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6F31E2FD-D14F-410B-9D6F-1D9BE98E7962}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6F31E2FD-D14F-410B-9D6F-1D9BE98E7962}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F31E2FD-D14F-410B-9D6F-1D9BE98E7962}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -300,10 +298,6 @@ Global
 		{BCAAB656-C22E-44B4-AB01-108F68032F03}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BCAAB656-C22E-44B4-AB01-108F68032F03}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BCAAB656-C22E-44B4-AB01-108F68032F03}.Release|Any CPU.Build.0 = Release|Any CPU
-		{791EED47-7A68-4758-82DA-9027E3E61F82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{791EED47-7A68-4758-82DA-9027E3E61F82}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{791EED47-7A68-4758-82DA-9027E3E61F82}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{791EED47-7A68-4758-82DA-9027E3E61F82}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D366A063-963D-4970-8BFA-79775F30BF5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D366A063-963D-4970-8BFA-79775F30BF5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D366A063-963D-4970-8BFA-79775F30BF5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -316,6 +310,18 @@ Global
 		{2C1A968A-1318-42FD-B9BA-43F27BC072C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C1A968A-1318-42FD-B9BA-43F27BC072C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C1A968A-1318-42FD-B9BA-43F27BC072C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1A44B5D-954E-4FD6-90F4-F70151480A40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1A44B5D-954E-4FD6-90F4-F70151480A40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1A44B5D-954E-4FD6-90F4-F70151480A40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1A44B5D-954E-4FD6-90F4-F70151480A40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FA88C51-64A4-4CD5-8FB9-15FFDDBA63DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FA88C51-64A4-4CD5-8FB9-15FFDDBA63DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FA88C51-64A4-4CD5-8FB9-15FFDDBA63DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FA88C51-64A4-4CD5-8FB9-15FFDDBA63DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C10C112-C552-4172-809E-9A479BAEAE9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C10C112-C552-4172-809E-9A479BAEAE9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C10C112-C552-4172-809E-9A479BAEAE9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C10C112-C552-4172-809E-9A479BAEAE9A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{7BA0540E-0B79-418C-9EE9-8C40A7A837E2} = {3564D285-9E3B-4986-9F64-13EC220ECAAF}
@@ -328,7 +334,6 @@ Global
 		{C910F767-2DF6-4880-927A-B537ED45E5A6} = {3564D285-9E3B-4986-9F64-13EC220ECAAF}
 		{F4E1A17F-DBA6-43EC-B49C-2EAE2EF4149E} = {D763A55A-448D-4E9D-ADD2-9BB37CE15CB1}
 		{AA7E4153-7F6A-4D6B-9DF4-C8FA4F4B78E1} = {D763A55A-448D-4E9D-ADD2-9BB37CE15CB1}
-		{F17EAC15-B0AF-47A9-913E-0C98883E5DA1} = {D763A55A-448D-4E9D-ADD2-9BB37CE15CB1}
 		{6F31E2FD-D14F-410B-9D6F-1D9BE98E7962} = {D763A55A-448D-4E9D-ADD2-9BB37CE15CB1}
 		{814A65BE-4B70-4C0D-82D4-E6D807688A14} = {761A1B20-5A1E-4F54-B552-B352014A8A9E}
 		{11840256-2D9E-4439-A9B2-84D04A25D4F5} = {761A1B20-5A1E-4F54-B552-B352014A8A9E}
@@ -369,9 +374,11 @@ Global
 		{5D4CF7E5-4CB6-491B-B4DE-D33ED6B2EA9C} = {3564D285-9E3B-4986-9F64-13EC220ECAAF}
 		{5F5B2195-774E-405B-8FCA-3208D788B946} = {5D4CF7E5-4CB6-491B-B4DE-D33ED6B2EA9C}
 		{BCAAB656-C22E-44B4-AB01-108F68032F03} = {5D4CF7E5-4CB6-491B-B4DE-D33ED6B2EA9C}
-		{791EED47-7A68-4758-82DA-9027E3E61F82} = {5D4CF7E5-4CB6-491B-B4DE-D33ED6B2EA9C}
 		{D366A063-963D-4970-8BFA-79775F30BF5A} = {5D4CF7E5-4CB6-491B-B4DE-D33ED6B2EA9C}
 		{F820F0F3-E32B-44B8-A949-070FE50404D9} = {5D4CF7E5-4CB6-491B-B4DE-D33ED6B2EA9C}
 		{2C1A968A-1318-42FD-B9BA-43F27BC072C0} = {5D4CF7E5-4CB6-491B-B4DE-D33ED6B2EA9C}
+		{A1A44B5D-954E-4FD6-90F4-F70151480A40} = {D763A55A-448D-4E9D-ADD2-9BB37CE15CB1}
+		{6FA88C51-64A4-4CD5-8FB9-15FFDDBA63DE} = {3D5EDEE8-B2EB-461A-AB38-0C6D26D9EAB5}
+		{7C10C112-C552-4172-809E-9A479BAEAE9A} = {5D4CF7E5-4CB6-491B-B4DE-D33ED6B2EA9C}
 	EndGlobalSection
 EndGlobal

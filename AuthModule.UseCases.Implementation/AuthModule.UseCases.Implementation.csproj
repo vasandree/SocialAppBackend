@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="AutoMapper" Version="14.0.0" />
+      <PackageReference Include="MediatR" Version="12.5.0" />
+      <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.6" />
+      <PackageReference Include="Quartz" Version="3.14.0" />
+      <PackageReference Include="Quartz.Extensions.DependencyInjection" Version="3.14.0" />
+      <PackageReference Include="Quartz.Extensions.Hosting" Version="3.14.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\AuthModule.DataAccess.Implementation\AuthModule.DataAccess.Implementation.csproj" />
+      <ProjectReference Include="..\AuthModule.UseCases.Interfaces\AuthModule.UseCases.Interfaces.csproj" />
+      <ProjectReference Include="..\AuthModule.DataAccess.Interfaces\AuthModule.DataAccess.Interfaces.csproj" />
+      <ProjectReference Include="..\Shared.Domain\Shared.Domain.csproj" />
+      <ProjectReference Include="..\SocialNetworkAccountModule.DataAccess.Interfaces\SocialNetworkAccountModule.DataAccess.Interfaces.csproj" />
+      <ProjectReference Include="..\SocialNetworkAccountModule.UseCases.Interfaces\SocialNetworkAccountModule.UseCases.Interfaces.csproj" />
+      <ProjectReference Include="..\UserModule.DataAccess.Interfaces\UserModule.DataAccess.Interfaces.csproj" />
+      <ProjectReference Include="..\UserModule.UseCases.Interfaces\UserModule.UseCases.Interfaces.csproj" />
+    </ItemGroup>
+
+</Project>

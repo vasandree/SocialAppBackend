@@ -1,3 +1,4 @@
+using Shared.DataAccess.Implementation;
 using SocialApp.Api.Extensions;
 using SocialApp.Api.Extensions.AuthPolicy;
 using SocialApp.Api.Extensions.Configurations;
@@ -12,7 +13,7 @@ builder.Services.AddOpenApi();
 
 builder.Services.AddConfigurations(builder.Configuration);
 
-builder.Services.AddGenericRepository();
+builder.Services.AddSharedDataAccess();
 
 builder.Services.AddAuth(builder.Configuration);
 builder.Services.AddLoggingConfiguration();

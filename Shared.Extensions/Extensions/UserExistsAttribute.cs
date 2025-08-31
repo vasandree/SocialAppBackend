@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.DependencyInjection;
-using User.Contracts.Repositories;
+using UserModule.DataAccess.Interfaces.Repositories;
 
 namespace Shared.Extensions.Extensions;
 

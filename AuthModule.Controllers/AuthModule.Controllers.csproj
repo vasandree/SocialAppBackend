@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\AuthModule.UseCases.Implementation\AuthModule.UseCases.Implementation.csproj" />
+      <ProjectReference Include="..\AuthModule.UseCases.Interfaces\AuthModule.UseCases.Interfaces.csproj" />
+      <ProjectReference Include="..\AuthModule.DataAccess.Implementation\AuthModule.DataAccess.Implementation.csproj" />
+      <ProjectReference Include="..\UserModule.UseCases.Interfaces\UserModule.UseCases.Interfaces.csproj" />
+    </ItemGroup>
+
+</Project>

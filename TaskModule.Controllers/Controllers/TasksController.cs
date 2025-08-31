@@ -3,11 +3,11 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Shared.Extensions.Extensions;
-using TaskModule.Contracts.Commands;
-using TaskModule.Contracts.Dtos.Requests;
-using TaskModule.Contracts.Dtos.Responses;
-using TaskModule.Contracts.Queries;
 using TaskModule.Domain.Enums;
+using TaskModule.UseCases.Interfaces.Commands;
+using TaskModule.UseCases.Interfaces.Dtos.Requests;
+using TaskModule.UseCases.Interfaces.Dtos.Responses;
+using TaskModule.UseCases.Interfaces.Queries;
 
 namespace TaskModule.Controllers.Controllers;
 
@@ -15,54 +15,40 @@ namespace TaskModule.Controllers.Controllers;
 [UserExists]
 [ApiController]
 [Route("tasks")]
-public class TasksController : ControllerBase
+public sealed class TasksController(ISender mediator) : ControllerBase
 {
-    private readonly ISender _mediator;
-
-    public TasksController(ISender mediator)
-    {
-        _mediator = mediator;
-    }
-
     [HttpPost]
     public async Task<IActionResult> CreateTask([FromBody] CreateTaskDto createTaskDto)
-    {
-        return Ok(await _mediator.Send(new CreateTaskCommand(User.GetUserId(), createTaskDto)));
-    }
+        => Ok(await mediator.Send(new CreateTaskCommand(User.GetUserId(), createTaskDto)));
+    
 
     [HttpPut]
     [Route("{taskId}")]
     public async Task<IActionResult> EditTask(Guid taskId, CreateTaskDto createTaskDto)
-    {
-        return Ok(await _mediator.Send(new EditTaskCommand(User.GetUserId(), taskId, createTaskDto)));
-    }
+        => Ok(await mediator.Send(new EditTaskCommand(User.GetUserId(), taskId, createTaskDto)));
+    
 
     [HttpDelete]
     [Route("{taskId}")]
     public async Task<IActionResult> DeleteTask(Guid taskId)
-    {
-        return Ok(await _mediator.Send(new DeleteTaskCommand(User.GetUserId(), taskId)));
-    }
+        => Ok(await mediator.Send(new DeleteTaskCommand(User.GetUserId(), taskId)));
+    
 
     [HttpPut]
     [Route("{taskId}/status")]
     public async Task<IActionResult> ChangeStatus(Guid taskId, [FromBody] StatusOfTask status)
-    {
-        return Ok(await _mediator.Send(new ChangeTaskStatusCommand(User.GetUserId(), taskId, status)));
-    }
+        => Ok(await mediator.Send(new ChangeTaskStatusCommand(User.GetUserId(), taskId, status)));
+    
 
     [HttpGet]
     [Route("{taskId}")]
     [ProducesResponseType(typeof(TaskDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetTask(Guid taskId)
-    {
-        return Ok(await _mediator.Send(new GetTaskByIdQuery(User.GetUserId(), taskId)));
-    }
+        => Ok(await mediator.Send(new GetTaskByIdQuery(User.GetUserId(), taskId)));
+    
 
     [HttpGet]
     [ProducesResponseType(typeof(TasksDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetTasks()
-    {
-        return Ok(await _mediator.Send(new GetTasksQuery(User.GetUserId())));
-    }
+        => Ok(await mediator.Send(new GetTasksQuery(User.GetUserId())));
 }

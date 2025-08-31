@@ -1,10 +1,10 @@
-using Auth.Controllers;
-using Event.Controllers;
-using SocialNetworkAccounts.Controllers;
-using SocialNode.Controllers;
+using AuthModule.Controllers;
+using EventModule.Controllers;
+using SocialNetworkAccountModule.Controllers;
+using SocialNodeModule.Controllers;
 using TaskModule.Controllers;
-using User.Controllers;
-using Workspace.Controllers;
+using UserModule.Controllers;
+using WorkspaceModule.Controllers;
 
 namespace SocialApp.Api.Extensions;
 

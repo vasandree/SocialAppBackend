@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="AutoMapper" Version="14.0.0" />
+      <PackageReference Include="MediatR" Version="12.5.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\SocialNetworkAccountModule.UseCases.Interfaces\SocialNetworkAccountModule.UseCases.Interfaces.csproj" />
+      <ProjectReference Include="..\SocialNetworkAccountModule.Domain\SocialNetworkAccountModule.Domain.csproj" />
+      <ProjectReference Include="..\SocialNetworkAccountModule.DataAccess.Interfaces\SocialNetworkAccountModule.DataAccess.Interfaces.csproj" />
+      <ProjectReference Include="..\SocialNodeModule.DataAccess.Interfaces\SocialNodeModule.DataAccess.Interfaces.csproj" />
+      <ProjectReference Include="..\UserModule.DataAccess.Interfaces\UserModule.DataAccess.Interfaces.csproj" />
+      <ProjectReference Include="..\UserModule.UseCases.Interfaces\UserModule.UseCases.Interfaces.csproj" />
+    </ItemGroup>
+
+</Project>

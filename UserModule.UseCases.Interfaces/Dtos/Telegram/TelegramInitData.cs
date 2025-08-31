@@ -1,0 +1,11 @@
+namespace UserModule.UseCases.Interfaces.Dtos.Telegram;
+
+public record TelegramInitData
+{
+    public TelegramUser? User { get; set; }
+    public string? ChatInstance { get; set; }
+    public string? ChatType { get; set; }
+    public long AuthDate { get; set; }
+    public string? Signature { get; set; }
+    public string? Hash { get; set; }
+}

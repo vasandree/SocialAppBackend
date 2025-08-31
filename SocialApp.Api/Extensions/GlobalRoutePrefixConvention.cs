@@ -2,14 +2,9 @@ namespace SocialApp.Api.Extensions;
 
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
 
-public class GlobalRoutePrefixConvention : IApplicationModelConvention
+public class GlobalRoutePrefixConvention(string prefix) : IApplicationModelConvention
 {
-    private readonly AttributeRouteModel _routePrefix;
-
-    public GlobalRoutePrefixConvention(string prefix)
-    {
-        _routePrefix = new AttributeRouteModel(new Microsoft.AspNetCore.Mvc.RouteAttribute(prefix));
-    }
+    private readonly AttributeRouteModel _routePrefix = new(new Microsoft.AspNetCore.Mvc.RouteAttribute(prefix));
 
     public void Apply(ApplicationModel application)
     {

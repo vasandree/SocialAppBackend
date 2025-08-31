@@ -1,9 +1,7 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using TaskModule.Application;
-using TaskModule.Infrastructure;
-using TaskModule.Persistence;
+using TaskModule.UseCases.Implementation;
+using TaskModule.DataAccess.Implementation;
 
 namespace TaskModule.Controllers;
 
@@ -11,13 +9,12 @@ public static class DependencyInjection
 {
     public static void AddTaskModule(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddInfrastructure(configuration);
-        services.AddPersistence();
-        services.AddApplication();
+        services.AddTaskModuleDataAccess(configuration);
+        services.AddTaskModuleUseCases();
     }
 
     public static void UseTaskModule(this IServiceProvider services)
     {
-        services.UseInfrastructure();
+        services.UseTaskModuleDataAccess();
     }
 }

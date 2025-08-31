@@ -2,9 +2,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Shared.Domain;
 
-public class BaseEntity
+public abstract class BaseEntity
 {
     [Key]
-    public Guid Id { get; init; } = Guid.NewGuid();
+    public Guid Id { get; protected init; } = Guid.NewGuid();
     
 }

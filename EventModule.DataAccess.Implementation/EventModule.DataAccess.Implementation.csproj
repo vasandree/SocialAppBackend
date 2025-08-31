@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\EventModule.Domain\EventModule.Domain.csproj" />
+      <ProjectReference Include="..\EventModule.DataAccess.Interfaces\EventModule.DataAccess.Interfaces.csproj" />
+      <ProjectReference Include="..\Shared.DataAccess.Implementation\Shared.DataAccess.Implementation.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.6" />
+    </ItemGroup>
+
+</Project>

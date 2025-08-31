@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Shared.Extensions\Shared.Extensions.csproj" />
+      <ProjectReference Include="..\SocialNetworkAccountModule.DataAccess.Implementation\SocialNetworkAccountModule.DataAccess.Implementation.csproj" />
+      <ProjectReference Include="..\SocialNetworkAccountModule.UseCases.Implementation\SocialNetworkAccountModule.UseCases.Implementation.csproj" />
+      <ProjectReference Include="..\SocialNetworkAccountModule.UseCases.Interfaces\SocialNetworkAccountModule.UseCases.Interfaces.csproj" />
+    </ItemGroup>
+
+</Project>

@@ -8,9 +8,8 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Shared.Extensions\Shared.Extensions.csproj" />
-      <ProjectReference Include="..\TaskModule.Application\TaskModule.Application.csproj" />
-      <ProjectReference Include="..\TaskModule.Infrastructure\TaskModule.Infrastructure.csproj" />
-      <ProjectReference Include="..\TaskModule.Persistence\TaskModule.Persistence.csproj" />
+      <ProjectReference Include="..\TaskModule.UseCases.Implementation\TaskModule.UseCases.Implementation.csproj" />
+      <ProjectReference Include="..\TaskModule.DataAccess.Implementation\TaskModule.DataAccess.Implementation.csproj" />
     </ItemGroup>
 
 </Project>

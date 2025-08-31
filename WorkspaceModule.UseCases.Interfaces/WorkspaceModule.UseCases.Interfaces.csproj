@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\EventModule.UseCases.Interfaces\EventModule.UseCases.Interfaces.csproj" />
+      <ProjectReference Include="..\Shared.Contracts\Shared.Contracts.csproj" />
+      <ProjectReference Include="..\Shared.DataAccess.Interfaces\Shared.DataAccess.Interfaces.csproj" />
+      <ProjectReference Include="..\TaskModule.UseCases.Interfaces\TaskModule.UseCases.Interfaces.csproj" />
+      <ProjectReference Include="..\WorkspaceModule.Domain\WorkspaceModule.Domain.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="MediatR.Contracts" Version="2.0.1" />
+    </ItemGroup>
+
+</Project>

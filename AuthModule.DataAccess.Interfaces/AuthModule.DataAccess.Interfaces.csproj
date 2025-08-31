@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\AuthModule.Domain\AuthModule.Domain.csproj" />
+      <ProjectReference Include="..\Shared.DataAccess.Interfaces\Shared.DataAccess.Interfaces.csproj" />
+    </ItemGroup>
+
+</Project>

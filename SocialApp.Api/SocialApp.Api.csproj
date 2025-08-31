@@ -16,13 +16,13 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Auth.Controllers\Auth.Controllers.csproj" />
-      <ProjectReference Include="..\Event.Controllers\Event.Controllers.csproj" />
-      <ProjectReference Include="..\SocialNetworkAccounts.Controllers\SocialNetworkAccounts.Controllers.csproj" />
-      <ProjectReference Include="..\SocialNode.Controllers\SocialNode.Controllers.csproj" />
+      <ProjectReference Include="..\AuthModule.Controllers\AuthModule.Controllers.csproj" />
+      <ProjectReference Include="..\EventModule.Controllers\EventModule.Controllers.csproj" />
+      <ProjectReference Include="..\SocialNetworkAccountModule.Controllers\SocialNetworkAccountModule.Controllers.csproj" />
+      <ProjectReference Include="..\SocialNodeModule.Controllers\SocialNodeModule.Controllers.csproj" />
       <ProjectReference Include="..\TaskModule.Controllers\TaskModule.Controllers.csproj" />
-      <ProjectReference Include="..\User.Controllers\User.Controllers.csproj" />
-      <ProjectReference Include="..\Workspace.Controllers\Workspace.Controllers.csproj" />
+      <ProjectReference Include="..\UserModule.Controllers\UserModule.Controllers.csproj" />
+      <ProjectReference Include="..\WorkspaceModule.Controllers\WorkspaceModule.Controllers.csproj" />
     </ItemGroup>
 
     <ItemGroup>
