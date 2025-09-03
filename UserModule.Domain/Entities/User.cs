@@ -15,6 +15,19 @@ public class ApplicationUser : BaseEntity
         UserName = username;
         PhotoUrl = photoUrl;
     }
+    
+    public ApplicationUser(string email, string? firstName, string? lastName, string username, string? passwordHash )
+    {
+        Email = email;
+        FirstName = firstName;
+        LastName = lastName;
+        UserName = username;
+        Password = passwordHash;
+    }
+    
+    public string? Email { get; private set; }
+    
+    public string? Password { get; private set; }
 
     public string? FirstName { get; private set; }
 
@@ -24,7 +37,7 @@ public class ApplicationUser : BaseEntity
 
     public string? PhotoUrl { get; private set; }
 
-    public TelegramAccount TelegramAccount { get; private set; } = null!;
+    public TelegramAccount? TelegramAccount { get; private set; } 
 
     public UserSettings UserSettings { get; private set; }
 

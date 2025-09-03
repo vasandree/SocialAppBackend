@@ -7,7 +7,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\UserModule.UseCases.Interfaces\UserModule.UseCases.Interfaces.csproj" />
       <ProjectReference Include="..\UserModule.Domain\UserModule.Domain.csproj" />
     </ItemGroup>
 

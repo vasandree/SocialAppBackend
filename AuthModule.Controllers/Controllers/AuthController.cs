@@ -1,10 +1,10 @@
 using AuthModule.UseCases.Interfaces.Commands;
-using AuthModule.UseCases.Interfaces.Responses;
+using AuthModule.UseCases.Interfaces.Dtos.Requests;
+using AuthModule.UseCases.Interfaces.Dtos.Responses;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Shared.Domain;
-using UserModule.UseCases.Interfaces.Dtos.Requests;
 
 namespace AuthModule.Controllers.Controllers;
 
@@ -22,5 +22,10 @@ public sealed class AuthController(ISender sender) : ControllerBase
     [ProducesResponseType(typeof(TokensDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> Refresh([FromBody] TokensDto tokensDto)
         => Ok(await sender.Send(new RefreshTokensCommand(tokensDto)));
-    
+
+    [HttpPost("register")]
+    [ProducesResponseType(typeof(AuthResponse), StatusCodes.Status200OK)]
+    public async Task<IActionResult> Register([FromBody] RegisterDto registerDto)
+        => Ok(await sender.Send(new RegisterCommand(registerDto)));
+
 }

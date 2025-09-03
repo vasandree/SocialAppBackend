@@ -10,7 +10,7 @@ public static class DependencyInjection
 {
     public static void AddUserModule(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddApplication();
+        services.AddUserModuleUseCases();
         services.AddUserModuleDataAccess(configuration);
     }
 

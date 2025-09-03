@@ -1,5 +1,5 @@
 using AuthModule.UseCases.Interfaces.Commands;
-using AuthModule.UseCases.Interfaces.Responses;
+using AuthModule.UseCases.Interfaces.Dtos.Responses;
 using AutoMapper;
 using MediatR;
 using Shared.Domain;
@@ -10,7 +10,6 @@ using SocialNetworkAccountModule.UseCases.Interfaces.Dtos.Requests;
 using UserModule.DataAccess.Interfaces.Repositories;
 using UserModule.Domain.Entities;
 using UserModule.UseCases.Interfaces.Commands;
-using UserModule.UseCases.Interfaces.Dtos;
 using UserModule.UseCases.Interfaces.Helpers;
 
 namespace AuthModule.UseCases.Implementation.Features.Commands.LoginCommands;
@@ -79,6 +78,10 @@ internal sealed class LoginWithTelegramCommandHandler(
         {
             await transaction.RollbackAsync(cancellationToken);
             throw;
+        }
+        finally
+        {
+            usersAccountRepository.ClearChanges();
         }
     }
 }

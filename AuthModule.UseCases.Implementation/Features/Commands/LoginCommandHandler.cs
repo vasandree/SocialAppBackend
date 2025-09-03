@@ -1,6 +1,6 @@
 using AuthModule.UseCases.Interfaces.Commands;
-using AuthModule.UseCases.Interfaces.Responses;
 using AuthModule.UseCases.Implementation.Features.Commands.LoginCommands.Factory;
+using AuthModule.UseCases.Interfaces.Dtos.Responses;
 using MediatR;
 
 namespace AuthModule.UseCases.Implementation.Features.Commands;

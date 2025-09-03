@@ -1,10 +1,10 @@
+using AuthModule.UseCases.Interfaces.Dtos.Responses;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Shared.Extensions.Extensions;
 using UserModule.UseCases.Interfaces.Commands;
-using UserModule.UseCases.Interfaces.Dtos;
 using UserModule.UseCases.Interfaces.Queries;
 
 namespace UserModule.Controllers.Controllers;

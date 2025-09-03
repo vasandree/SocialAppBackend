@@ -16,6 +16,15 @@ public class UserSettings : BaseEntity
         ChatInstance = chatInstance;
         Theme = Theme.Light;
     }
+
+    public UserSettings(ApplicationUser user)
+    {
+        UserId = user.Id;
+        User = user;
+        Language = Language.En;
+        ChatInstance = null;
+        Theme = Theme.Light;
+    }
     
     public Guid UserId { get; private init; }
     
@@ -25,7 +34,7 @@ public class UserSettings : BaseEntity
     private Language Language {get; set;}
     
     [Required]
-    private string ChatInstance { get; set; }
+    private string? ChatInstance { get; set; }
     
     [Required]
     private Theme Theme {get; set;}

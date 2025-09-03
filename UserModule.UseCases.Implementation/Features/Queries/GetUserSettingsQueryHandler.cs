@@ -1,7 +1,7 @@
+using AuthModule.UseCases.Interfaces.Dtos.Responses;
 using AutoMapper;
 using MediatR;
 using UserModule.DataAccess.Interfaces.Repositories;
-using UserModule.UseCases.Interfaces.Dtos;
 using UserModule.UseCases.Interfaces.Queries;
 
 namespace UserModule.UseCases.Implementation.Features.Queries;

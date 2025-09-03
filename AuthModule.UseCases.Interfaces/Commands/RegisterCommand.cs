@@ -1,8 +1,7 @@
 using AuthModule.UseCases.Interfaces.Dtos.Requests;
 using AuthModule.UseCases.Interfaces.Dtos.Responses;
 using MediatR;
-using Shared.Domain;
 
 namespace AuthModule.UseCases.Interfaces.Commands;
 
-public record LoginCommand(SocialNetwork Type, InitDataDto InitData): IRequest<AuthResponse>;
+public record RegisterCommand(RegisterDto RegisterDto) : IRequest<AuthResponse>;

@@ -4,4 +4,4 @@ using UserModule.Domain.Entities;
 
 namespace UserModule.UseCases.Interfaces.Commands;
 
-public record UpdateTelegramUserCommand(InitDataDto InitData): IRequest<ApplicationUser>;
+public record AddCommonUserCommand(InitDataDto InitDataDto) : IRequest<ApplicationUser>;

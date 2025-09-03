@@ -1,7 +1,7 @@
-using AuthModule.UseCases.Interfaces.Responses;
+using AuthModule.UseCases.Interfaces.Dtos.Requests;
+using AuthModule.UseCases.Interfaces.Dtos.Responses;
 using MediatR;
 using Shared.Domain;
-using UserModule.UseCases.Interfaces.Dtos.Requests;
 
 namespace AuthModule.UseCases.Implementation.Features.Commands.LoginCommands.Factory;
 

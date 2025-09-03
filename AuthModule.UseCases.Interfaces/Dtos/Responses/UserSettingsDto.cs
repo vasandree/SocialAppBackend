@@ -1,6 +1,5 @@
-using System.ComponentModel.DataAnnotations;
 using UserModule.Domain.Enums;
 
-namespace UserModule.UseCases.Interfaces.Dtos;
+namespace AuthModule.UseCases.Interfaces.Dtos.Responses;
 
 public record UserSettingsDto(Theme Theme, Language LanguageCode);

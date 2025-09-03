@@ -8,6 +8,7 @@
 
     <ItemGroup>
       <PackageReference Include="AutoMapper" Version="14.0.0" />
+      <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
       <PackageReference Include="MediatR" Version="12.5.0" />
       <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="9.0.6" />
       <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.6" />
@@ -25,10 +26,6 @@
       <ProjectReference Include="..\SocialNodeModule.UseCases.Interfaces\SocialNodeModule.UseCases.Interfaces.csproj" />
       <ProjectReference Include="..\UserModule.DataAccess.Interfaces\UserModule.DataAccess.Interfaces.csproj" />
       <ProjectReference Include="..\UserModule.UseCases.Interfaces\UserModule.UseCases.Interfaces.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Features\Commands\AddUser\Factory\" />
     </ItemGroup>
 
 </Project>

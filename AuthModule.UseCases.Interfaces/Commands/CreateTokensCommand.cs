@@ -1,4 +1,4 @@
-using AuthModule.UseCases.Interfaces.Responses;
+using AuthModule.UseCases.Interfaces.Dtos.Responses;
 using MediatR;
 using UserModule.Domain.Entities;
 

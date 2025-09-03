@@ -1,6 +1,6 @@
 using AuthModule.UseCases.Interfaces.Commands;
-using AuthModule.UseCases.Interfaces.Responses;
 using AuthModule.DataAccess.Interfaces;
+using AuthModule.UseCases.Interfaces.Dtos.Responses;
 using MediatR;
 using Shared.Domain.Exceptions;
 using UserModule.DataAccess.Interfaces.Repositories;

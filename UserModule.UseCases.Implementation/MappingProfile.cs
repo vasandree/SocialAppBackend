@@ -1,6 +1,6 @@
+using AuthModule.UseCases.Interfaces.Dtos.Responses;
 using AutoMapper;
 using UserModule.Domain.Entities;
-using UserModule.UseCases.Interfaces.Dtos;
 using UserModule.UseCases.Interfaces.Dtos.Responses;
 
 namespace UserModule.UseCases.Implementation;

@@ -1,7 +1,7 @@
 using AuthModule.UseCases.Interfaces.Commands;
-using AuthModule.UseCases.Interfaces.Responses;
 using AuthModule.DataAccess.Interfaces;
 using AuthModule.Domain.Entites;
+using AuthModule.UseCases.Interfaces.Dtos.Responses;
 using MediatR;
 using Microsoft.Extensions.Configuration;
 using Shared.Domain.Exceptions;

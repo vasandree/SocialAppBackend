@@ -1,7 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using Shared.DataAccess.Implementation.Repositories;
-using Shared.Domain.Exceptions;
-using UserModule.DataAccess.Interfaces;
 using UserModule.DataAccess.Interfaces.Repositories;
 using UserModule.Domain.Entities;
 
@@ -9,10 +7,9 @@ namespace UserModule.DataAccess.Implementation.Repositories;
 
 public class UserRepository(UserDbContext context) : BaseEntityRepository<ApplicationUser>(context), IUserRepository
 {
-    public async Task<ApplicationUser> GetByUsernameAsync(string username)
+    public async Task<ApplicationUser?> GetByUsernameAsync(string username)
     {
-        return await DbSet.FirstOrDefaultAsync(x => x.UserName == username) ??
-               throw new NotFound($"User with username={username} does not exist");
+        return await DbSet.FirstOrDefaultAsync(x => x.UserName == username);
     }
 
     public async Task<bool> CheckIfUserExistsByIdAsync(Guid id)
@@ -36,5 +33,10 @@ public class UserRepository(UserDbContext context) : BaseEntityRepository<Applic
             .Include(x => x.UserSettings)
             .Include(x => x.TelegramAccount)
             .FirstOrDefaultAsync(x => x.Id == id) ?? throw new InvalidOperationException();
+    }
+
+    public async Task<ApplicationUser?> GetByEmailAsync(string email)
+    {
+        return await DbSet.FirstOrDefaultAsync(x => x.Email == email);
     }
 }

@@ -1,5 +1,5 @@
+using AuthModule.UseCases.Interfaces.Dtos.Responses;
 using MediatR;
-using UserModule.UseCases.Interfaces.Dtos;
 
 namespace UserModule.UseCases.Interfaces.Queries;
 
