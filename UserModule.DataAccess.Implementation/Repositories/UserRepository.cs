@@ -39,4 +39,9 @@ public class UserRepository(UserDbContext context) : BaseEntityRepository<Applic
     {
         return await DbSet.FirstOrDefaultAsync(x => x.Email == email);
     }
+
+    public Task<bool> CheckIfUserExistsByEmailAsync(string email)
+    {
+        return DbSet.AnyAsync(x => x.Email == email);
+    }
 }

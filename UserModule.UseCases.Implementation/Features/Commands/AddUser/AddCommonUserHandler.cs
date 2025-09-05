@@ -21,10 +21,13 @@ public class AddCommonUserHandler(ISender sender, IUserRepository userRepository
         try
         {
             var dto = JsonSerializer.Deserialize<RegisterDto>(request.InitDataDto.InitData)
-                      ?? throw new Exception("Не удалось десериализовать RegisterDto");
+                      ?? throw new Exception("Failed to deserialize RegisterDto");
 
-            var byUsernameAsync = userRepository.GetByUsernameAsync(dto.Username);
-            if (byUsernameAsync != null) throw new BadRequest("User with this username already exists");
+            if (await userRepository.CheckIfUserExistsByEmailAsync(dto.Email))
+                throw new Conflict("User with this email already exists");
+            
+            if (await userRepository.CheckIfUserExistsByUsernameAsync(dto.Username))
+                throw new Conflict("User with this username already exists");
 
             var user = new ApplicationUser(dto.Email, dto.FirstName, dto.LastName,
                 dto.Username, BCrypt.Net.BCrypt.HashPassword(dto.Password));
@@ -42,7 +45,7 @@ public class AddCommonUserHandler(ISender sender, IUserRepository userRepository
                 cancellationToken);
 
             await userRepository.SaveChangesAsync(cancellationToken);
-            
+
             await transaction.CommitAsync(cancellationToken);
 
             return user;

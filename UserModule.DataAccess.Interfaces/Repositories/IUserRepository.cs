@@ -10,4 +10,5 @@ public interface IUserRepository : IBaseEntityRepository<ApplicationUser>
     IQueryable<ApplicationUser> GetAllUsers();
     new Task<ApplicationUser> GetByIdAsync(Guid id);
     Task<ApplicationUser?> GetByEmailAsync(string email);
+    Task<bool> CheckIfUserExistsByEmailAsync(string email);
 }
