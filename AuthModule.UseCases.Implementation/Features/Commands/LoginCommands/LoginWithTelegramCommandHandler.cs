@@ -69,10 +69,12 @@ internal sealed class LoginWithTelegramCommandHandler(
 
             var tokens = await mediator.Send(new CreateTokensCommand(user), cancellationToken);
 
+            var settings = await userSettingsRepository.GetByUserIdAsync(user.Id);
+            
             await transaction.CommitAsync(cancellationToken);
 
             return new AuthResponse(tokens,
-                mapper.Map<UserSettingsDto>(await userSettingsRepository.GetByUserIdAsync(user.Id)));
+                mapper.Map<UserSettingsDto>(settings));
         }
         catch
         {

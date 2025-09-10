@@ -13,10 +13,11 @@ internal sealed class EditUserSettingsCommandHandler(IMapper mapper, IUserSettin
     {
         var settings = await userSettingsRepository.GetByUserIdAsync(request.UserId);
 
-        settings.UpdateSettings(request.Settings.LanguageCode, request.Settings.Theme);
+        settings.UpdateSettings(request.Settings.LanguageCode, request.Settings.Theme,
+            request.Settings.TaskReminders, request.Settings.EventReminders);
 
         await userSettingsRepository.SaveChangesAsync(cancellationToken);
-        
+
         return mapper.Map<UserSettingsDto>(settings);
     }
 }

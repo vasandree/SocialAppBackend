@@ -14,9 +14,9 @@ public sealed class AuthController(ISender sender) : ControllerBase
 {
     [HttpPost("login")]
     [ProducesResponseType(typeof(AuthResponse), StatusCodes.Status200OK)]
-    public async Task<IActionResult> Login([FromBody] InitDataDto initData, [FromQuery] SocialNetwork socialNetwork) 
+    public async Task<IActionResult> Login([FromBody] InitDataDto initData, [FromQuery] SocialNetwork socialNetwork)
         => Ok(await sender.Send(new LoginCommand(socialNetwork, initData)));
-    
+
 
     [HttpPost("refresh")]
     [ProducesResponseType(typeof(TokensDto), StatusCodes.Status200OK)]
@@ -27,5 +27,4 @@ public sealed class AuthController(ISender sender) : ControllerBase
     [ProducesResponseType(typeof(AuthResponse), StatusCodes.Status200OK)]
     public async Task<IActionResult> Register([FromBody] RegisterDto registerDto)
         => Ok(await sender.Send(new RegisterCommand(registerDto)));
-
 }

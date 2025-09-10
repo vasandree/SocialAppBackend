@@ -30,7 +30,11 @@ internal sealed class GetWorkspaceQueryHandler(
         var tasks = await taskRepository.FindAsync(x => x.WorkspaceId == workspace.Id);
         var events = await eventRepository.FindAsync(x => x.WorkspaceId == workspace.Id);
 
-        return new WorkspaceResponseDto(mapper.Map<WorkspaceInfoDto>(workspace), mapper.Map<TasksDto>(tasks),
-            mapper.Map<IReadOnlyList<ListedEventDto>>(events));
+        return new WorkspaceResponseDto
+        {
+            Info = mapper.Map<WorkspaceInfoDto>(workspace),
+            Tasks = mapper.Map<TasksDto>(tasks),
+            Events = mapper.Map<IReadOnlyList<ListedEventDto>>(events)
+        };
     }
 }
