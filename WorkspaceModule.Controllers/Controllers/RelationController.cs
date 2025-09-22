@@ -14,10 +14,9 @@ namespace WorkspaceModule.Controllers.Controllers;
 [UserExists]
 [Authorize]
 [ApiController]
-[Route("relations")]
 public sealed class RelationController(ISender sender) : ControllerBase
 {
-    [HttpGet, Route("{id:guid}")]
+    [HttpGet, Route("relations/{id:guid}")]
     [ProducesResponseType(typeof(RelationDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetRelation(Guid id)
         => Ok(await sender.Send(new GetRelationQuery(User.GetUserId(), id)));
@@ -29,20 +28,20 @@ public sealed class RelationController(ISender sender) : ControllerBase
         => Ok(await sender.Send(new GetRelationsBySocialNodeQuery(User.GetUserId(), id, type)));
     
 
-    [HttpPost]
+    [HttpPost, Route("relations")]
     [ProducesResponseType(typeof(RelationDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> CreateRelation([FromBody] CreateRelationDto dto)
     {
         return Ok(await sender.Send(new CreateRelationCommand(User.GetUserId(), dto)));
     }
 
-    [HttpPut, Route("{id:guid}")]
+    [HttpPut, Route("relations/{id:guid}")]
     [ProducesResponseType(typeof(RelationDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> UpdateRelation(Guid id, [FromBody] EditRelationDto dto)
         => Ok(await sender.Send(new UpdateRelationCommand(User.GetUserId(), id, dto)));
     
 
-    [HttpDelete, Route("{id:guid}")]
+    [HttpDelete, Route("relations/{id:guid}")]
     public async Task<IActionResult> DeleteRelation(Guid id)
         => Ok(await sender.Send(new DeleteRelationCommand(User.GetUserId(), id)));
     

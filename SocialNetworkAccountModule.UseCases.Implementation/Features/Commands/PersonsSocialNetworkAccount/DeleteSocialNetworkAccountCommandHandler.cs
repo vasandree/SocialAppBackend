@@ -21,6 +21,8 @@ internal sealed class DeleteSocialNetworkAccountCommandHandler(
 
         if (account != null) personsAccountRepository.DeleteAsync(account);
 
+        await personsAccountRepository.SaveChangesAsync(cancellationToken);
+        
         return Unit.Value;
     }
 }

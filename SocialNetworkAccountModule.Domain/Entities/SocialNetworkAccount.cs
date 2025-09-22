@@ -5,11 +5,11 @@ namespace SocialNetworkAccountModule.Domain.Entities;
 
 public class SocialNetworkAccount : CreatableEntity
 {
-    [Required] private string Username { get; set; }
+    [Required] public string Username { get; private set; }
 
     [Required]
     [EnumDataType(typeof(SocialNetwork))]
-    public SocialNetwork Type { get; init; }
+    public SocialNetwork Type { get; protected init; }
     
     public void UpdateUsername(string username) => Username = username;
 }
