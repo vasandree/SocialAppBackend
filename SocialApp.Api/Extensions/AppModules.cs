@@ -5,6 +5,7 @@ using SocialNodeModule.Controllers;
 using TaskModule.Controllers;
 using UserModule.Controllers;
 using WorkspaceModule.Controllers;
+using NotificationModule.Controllers;
 
 namespace SocialApp.Api.Extensions;
 
@@ -12,6 +13,7 @@ public static class AppModules
 {
     public static void AddAppModules(this IServiceCollection services, IConfiguration configuration)
     {
+        services.AddNotificationModule(configuration);
         services.AddUserModule(configuration);
         services.AddAuthModule(configuration);
         services.AddSocialNetworkAccountsModule(configuration);
@@ -23,6 +25,7 @@ public static class AppModules
 
     public static async Task UseAppModules(this IServiceProvider services)
     {
+        services.UseNotificationModule();
         services.UseUserModule();
         services.UseAuthModule();
         await services.UseSocialNetworkAccountsModule();

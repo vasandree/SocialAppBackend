@@ -8,13 +8,16 @@
 
     <ItemGroup>
       <PackageReference Include="AutoMapper" Version="14.0.0" />
-      <PackageReference Include="MediatR" Version="12.5.0" />
+      <PackageReference Include="MediatR" Version="13.0.0" />
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\NotificationModule.DataAccess.Implementation\NotificationModule.DataAccess.Implementation.csproj" />
+      <ProjectReference Include="..\NotificationModule.Domain\NotificationModule.Domain.csproj" />
       <ProjectReference Include="..\Shared.DataAccess.Implementation\Shared.DataAccess.Implementation.csproj" />
       <ProjectReference Include="..\TaskModule.DataAccess.Interfaces\TaskModule.DataAccess.Interfaces.csproj" />
       <ProjectReference Include="..\TaskModule.UseCases.Interfaces\TaskModule.UseCases.Interfaces.csproj" />
+      <ProjectReference Include="..\UserModule.DataAccess.Interfaces\UserModule.DataAccess.Interfaces.csproj" />
       <ProjectReference Include="..\WorkspaceModule.DataAccess.Interfaces\WorkspaceModule.DataAccess.Interfaces.csproj" />
       <ProjectReference Include="..\WorkspaceModule.UseCases.Interfaces\WorkspaceModule.UseCases.Interfaces.csproj" />
     </ItemGroup>

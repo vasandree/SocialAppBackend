@@ -29,7 +29,7 @@ public sealed class WorkspaceController(ISender sender) : ControllerBase
 
 
     [HttpPost]
-    public async Task<IActionResult> CreateWorkspace([FromBody] ShortenWorkspaceDto dto)
+    public async Task<IActionResult> CreateWorkspace([FromBody] UpdateWorkspaceDto dto)
     {
         var id = await sender.Send(new CreateWorkspaceCommand(User.GetUserId(), dto));
         return Ok(new { WorkspaceId = id });
@@ -37,7 +37,7 @@ public sealed class WorkspaceController(ISender sender) : ControllerBase
 
     [HttpPut("{id}")]
     [ProducesResponseType(typeof(ListedWorkspaceDto), StatusCodes.Status200OK)]
-    public async Task<IActionResult> UpdateWorkspace(Guid id, [FromBody] ShortenWorkspaceDto dto)
+    public async Task<IActionResult> UpdateWorkspace(Guid id, [FromBody] UpdateWorkspaceDto dto)
         => Ok(await sender.Send(new EditWorkspaceCommand(User.GetUserId(), id, dto)));
 
 

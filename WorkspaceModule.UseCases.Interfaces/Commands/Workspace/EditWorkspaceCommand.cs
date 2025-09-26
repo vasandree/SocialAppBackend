@@ -4,5 +4,5 @@ using WorkspaceModule.UseCases.Interfaces.Dtos.Responses;
 
 namespace WorkspaceModule.UseCases.Interfaces.Commands.Workspace;
 
-public record EditWorkspaceCommand(Guid UserId, Guid WorkspaceId, ShortenWorkspaceDto WorkspaceRequestDto)
+public record EditWorkspaceCommand(Guid UserId, Guid WorkspaceId, UpdateWorkspaceDto WorkspaceRequestDto)
     : IRequest<ListedWorkspaceDto>;

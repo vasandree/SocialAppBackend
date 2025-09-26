@@ -10,15 +10,16 @@ public class UserSettings : BaseEntity
     {
     }
 
-    public UserSettings(ApplicationUser user, Language language, string? chatInstance)
+    public UserSettings(ApplicationUser user, Language language, long chatInstance, string timeZoneId = "UTC")
     {
         UserId = user.Id;
         User = user;
         Language = language;
-        ChatInstance = chatInstance;
+        ChatInstance = chatInstance.ToString();
         Theme = Theme.Light;
         TaskNotifications = true;
         EventNotifications = true;
+        TimeZoneId = timeZoneId;
     }
 
     public UserSettings(ApplicationUser user)
@@ -30,6 +31,7 @@ public class UserSettings : BaseEntity
         Theme = Theme.Light;
         TaskNotifications = true;
         EventNotifications = true;
+        TimeZoneId = "UTC";
     }
 
     public Guid UserId { get; private init; }
@@ -38,18 +40,21 @@ public class UserSettings : BaseEntity
 
     [Required] public Language Language { get; private set; }
 
-    [Required] private string? ChatInstance { get; set; }
+    [Required] public string? ChatInstance { get; private set; }
 
     [Required] public Theme Theme { get; private set; }
 
     public bool TaskNotifications { get; private set; }
     public bool EventNotifications { get; private set; }
 
-    public void UpdateSettings(Language language, Theme theme, bool taskNotifications, bool eventNotifications)
+    [Required] public string TimeZoneId { get; private set; } = "UTC";
+
+    public void UpdateSettings(Language language, Theme theme, bool taskNotifications, bool eventNotifications, string timeZoneId)
     {
         Language = language;
         Theme = theme;
         TaskNotifications = taskNotifications;
         EventNotifications = eventNotifications;
+        TimeZoneId = timeZoneId;
     }
 }

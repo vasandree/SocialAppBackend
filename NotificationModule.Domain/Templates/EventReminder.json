@@ -1,0 +1,15 @@
+{
+  "type": "EventReminder",
+  "localizations": [
+    {
+      "language": "en",
+      "title": "Event Reminder",
+      "body": "📅 Hi, {{UserName}}! \nYou have an upcoming event: \"{{Name}}\".\nStarts at: {{LocalStart}}\nEnds at: {{LocalEnd}}\nDon’t forget to add it to your calendar!"
+    },
+    {
+      "language": "ru",
+      "title": "Напоминание о событии",
+      "body": "📅 Привет, {{UserName}}! \nУ тебя скоро событие: «{{Name}}».\nНачало: {{LocalStart}}\nОкончание: {{LocalEnd}}\nНе забудь добавить его в календарь!"
+    }
+  ]
+}

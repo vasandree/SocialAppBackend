@@ -1,5 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+#
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserModule.Domain", "UserModule.Domain\UserModule.Domain.csproj", "{46D2791E-FB16-459D-B390-D596190B2E08}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserModule.DataAccess.Interfaces", "UserModule.DataAccess.Interfaces\UserModule.DataAccess.Interfaces.csproj", "{DA4F3337-D5A7-407E-B91E-8EB458218C57}"
@@ -47,8 +48,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WorkspaceModule", "WorkspaceModule", "{B4A3E744-5264-403E-88AE-CF6FC252734C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NotificationModule", "NotificationModule", "{277F0494-B8AE-444B-BE9B-A8A463DC52B9}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SubscriptionModule", "SubscriptionModule", "{C910F767-2DF6-4880-927A-B537ED45E5A6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthModule.UseCases.Implementation", "AuthModule.UseCases.Implementation\AuthModule.UseCases.Implementation.csproj", "{F4E1A17F-DBA6-43EC-B49C-2EAE2EF4149E}"
 EndProject
@@ -128,15 +127,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotificationModule.Domain",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotificationModule.DataAccess.Interfaces", "NotificationModule.DataAccess.Interfaces\NotificationModule.DataAccess.Interfaces.csproj", "{39863308-37AE-4B64-A645-2F5CD48DD3BC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotificationModule.Implementation", "NotificationModule.Implementation\NotificationModule.Implementation.csproj", "{997A83E8-ECA2-42C6-823D-E14FD08B688A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotificationModule.Controllers", "NotificationModule.Controllers\NotificationModule.Controllers.csproj", "{997A83E8-ECA2-42C6-823D-E14FD08B688A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotificationModule.BackgroundJobs", "NotificationModule.BackgroundJobs\NotificationModule.BackgroundJobs.csproj", "{01B89FBB-6545-4B9A-9F30-4ADEB3DD21FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotificationModule.Controllers", "NotificationModule.Controllers\NotificationModule.Controllers.csproj", "{75397527-3502-430B-A483-E0516C4024B5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotificationModule.DataAccess.Implementation", "NotificationModule.DataAccess.Implementation\NotificationModule.DataAccess.Implementation.csproj", "{75397527-3502-430B-A483-E0516C4024B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotificationModule.UseCases.Interfaces", "NotificationModule.UseCases.Interfaces\NotificationModule.UseCases.Interfaces.csproj", "{54CA4AF9-5F11-4C66-915B-662D6F650641}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotificationModule.HttpClient.Implementation", "NotificationModule.HttpClient.Implementation\NotificationModule.HttpClient.Implementation.csproj", "{8EA563D5-AEE1-4B9D-B5F2-8512AE8A78C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotificationModule.UseCases.Implementation", "NotificationModule.UseCases.Implementation\NotificationModule.UseCases.Implementation.csproj", "{61377574-A781-4FA6-83C0-D206A52AE40E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotificationModule.HttpClient.Interfaces", "NotificationModule.HttpClient.Interfaces\NotificationModule.HttpClient.Interfaces.csproj", "{44F7F424-F956-411B-8432-511A6935CA64}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -356,14 +355,14 @@ Global
 		{75397527-3502-430B-A483-E0516C4024B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75397527-3502-430B-A483-E0516C4024B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75397527-3502-430B-A483-E0516C4024B5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{54CA4AF9-5F11-4C66-915B-662D6F650641}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{54CA4AF9-5F11-4C66-915B-662D6F650641}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{54CA4AF9-5F11-4C66-915B-662D6F650641}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{54CA4AF9-5F11-4C66-915B-662D6F650641}.Release|Any CPU.Build.0 = Release|Any CPU
-		{61377574-A781-4FA6-83C0-D206A52AE40E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{61377574-A781-4FA6-83C0-D206A52AE40E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{61377574-A781-4FA6-83C0-D206A52AE40E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{61377574-A781-4FA6-83C0-D206A52AE40E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EA563D5-AEE1-4B9D-B5F2-8512AE8A78C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EA563D5-AEE1-4B9D-B5F2-8512AE8A78C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EA563D5-AEE1-4B9D-B5F2-8512AE8A78C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EA563D5-AEE1-4B9D-B5F2-8512AE8A78C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44F7F424-F956-411B-8432-511A6935CA64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44F7F424-F956-411B-8432-511A6935CA64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44F7F424-F956-411B-8432-511A6935CA64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44F7F424-F956-411B-8432-511A6935CA64}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{7BA0540E-0B79-418C-9EE9-8C40A7A837E2} = {3564D285-9E3B-4986-9F64-13EC220ECAAF}
@@ -373,7 +372,6 @@ Global
 		{D115A6B7-6399-49C3-B271-95FFE8D14B93} = {3564D285-9E3B-4986-9F64-13EC220ECAAF}
 		{B4A3E744-5264-403E-88AE-CF6FC252734C} = {3564D285-9E3B-4986-9F64-13EC220ECAAF}
 		{277F0494-B8AE-444B-BE9B-A8A463DC52B9} = {3564D285-9E3B-4986-9F64-13EC220ECAAF}
-		{C910F767-2DF6-4880-927A-B537ED45E5A6} = {3564D285-9E3B-4986-9F64-13EC220ECAAF}
 		{F4E1A17F-DBA6-43EC-B49C-2EAE2EF4149E} = {D763A55A-448D-4E9D-ADD2-9BB37CE15CB1}
 		{AA7E4153-7F6A-4D6B-9DF4-C8FA4F4B78E1} = {D763A55A-448D-4E9D-ADD2-9BB37CE15CB1}
 		{6F31E2FD-D14F-410B-9D6F-1D9BE98E7962} = {D763A55A-448D-4E9D-ADD2-9BB37CE15CB1}
@@ -427,7 +425,7 @@ Global
 		{997A83E8-ECA2-42C6-823D-E14FD08B688A} = {277F0494-B8AE-444B-BE9B-A8A463DC52B9}
 		{01B89FBB-6545-4B9A-9F30-4ADEB3DD21FA} = {277F0494-B8AE-444B-BE9B-A8A463DC52B9}
 		{75397527-3502-430B-A483-E0516C4024B5} = {277F0494-B8AE-444B-BE9B-A8A463DC52B9}
-		{54CA4AF9-5F11-4C66-915B-662D6F650641} = {277F0494-B8AE-444B-BE9B-A8A463DC52B9}
-		{61377574-A781-4FA6-83C0-D206A52AE40E} = {277F0494-B8AE-444B-BE9B-A8A463DC52B9}
+		{8EA563D5-AEE1-4B9D-B5F2-8512AE8A78C7} = {277F0494-B8AE-444B-BE9B-A8A463DC52B9}
+		{44F7F424-F956-411B-8432-511A6935CA64} = {277F0494-B8AE-444B-BE9B-A8A463DC52B9}
 	EndGlobalSection
 EndGlobal

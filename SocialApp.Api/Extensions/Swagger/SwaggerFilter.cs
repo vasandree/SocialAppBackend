@@ -31,6 +31,6 @@ public  class SwaggerFilter : IOperationFilter
             }
         };
         operation.Security = new List<OpenApiSecurityRequirement> { securityRequirement };
-        operation.Responses.Add("401", new OpenApiResponse { Description = "Unauthorized" });
+        operation.Responses?.Add("401", new OpenApiResponse { Description = "Unauthorized" });
     }
 }

@@ -1,5 +1,4 @@
 using Microsoft.OpenApi.Models;
-using SocialApp.Api.Extensions.Configurations;
 
 namespace SocialApp.Api.Extensions.Swagger;
 

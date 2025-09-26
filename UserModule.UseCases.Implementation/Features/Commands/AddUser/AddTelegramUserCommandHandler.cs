@@ -36,7 +36,7 @@ internal sealed class AddTelegramUserCommandHandler(
                 parsedTelegramData.User.Photo_Url, user);
 
             var userSettings = new UserSettings(user, telegramHelper.GetLanguage(parsedTelegramData.User.Language_Code),
-                parsedTelegramData.ChatInstance);
+                user.TelegramAccount!.Id);
 
             user.AddTelegramAccount(telegramAccount);
             user.AddSettings(userSettings);

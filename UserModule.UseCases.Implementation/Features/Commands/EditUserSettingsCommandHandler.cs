@@ -13,8 +13,13 @@ internal sealed class EditUserSettingsCommandHandler(IMapper mapper, IUserSettin
     {
         var settings = await userSettingsRepository.GetByUserIdAsync(request.UserId);
 
-        settings.UpdateSettings(request.Settings.LanguageCode, request.Settings.Theme,
-            request.Settings.TaskReminders, request.Settings.EventReminders);
+        // Сохраняем текущий TimeZoneId, т.к. DTO его пока не содержит
+        settings.UpdateSettings(
+            request.Settings.LanguageCode,
+            request.Settings.Theme,
+            request.Settings.TaskReminders,
+            request.Settings.EventReminders,
+            settings.TimeZoneId);
 
         await userSettingsRepository.SaveChangesAsync(cancellationToken);
 

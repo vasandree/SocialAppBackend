@@ -17,7 +17,7 @@ namespace UserModule.DataAccess.Implementation.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "9.0.6")
+                .HasAnnotation("ProductVersion", "9.0.9")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -81,6 +81,10 @@ namespace UserModule.DataAccess.Implementation.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
+                    b.Property<string>("ChatInstance")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<bool>("EventNotifications")
                         .HasColumnType("boolean");
 
@@ -92,6 +96,10 @@ namespace UserModule.DataAccess.Implementation.Migrations
 
                     b.Property<int>("Theme")
                         .HasColumnType("integer");
+
+                    b.Property<string>("TimeZoneId")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<Guid>("UserId")
                         .HasColumnType("uuid");

@@ -6,4 +6,9 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\NotificationModule.Domain\NotificationModule.Domain.csproj" />
+      <ProjectReference Include="..\Shared.DataAccess.Interfaces\Shared.DataAccess.Interfaces.csproj" />
+    </ItemGroup>
+
 </Project>

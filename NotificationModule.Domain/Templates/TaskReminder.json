@@ -1,0 +1,16 @@
+{
+  "type": "TaskReminder",
+  "localizations": [
+    {
+      "language": "en",
+      "title": "Task Reminder",
+      "body": "🔔 Hello, {{UserName}}! \nYou have a new task assigned: \"{{Name}}\".\nDeadline: {{LocalEnd}}.\nPlease review it and complete it on time."
+    },
+    {
+      "language": "ru",
+      "title": "Напоминание о задаче",
+      "body": "🔔 Привет, {{UserName}}! \nУ тебя назначена новая задача: «{{Name}}».\nСрок выполнения: {{LocalEnd}}.\nНе забудь выполнить её вовремя."
+    }
+  ]
+}
+

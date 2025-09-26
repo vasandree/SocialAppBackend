@@ -6,6 +6,11 @@ using Shared.Domain.Exceptions;
 using SocialNodeModule.DataAccess.Interfaces.Repositories;
 using SocialNodeModule.Domain.Entities;
 using WorkspaceModule.DataAccess.Interfaces.Repositories;
+using NotificationModule.Domain;
+using NotificationModule.DataAccess.Implementation;
+using System.Text.Json;
+using Microsoft.EntityFrameworkCore;
+using UserModule.DataAccess.Interfaces.Repositories;
 
 namespace EventModule.UseCases.Implementation.Features.Commands.Event;
 
@@ -13,7 +18,9 @@ internal sealed class CreateEventCommandHandler(
     IEventEntityRepository eventRepository,
     IBaseSocialNodeRepository<BaseSocialNode> nodeRepository,
     IEventTypeRepository eventTypeRepository,
-    IWorkspaceEntityRepository workspaceRepository)
+    IWorkspaceEntityRepository workspaceRepository,
+    NotificationDbContext notificationDbContext,
+    IUserSettingsRepository userSettingsRepository)
     : IRequestHandler<CreateEventCommand, Unit>
 {
     public async Task<Unit> Handle(CreateEventCommand request, CancellationToken cancellationToken)
@@ -54,10 +61,29 @@ internal sealed class CreateEventCommandHandler(
             eventEntity.AddEventType(eventType);
         }
         
+        var userSettings = await userSettingsRepository.GetQueryableAsync().FirstOrDefaultAsync(x => x.UserId == request.UserId, cancellationToken);
+        
         await eventRepository.AddAsync(eventEntity);
 
-        await eventRepository.SaveChangesAsync(cancellationToken);
+        var timeZoneId = userSettings?.TimeZoneId ?? TimeZoneInfo.Utc.Id;
+        var scheduledAtUtc = OutboxUtils.GetScheduledUtcForReminder(request.CreateEventDto.Date, timeZoneId);
+        
+        var payloadObj = new {
+            EventId = eventEntity.Id,
+            TimeZoneId = timeZoneId
+        };
+        var payload = JsonSerializer.Serialize(payloadObj);
 
+        var outbox = new OutboxMessage {
+            Type = OutboxMessageType.EventReminder,
+            Payload = payload,
+            ScheduledAtUtc = scheduledAtUtc,
+            Processed = false,
+            UserId = request.UserId
+        };
+        await notificationDbContext.OutboxMessages.AddAsync(outbox, cancellationToken);
+        await eventRepository.SaveChangesAsync(cancellationToken);
+        await notificationDbContext.SaveChangesAsync(cancellationToken);
         return Unit.Value;
     }
 }
