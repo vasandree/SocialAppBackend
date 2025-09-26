@@ -12,7 +12,7 @@ public static class DependencyInjection
     {
         services.AddDataAccessImplementationServices(configuration);
         services.AddNotificationModuleBackgroundJobs(configuration);
-        services.AddNotificationHttpClient(configuration);
+        services.AddNotificationHttpClient();
     }
     
     public static void UseNotificationModule(this IServiceProvider services)

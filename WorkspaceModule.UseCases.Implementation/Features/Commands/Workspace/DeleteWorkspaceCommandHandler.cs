@@ -13,7 +13,7 @@ internal sealed class DeleteWorkspaceCommandHandler(ISender mediator, IWorkspace
     public async Task<Unit> Handle(DeleteWorkspaceCommand request, CancellationToken cancellationToken)
     {
         await using var transaction =
-            await workspaceRepository.GetDbContext().Database.BeginTransactionAsync(cancellationToken);
+            await workspaceRepository.BeginTransactionAsync(cancellationToken);
 
         try
         {

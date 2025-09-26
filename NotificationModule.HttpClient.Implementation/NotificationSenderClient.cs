@@ -9,7 +9,7 @@ using UserModule.Domain.Entities;
 
 namespace NotificationModule.HttpClient.Implementation;
 
-internal class NotificationSenderClient(
+internal sealed class NotificationSenderClient(
     System.Net.Http.HttpClient httpClient,
     IOptions<NotificationHttpConfig> options,
     IConfiguration configuration)

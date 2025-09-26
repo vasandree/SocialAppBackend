@@ -18,7 +18,7 @@ internal sealed class RefreshTokensCommandHandler(
     public async Task<TokensDto> Handle(RefreshTokensCommand request, CancellationToken cancellationToken)
     {
         await using var transaction =
-            await userRepository.GetDbContext().Database.BeginTransactionAsync(cancellationToken);
+            await userRepository.BeginTransactionAsync(cancellationToken);
 
         try
         {

@@ -1,5 +1,6 @@
 using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 using Shared.DataAccess.Interfaces;
 
 namespace Shared.DataAccess.Implementation.Repositories;
@@ -18,12 +19,14 @@ public class GenericRepository<T>(CommonDbContext context) : IGenericRepository<
 
     public async Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> predicate) => await DbSet.AsNoTracking().Where(predicate).ToListAsync();
 
-    public void RemoveRangeAsync(IEnumerable<T> entities) => DbSet.RemoveRange(entities); 
+    public void RemoveRange(IEnumerable<T> entities) => DbSet.RemoveRange(entities); 
 
     public IQueryable<T> GetQueryableAsync() => DbSet.AsNoTracking().AsQueryable();
     
     public Task<int> SaveChangesAsync(CancellationToken cancellationToken) => Context.SaveChangesAsync(cancellationToken);
     
-    public DbContext GetDbContext() => Context;
+    public async Task<IDbContextTransaction> BeginTransactionAsync(CancellationToken cancellationToken)
+        => await Context.Database.BeginTransactionAsync(cancellationToken);
+
     public void ClearChanges() => Context.ClearChanges();
 }

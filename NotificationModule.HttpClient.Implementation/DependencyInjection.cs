@@ -1,5 +1,4 @@
 using System.Net;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using NotificationModule.HttpClient.Interfaces;
@@ -12,27 +11,33 @@ namespace NotificationModule.HttpClient.Implementation;
 
 public static class DependencyInjection
 {
-    public static void AddNotificationHttpClient(this IServiceCollection services, IConfiguration configuration)
+    public static void AddNotificationHttpClient(this IServiceCollection services)
     {
         services.AddHttpClient<INotificationSenderClient, NotificationSenderClient>("NotificationSender",
                 (sp, client) =>
                 {
-                    var cfg = sp.GetRequiredService<IOptions<NotificationHttpConfig>>().Value;
-                    if (!string.IsNullOrWhiteSpace(cfg.BaseUrl))
+                    var httpConfig = sp.GetRequiredService<IOptions<NotificationHttpConfig>>().Value;
+
+                    if (!string.IsNullOrWhiteSpace(httpConfig.BaseUrl))
                     {
-                        client.BaseAddress = new Uri(cfg.BaseUrl);
+                        client.BaseAddress = new Uri(httpConfig.BaseUrl);
                     }
-                    client.Timeout = TimeSpan.FromSeconds(Math.Max(1, cfg.TimeoutSeconds));
+
+                    client.Timeout = TimeSpan.FromSeconds(Math.Max(1, httpConfig.TimeoutSeconds));
                 })
-            .AddResilienceHandler("notification-pipeline", builder =>
+            .AddResilienceHandler("notification-pipeline", (builder, context) =>
             {
-                // 🔹 Retry с экспонентой + джиттер
+                var resilience = context.ServiceProvider
+                    .GetRequiredService<IOptions<NotificationResilienceConfig>>().Value;
+
                 builder.AddRetry(new RetryStrategyOptions<HttpResponseMessage>
                 {
-                    MaxRetryAttempts = 5,
-                    Delay = TimeSpan.FromMilliseconds(200),
-                    BackoffType = DelayBackoffType.Exponential,
-                    UseJitter = true,
+                    MaxRetryAttempts = resilience.MaxRetryAttempts,
+                    Delay = TimeSpan.FromMilliseconds(resilience.RetryDelayMilliseconds),
+                    BackoffType = resilience.RetryBackoffType == "Exponential"
+                        ? DelayBackoffType.Exponential
+                        : DelayBackoffType.Constant,
+                    UseJitter = resilience.RetryUseJitter,
                     ShouldHandle = args =>
                     {
                         return ValueTask.FromResult(
@@ -49,9 +54,9 @@ public static class DependencyInjection
 
                 builder.AddCircuitBreaker(new CircuitBreakerStrategyOptions<HttpResponseMessage>
                 {
-                    FailureRatio = 0.5,             // 50% ошибок
-                    MinimumThroughput = 10,         // минимум 10 запросов для оценки
-                    BreakDuration = TimeSpan.FromSeconds(30), // "остановка" на 30 секунд
+                    FailureRatio = resilience.CircuitBreakerFailureRatio,
+                    MinimumThroughput = resilience.CircuitBreakerMinimumThroughput,
+                    BreakDuration = TimeSpan.FromSeconds(resilience.CircuitBreakerBreakDurationSeconds),
                     ShouldHandle = args =>
                     {
                         return ValueTask.FromResult(
@@ -66,9 +71,8 @@ public static class DependencyInjection
                     }
                 });
 
-                builder.AddTimeout(TimeSpan.FromSeconds(10));
-
-                builder.AddConcurrencyLimiter(permitLimit: 5); // максимум 5 одновременных запросов
+                builder.AddTimeout(TimeSpan.FromSeconds(resilience.PollyTimeoutSeconds));
+                builder.AddConcurrencyLimiter(permitLimit: resilience.ConcurrencyPermitLimit);
             });
     }
 }

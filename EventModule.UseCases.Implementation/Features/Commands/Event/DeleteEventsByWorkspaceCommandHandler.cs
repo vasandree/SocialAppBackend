@@ -11,7 +11,7 @@ internal sealed class DeleteEventsByWorkspaceCommandHandler(IEventEntityReposito
     {
         var events = await eventRepository.FindAsync(x => x.WorkspaceId == request.WorkspaceId);
 
-        eventRepository.RemoveRangeAsync(events);
+        eventRepository.RemoveRange(events);
         
         await eventRepository.SaveChangesAsync(cancellationToken);
 

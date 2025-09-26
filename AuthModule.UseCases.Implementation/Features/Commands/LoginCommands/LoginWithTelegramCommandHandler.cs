@@ -36,7 +36,7 @@ internal sealed class LoginWithTelegramCommandHandler(
         if (parsedInitData.User == null) throw new BadRequest("Invalid InitData");
 
         await using var transaction =
-            await usersAccountRepository.GetDbContext().Database.BeginTransactionAsync(cancellationToken);
+            await usersAccountRepository.BeginTransactionAsync(cancellationToken);
 
         try
         {

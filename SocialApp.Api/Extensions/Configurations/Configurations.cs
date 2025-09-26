@@ -18,5 +18,6 @@ public static class Configurations
         services.Configure<PaginationConfig>(configuration.GetSection("Pagination"));
         services.Configure<SocialNetworkBaseUrlsConfig>(configuration.GetSection("SocialNetworkBaseUrlsConfig"));
         services.Configure<NotificationHttpConfig>(configuration.GetSection("NotificationHttp"));
+        services.Configure<NotificationResilienceConfig>(configuration.GetSection("Resilience"));
     }
 }

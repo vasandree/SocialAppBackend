@@ -19,7 +19,7 @@ internal sealed class AddTelegramUserCommandHandler(
         CancellationToken cancellationToken)
     {
         await using var transaction =
-            await userRepository.GetDbContext().Database.BeginTransactionAsync(cancellationToken);
+            await userRepository.BeginTransactionAsync(cancellationToken);
 
         try
         {

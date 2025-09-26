@@ -18,7 +18,7 @@ internal sealed class RegisterCommandHandler(
     public async Task<AuthResponse> Handle(RegisterCommand request, CancellationToken cancellationToken)
     {
         await using var transaction =
-            await userRepository.GetDbContext().Database.BeginTransactionAsync(cancellationToken);
+            await userRepository.BeginTransactionAsync(cancellationToken);
 
         try
         {

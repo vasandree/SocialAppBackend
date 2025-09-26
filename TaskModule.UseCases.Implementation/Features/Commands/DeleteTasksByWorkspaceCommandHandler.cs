@@ -11,7 +11,7 @@ internal sealed class DeleteTasksByWorkspaceCommandHandler(ITaskRepository taskR
     {
         var tasks = await taskRepository.FindAsync(x => x.WorkspaceId == request.WorkspaceId);
 
-        taskRepository.RemoveRangeAsync(tasks);
+        taskRepository.RemoveRange(tasks);
 
         await taskRepository.SaveChangesAsync(cancellationToken);
 

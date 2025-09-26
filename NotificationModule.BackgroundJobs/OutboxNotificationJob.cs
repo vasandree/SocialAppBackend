@@ -9,7 +9,7 @@ using UserModule.DataAccess.Interfaces.Repositories;
 
 namespace NotificationModule.BackgroundJobs;
 
-public class OutboxNotificationJob(
+internal sealed class OutboxNotificationJob(
     IOutboxMessageRepository outboxMessageRepository,
     INotificationSenderClient notificationClient,
     IUserRepository userRepository,

@@ -16,7 +16,7 @@ public class AddCommonUserHandler(ISender sender, IUserRepository userRepository
     public async Task<ApplicationUser> Handle(AddCommonUserCommand request, CancellationToken cancellationToken)
     {
         await using var transaction =
-            await userRepository.GetDbContext().Database.BeginTransactionAsync(cancellationToken);
+            await userRepository.BeginTransactionAsync(cancellationToken);
 
         try
         {
