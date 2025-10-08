@@ -11,7 +11,7 @@ public static class DependencyInjection
     public static void AddNotificationModule(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddDataAccessImplementationServices(configuration);
-        services.AddNotificationModuleBackgroundJobs(configuration);
+        services.AddNotificationModuleBackgroundJobs();
         services.AddNotificationHttpClient();
     }
     

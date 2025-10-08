@@ -8,12 +8,8 @@ public class BaseEntityRepository<T>(CommonDbContext context) : GenericRepositor
     where T : BaseEntity
 {
     public async Task<T> GetByIdAsync(Guid id)
-    {
-        return await DbSet.FirstOrDefaultAsync(x => x.Id == id) ?? throw new InvalidOperationException();
-    }
+        => await DbSet.FirstOrDefaultAsync(x => x.Id == id) ?? throw new InvalidOperationException();
 
-    public async Task<bool> CheckIfExists(Guid id)
-    {
-        return await DbSet.AnyAsync(x => x.Id == id);
-    }
+
+    public async Task<bool> CheckIfExists(Guid id) => await DbSet.AnyAsync(x => x.Id == id);
 }

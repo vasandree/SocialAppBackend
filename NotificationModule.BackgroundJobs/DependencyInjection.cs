@@ -6,7 +6,7 @@ namespace NotificationModule.BackgroundJobs;
 
 public static class DependencyInjection
 {
-    public static void AddNotificationModuleBackgroundJobs(this IServiceCollection services, IConfiguration configuration)
+    public static void AddNotificationModuleBackgroundJobs(this IServiceCollection services)
     {
         services.AddQuartz(q =>
         {

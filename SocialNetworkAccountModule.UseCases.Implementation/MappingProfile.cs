@@ -40,5 +40,4 @@ public class MappingProfile : Profile
             .ForMember(dest => dest.Url,
                 opt => opt.MapFrom(src => BuildUrl(src.Type, src.Username)));
     }
-
 }

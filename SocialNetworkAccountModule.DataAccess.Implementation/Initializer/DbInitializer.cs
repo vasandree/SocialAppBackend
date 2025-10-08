@@ -22,20 +22,18 @@ internal class DbInitializer(
 
         foreach (var baseUrl in _baseUrls)
         {
-            if (Enum.TryParse<SocialNetwork>(baseUrl.Key, out var socialNetwork))
+            if (!Enum.TryParse<SocialNetwork>(baseUrl.Key, out var socialNetwork)) continue;
+            if (!await repository.UrlExistsAsync(socialNetwork))
             {
-                if (!await repository.UrlExistsAsync(socialNetwork))
-                {
-                    var entity = new SocialNetworkUrls(socialNetwork, baseUrl.Value);
+                var entity = new SocialNetworkUrls(socialNetwork, baseUrl.Value);
 
-                    await repository.AddAsync(entity);
-                }
-                else
-                {
-                    var entity = await repository.GetByTypeAsync(socialNetwork);
-                    entity?.ChangeUrl(baseUrl.Value);
-                    await repository.SaveChangesAsync(cancellationToken);
-                }
+                await repository.AddAsync(entity);
+            }
+            else
+            {
+                var entity = await repository.GetByTypeAsync(socialNetwork);
+                entity?.ChangeUrl(baseUrl.Value);
+                await repository.SaveChangesAsync(cancellationToken);
             }
         }
     }

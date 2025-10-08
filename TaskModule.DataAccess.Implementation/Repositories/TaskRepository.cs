@@ -8,19 +8,16 @@ namespace TaskModule.DataAccess.Implementation.Repositories;
 public class TaskRepository(TaskDbContext context) : BaseEntityRepository<TaskEntity>(context), ITaskRepository
 {
     public async Task<IReadOnlyList<TaskEntity>> GetAllByUserIdAsync(Guid userId)
-    {
-        return await DbSet.Where(x => x.CreatorId == userId).ToListAsync();
-    }
-    
+        => await DbSet.Where(x => x.CreatorId == userId).ToListAsync();
+
+
     public async Task<bool> CheckIfBelongsToUserAsync(Guid userId, Guid taskId)
-    {
-        return await DbSet.AnyAsync(x => x.Id == taskId && x.CreatorId == userId);
-    }
+        => await DbSet.AnyAsync(x => x.Id == taskId && x.CreatorId == userId);
+
 
     public async Task DeleteByIdAsync(Guid id)
     {
         var task = await DbSet.FirstOrDefaultAsync(x => x.Id == id);
         if (task != null) DbSet.Remove(task);
-        await Context.SaveChangesAsync();
     }
 }

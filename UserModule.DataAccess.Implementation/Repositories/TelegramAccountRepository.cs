@@ -11,14 +11,12 @@ public class TelegramAccountRepository(UserDbContext context)
     : GenericRepository<TelegramAccount>(context), ITelegramAccountRepository
 {
     public async Task<bool> CheckIfUserExistsByTelegramIdAsync(long telegramId)
-    {
-        return await DbSet.AnyAsync(x => x.Id == telegramId);
-    }
+        => await DbSet.AnyAsync(x => x.Id == telegramId);
+
 
     public async Task<TelegramAccount> GetByTelegramIdAsync(long telegramId)
-    {
-        return (await DbSet.FirstOrDefaultAsync(x => x.Id == telegramId))!;
-    }
+        => (await DbSet.FirstOrDefaultAsync(x => x.Id == telegramId))!;
+
 
     public async Task<ApplicationUser> GetUserByTelegramIdAsync(long userId)
     {

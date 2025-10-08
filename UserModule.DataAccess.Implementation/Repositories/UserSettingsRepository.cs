@@ -10,7 +10,5 @@ public class UserSettingsRepository(UserDbContext context)
     : BaseEntityRepository<UserSettings>(context), IUserSettingsRepository
 {
     public async Task<UserSettings> GetByUserIdAsync(Guid userId)
-    {
-        return await DbSet.FirstOrDefaultAsync(x => x.UserId == userId) ?? throw new InvalidOperationException();
-    }
+        => await DbSet.FirstOrDefaultAsync(x => x.UserId == userId) ?? throw new InvalidOperationException();
 }

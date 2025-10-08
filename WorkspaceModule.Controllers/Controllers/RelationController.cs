@@ -20,29 +20,27 @@ public sealed class RelationController(ISender sender) : ControllerBase
     [ProducesResponseType(typeof(RelationDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetRelation(Guid id)
         => Ok(await sender.Send(new GetRelationQuery(User.GetUserId(), id)));
-    
+
 
     [HttpGet, Route("social_node/{id:guid}/relations")]
     [ProducesResponseType(typeof(List<RelationDto>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetRelationBySocialNode(Guid id, [FromQuery] SocialNodeType type)
         => Ok(await sender.Send(new GetRelationsBySocialNodeQuery(User.GetUserId(), id, type)));
-    
+
 
     [HttpPost, Route("relations")]
     [ProducesResponseType(typeof(RelationDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> CreateRelation([FromBody] CreateRelationDto dto)
-    {
-        return Ok(await sender.Send(new CreateRelationCommand(User.GetUserId(), dto)));
-    }
+        => Ok(await sender.Send(new CreateRelationCommand(User.GetUserId(), dto)));
+
 
     [HttpPut, Route("relations/{id:guid}")]
     [ProducesResponseType(typeof(RelationDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> UpdateRelation(Guid id, [FromBody] EditRelationDto dto)
         => Ok(await sender.Send(new UpdateRelationCommand(User.GetUserId(), id, dto)));
-    
+
 
     [HttpDelete, Route("relations/{id:guid}")]
     public async Task<IActionResult> DeleteRelation(Guid id)
         => Ok(await sender.Send(new DeleteRelationCommand(User.GetUserId(), id)));
-    
 }

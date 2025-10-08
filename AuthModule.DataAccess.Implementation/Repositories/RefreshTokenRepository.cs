@@ -8,7 +8,5 @@ internal class RefreshTokenRepository(AuthDbContext context)
     : GenericRepository<RefreshToken>(context), IRefreshTokenRepository
 {
     public Task<RefreshToken?> GetTokenAsync(string token)
-    {
-        return Task.FromResult(DbSet.FirstOrDefault(x => x.Token == token));
-    }
+        => Task.FromResult(DbSet.FirstOrDefault(x => x.Token == token));
 }
