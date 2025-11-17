@@ -2,7 +2,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using NotificationModule.BackgroundJobs;
 using NotificationModule.DataAccess.Implementation;
-using NotificationModule.HttpClient.Implementation;
 
 namespace NotificationModule.Controllers;
 
@@ -12,7 +11,6 @@ public static class DependencyInjection
     {
         services.AddDataAccessImplementationServices(configuration);
         services.AddNotificationModuleBackgroundJobs();
-        services.AddNotificationHttpClient();
     }
     
     public static void UseNotificationModule(this IServiceProvider services)

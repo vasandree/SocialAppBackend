@@ -10,7 +10,7 @@ namespace AuthModule.Controllers.Controllers;
 
 [ApiController]
 [Route("auth")]
-public sealed class AuthController(ISender sender) : ControllerBase
+public sealed class GovnohController(ISender sender) : ControllerBase
 {
     [HttpPost("login")]
     [ProducesResponseType(typeof(AuthResponse), StatusCodes.Status200OK)]

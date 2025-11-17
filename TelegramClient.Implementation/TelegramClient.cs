@@ -1,22 +1,22 @@
 using System.Text;
-using Microsoft.Extensions.Options;
-using NotificationModule.HttpClient.Interfaces;
-using Shared.Extensions.Configs;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
+using Shared.Extensions.Configs;
+using TelegramClient.Interfaces;
 using UserModule.Domain.Entities;
 
-namespace NotificationModule.HttpClient.Implementation;
+namespace TelegramClient.Implementation;
 
-internal sealed class NotificationSenderClient(
-    System.Net.Http.HttpClient httpClient,
+public class TelegramClient(
+    HttpClient httpClient,
     IOptions<NotificationHttpConfig> options,
-    IConfiguration configuration)
-    : INotificationSenderClient
+    IConfiguration configuration) : ITelegramClient
 {
     private readonly string _botToken =
         configuration.GetSection("TelegramBotApiKey").Value ?? throw new InvalidOperationException();
+
 
     public async Task<bool> SendAsync(string payloadJson, UserSettings settings,
         CancellationToken cancellationToken = default)

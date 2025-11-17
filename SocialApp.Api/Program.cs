@@ -36,6 +36,8 @@ builder.Services.AddControllers(options =>
     options.Conventions.Add(new GlobalRoutePrefixConvention("api/social_app"));
 });
 
+builder.WebHost.UseKestrelHttpsConfiguration();
+
 var app = builder.Build();
 
 app.UseCors("AllowAll");

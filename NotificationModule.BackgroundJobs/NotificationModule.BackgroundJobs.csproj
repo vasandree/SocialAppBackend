@@ -1,26 +1,25 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net9.0</TargetFramework>
+        <TargetFramework>net10.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="9.0.9" />
-      <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.4" />
-      <PackageReference Include="Quartz" Version="3.15.0" />
-      <PackageReference Include="Quartz.Extensions.DependencyInjection" Version="3.15.0" />
-      <PackageReference Include="Quartz.Extensions.Hosting" Version="3.15.0" />
+      <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="10.0.0-rc.2.25502.107" />
+      <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="10.0.0-rc.2" />
+      <PackageReference Include="Quartz" Version="3.15.1" />
+      <PackageReference Include="Quartz.Extensions.DependencyInjection" Version="3.15.1" />
+      <PackageReference Include="Quartz.Extensions.Hosting" Version="3.15.1" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\EventModule.DataAccess.Interfaces\EventModule.DataAccess.Interfaces.csproj" />
       <ProjectReference Include="..\NotificationModule.DataAccess.Implementation\NotificationModule.DataAccess.Implementation.csproj" />
       <ProjectReference Include="..\Shared.Extensions\Shared.Extensions.csproj" />
-      <ProjectReference Include="..\NotificationModule.HttpClient.Implementation\NotificationModule.HttpClient.Implementation.csproj" />
-      <ProjectReference Include="..\NotificationModule.HttpClient.Interfaces\NotificationModule.HttpClient.Interfaces.csproj" />
       <ProjectReference Include="..\TaskModule.DataAccess.Interfaces\TaskModule.DataAccess.Interfaces.csproj" />
+      <ProjectReference Include="..\TelegramClient.Interfaces\TelegramClient.Interfaces.csproj" />
     </ItemGroup>
 
 </Project>

@@ -7,12 +7,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\SocialNodeModule.UseCases.Interfaces\SocialNodeModule.UseCases.Interfaces.csproj" />
-      <ProjectReference Include="..\TaskModule.Domain\TaskModule.Domain.csproj" />
+      <ProjectReference Include="..\Shared.Extensions\Shared.Extensions.csproj" />
+      <ProjectReference Include="..\TelegramClient.Interfaces\TelegramClient.Interfaces.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="MediatR.Contracts" Version="2.0.1" />
+      <PackageReference Include="Microsoft.Extensions.Http.Resilience" Version="10.0.0" />
     </ItemGroup>
 
 </Project>

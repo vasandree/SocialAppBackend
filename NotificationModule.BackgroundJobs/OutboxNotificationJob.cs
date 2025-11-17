@@ -2,16 +2,16 @@
 using EventModule.DataAccess.Interfaces.Repositories;
 using NotificationModule.DataAccess.Interfaces;
 using NotificationModule.Domain;
-using NotificationModule.HttpClient.Interfaces;
 using Quartz;
 using TaskModule.DataAccess.Interfaces.Repositories;
+using TelegramClient.Interfaces;
 using UserModule.DataAccess.Interfaces.Repositories;
 
 namespace NotificationModule.BackgroundJobs;
 
 internal sealed class OutboxNotificationJob(
     IOutboxMessageRepository outboxMessageRepository,
-    INotificationSenderClient notificationClient,
+    ITelegramClient telegramClient,
     IUserRepository userRepository,
     ITaskRepository taskRepository,
     IEventEntityRepository eventRepository) : IJob
@@ -70,7 +70,7 @@ internal sealed class OutboxNotificationJob(
                 }
             }
 
-            var ok = await notificationClient.SendAsync(textToSend, settings, cancellationToken);
+            var ok = await telegramClient.SendAsync(textToSend, settings, cancellationToken);
             if (!ok) continue;
 
             message.Processed = true;

@@ -1,19 +1,19 @@
-using System.Net;
+﻿using System.Net;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
-using NotificationModule.HttpClient.Interfaces;
 using Polly;
 using Polly.CircuitBreaker;
 using Polly.Retry;
 using Shared.Extensions.Configs;
+using TelegramClient.Interfaces;
 
-namespace NotificationModule.HttpClient.Implementation;
+namespace TelegramClient.Implementation;
 
 public static class DependencyInjection
 {
-    public static void AddNotificationHttpClient(this IServiceCollection services)
+     public static void AddNotificationHttpClient(this IServiceCollection services)
     {
-        services.AddHttpClient<INotificationSenderClient, NotificationSenderClient>("NotificationSender",
+        services.AddHttpClient<ITelegramClient, TelegramClient>("NotificationSender",
                 (sp, client) =>
                 {
                     var httpConfig = sp.GetRequiredService<IOptions<NotificationHttpConfig>>().Value;
