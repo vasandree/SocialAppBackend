@@ -17,9 +17,8 @@ internal sealed class GetRelationQueryHandler(IRelationRepository repository, IM
 
         var relation = await repository.GetByIdAsync(request.Id);
 
-        if (!relation.IsUserCreator(request.UserId))
-            throw new Forbidden("You are not allowed to access this relation");
-
-        return mapper.Map<RelationDto>(relation);
+        return !relation.IsUserCreator(request.UserId)
+            ? throw new Forbidden("You are not allowed to access this relation")
+            : mapper.Map<RelationDto>(relation);
     }
 }

@@ -114,7 +114,7 @@ public static class OutboxPayloadFactory
         }
     }
 
-    private sealed class TemplateEnvelope
+    private sealed record TemplateEnvelope
     {
         public string Type { get; set; } = string.Empty;
         public List<TemplateLocalization> Localizations { get; set; } = new();

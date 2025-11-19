@@ -58,4 +58,6 @@ public class EventEntity : CreatableEntity
     }
     
     public bool CheckIfEventType(Guid? eventTypeId) => EventTypeId == eventTypeId;
+    
+    public IReadOnlyCollection<Guid> SocialNodeIds => SocialNodeId.AsReadOnly();
 }

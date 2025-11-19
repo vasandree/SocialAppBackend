@@ -3,7 +3,7 @@ using Shared.Domain;
 
 namespace SocialNetworkAccountModule.Domain.Entities;
 
-public class SocialNetworkAccount : CreatableEntity
+public abstract class SocialNetworkAccount : CreatableEntity
 {
     [Required] public string Username { get; private set; }
 

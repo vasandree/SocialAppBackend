@@ -21,11 +21,11 @@ public class RelationEntity : CreatableEntity
     }
 
     [Required]
-    private string Name { get; set; }
+    public string Name { get; set; }
     
-    private string? Description { get; set; }
+    public string? Description { get; set; }
     
-    private string? Color { get; set; }
+    public string? Color { get; set; }
     
     [Required]
     public Guid FirstSocialNode { get; private set; }

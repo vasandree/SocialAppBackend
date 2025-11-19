@@ -19,6 +19,7 @@ builder.Services.AddAuth(builder.Configuration);
 builder.Services.AddLoggingConfiguration();
 builder.Services.AddSwaggerConfiguration();
 
+builder.Services.AddClients();
 builder.Services.AddAppModules(builder.Configuration);
 
 builder.Services.AddCors(options =>

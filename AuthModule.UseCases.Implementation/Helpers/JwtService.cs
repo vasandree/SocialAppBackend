@@ -8,7 +8,7 @@ using UserModule.UseCases.Interfaces.Helpers;
 
 namespace AuthModule.UseCases.Implementation.Helpers;
 
-internal sealed class JwtService(IConfiguration config) : IJwtService
+public sealed class JwtService(IConfiguration config) : IJwtService
 {
     public string GenerateTokenString(string username, Guid id)
     {
