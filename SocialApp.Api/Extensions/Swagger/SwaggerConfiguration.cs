@@ -1,4 +1,4 @@
-using Microsoft.OpenApi;
+using Microsoft.OpenApi.Models;
 
 namespace SocialApp.Api.Extensions.Swagger;
 
@@ -19,7 +19,7 @@ public static class SwaggerConfiguration
                 BearerFormat = "JWT",
                 Scheme = "Bearer"
             });
-            //options.OperationFilter<SwaggerFilter>();
+            options.OperationFilter<SwaggerFilter>();
         });
     }
 }

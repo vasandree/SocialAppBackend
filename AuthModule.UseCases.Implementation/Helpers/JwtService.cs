@@ -14,9 +14,9 @@ internal sealed class JwtService(IConfiguration config) : IJwtService
     {
         var claims = new List<Claim>
         {
-            new Claim("UserId", id.ToString()),
-            new Claim("Username", username),
-            new Claim(ClaimTypes.NameIdentifier, id.ToString()),
+            new("UserId", id.ToString()),
+            new("Username", username),
+            new(ClaimTypes.NameIdentifier, id.ToString()),
         };
 
         var staticKey = config.GetSection("Jwt:Key").Value;

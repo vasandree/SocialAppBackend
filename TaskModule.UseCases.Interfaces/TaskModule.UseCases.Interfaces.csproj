@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net10.0</TargetFramework>
+        <TargetFramework>net9.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
     </PropertyGroup>
@@ -9,10 +9,6 @@
     <ItemGroup>
       <ProjectReference Include="..\SocialNodeModule.UseCases.Interfaces\SocialNodeModule.UseCases.Interfaces.csproj" />
       <ProjectReference Include="..\TaskModule.Domain\TaskModule.Domain.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <PackageReference Include="MediatR.Contracts" Version="2.0.1" />
     </ItemGroup>
 
 </Project>

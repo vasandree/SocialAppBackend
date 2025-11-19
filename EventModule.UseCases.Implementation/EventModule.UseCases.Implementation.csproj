@@ -1,16 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net10.0</TargetFramework>
+        <TargetFramework>net9.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
     </PropertyGroup>
-
-    <ItemGroup>
-      <PackageReference Include="AutoMapper" Version="14.0.0" />
-      <PackageReference Include="MediatR" Version="13.1.0" />
-      <PackageReference Include="MediatR.Contracts" Version="2.0.1" />
-    </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\EventModule.DataAccess.Interfaces\EventModule.DataAccess.Interfaces.csproj" />
@@ -21,6 +15,11 @@
       <ProjectReference Include="..\UserModule.DataAccess.Interfaces\UserModule.DataAccess.Interfaces.csproj" />
       <ProjectReference Include="..\WorkspaceModule.DataAccess.Interfaces\WorkspaceModule.DataAccess.Interfaces.csproj" />
       <ProjectReference Include="..\WorkspaceModule.UseCases.Interfaces\WorkspaceModule.UseCases.Interfaces.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="AutoMapper" />
+      <PackageReference Include="MediatR" />
     </ItemGroup>
 
 </Project>

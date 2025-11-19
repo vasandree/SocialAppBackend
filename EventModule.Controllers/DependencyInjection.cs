@@ -1,5 +1,4 @@
-﻿
-using EventModule.DataAccess.Implementation;
+﻿using EventModule.DataAccess.Implementation;
 using EventModule.UseCases.Implementation;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

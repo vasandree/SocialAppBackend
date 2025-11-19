@@ -12,7 +12,7 @@ public static class DependencyInjection
         services.AddMediatR(config
             => config.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
 
-        services.AddAutoMapper(typeof(MappingProfile));
+        services.AddAutoMapper(cfg => cfg.AddProfile<MappingProfile>());
 
         services.AddScoped<ICloudStorageService, CloudStorageService>();
         services.AddScoped<ISocialNodeService, SocialNodeService>();

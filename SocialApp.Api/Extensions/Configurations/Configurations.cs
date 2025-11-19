@@ -10,7 +10,7 @@ public static class Configurations
             .GetSection("SocialNetworkBaseUrlsConfig")
             .Get<SocialNetworkBaseUrlsConfig>();
 
-        if (socialNetworkBaseUrlsConfig?.SocialNetworkBaseUrls == null || !socialNetworkBaseUrlsConfig.SocialNetworkBaseUrls.Any())
+        if (socialNetworkBaseUrlsConfig?.SocialNetworkBaseUrls == null || socialNetworkBaseUrlsConfig.SocialNetworkBaseUrls.Count == 0)
         {
             throw new InvalidOperationException("Failed to bind SocialNetworkBaseUrls configuration.");
         }

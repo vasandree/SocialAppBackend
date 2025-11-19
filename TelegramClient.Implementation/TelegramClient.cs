@@ -9,7 +9,7 @@ using UserModule.Domain.Entities;
 
 namespace TelegramClient.Implementation;
 
-public class TelegramClient(
+internal sealed class TelegramClient(
     HttpClient httpClient,
     IOptions<NotificationHttpConfig> options,
     IConfiguration configuration) : ITelegramClient

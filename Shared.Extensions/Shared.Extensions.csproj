@@ -1,19 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net10.0</TargetFramework>
+        <TargetFramework>net9.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
     </PropertyGroup>
-
-    <ItemGroup>
-      <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.0-rc.2.25502.107" />
-      <PackageReference Include="Microsoft.AspNetCore.Authorization" Version="10.0.0-rc.2.25502.107" />
-      <PackageReference Include="Microsoft.OpenApi" Version="3.0.1" />
-      <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="10.0.1" />
-      <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="10.0.1" />
-      <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="10.0.1" />
-    </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\Shared.Contracts\Shared.Contracts.csproj" />
@@ -21,6 +12,11 @@
       <ProjectReference Include="..\Shared.DataAccess.Implementation\Shared.DataAccess.Implementation.csproj" />
       <ProjectReference Include="..\UserModule.DataAccess.Interfaces\UserModule.DataAccess.Interfaces.csproj" />
       <ProjectReference Include="..\UserModule.UseCases.Interfaces\UserModule.UseCases.Interfaces.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" />
+      <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" />
     </ItemGroup>
 
 </Project>

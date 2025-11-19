@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net10.0</TargetFramework>
+        <TargetFramework>net9.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
     </PropertyGroup>
@@ -11,6 +11,17 @@
       <ProjectReference Include="..\SocialNetworkAccountModule.DataAccess.Implementation\SocialNetworkAccountModule.DataAccess.Implementation.csproj" />
       <ProjectReference Include="..\SocialNetworkAccountModule.UseCases.Implementation\SocialNetworkAccountModule.UseCases.Implementation.csproj" />
       <ProjectReference Include="..\SocialNetworkAccountModule.UseCases.Interfaces\SocialNetworkAccountModule.UseCases.Interfaces.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="MediatR" />
+      <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="Microsoft.AspNetCore.Mvc.Core">
+        <HintPath>..\..\..\..\..\usr\local\share\dotnet\shared\Microsoft.AspNetCore.App\9.0.0\Microsoft.AspNetCore.Mvc.Core.dll</HintPath>
+      </Reference>
     </ItemGroup>
 
 </Project>

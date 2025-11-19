@@ -17,7 +17,7 @@ internal sealed class CreateTokensCommandHandler(
     IConfiguration configuration)
     : IRequestHandler<CreateTokensCommand, TokensDto>
 {
-    private readonly int _expiresIn = configuration.GetValue<int>("Jwt:RefreshDaysLifeTime");
+    private readonly int _expiresIn = configuration.GetValue<int>("Jwt:RefreshHoursLifeTime");
 
     public async Task<TokensDto> Handle(CreateTokensCommand request, CancellationToken cancellationToken)
     {

@@ -1,20 +1,20 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net10.0</TargetFramework>
+        <TargetFramework>net9.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="MediatR" Version="13.1.0" />
-      <PackageReference Include="Microsoft.AspNetCore.Authorization" Version="10.0.0" />
-    </ItemGroup>
-
-    <ItemGroup>
       <ProjectReference Include="..\Shared.Extensions\Shared.Extensions.csproj" />
       <ProjectReference Include="..\SocialNodeModule.UseCases.Implementation\SocialNodeModule.UseCases.Implementation.csproj" />
       <ProjectReference Include="..\SocialNodeModule.UseCases.Interfaces\SocialNodeModule.UseCases.Interfaces.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="MediatR" />
+      <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" />
     </ItemGroup>
 
 </Project>

@@ -3,7 +3,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SocialNodeModule.DataAccess.Implementation.CloudStorage;
 using SocialNodeModule.DataAccess.Implementation.Repositories;
-using SocialNodeModule.DataAccess.Interfaces;
 using SocialNodeModule.DataAccess.Interfaces.Repositories;
 
 namespace SocialNodeModule.DataAccess.Implementation;

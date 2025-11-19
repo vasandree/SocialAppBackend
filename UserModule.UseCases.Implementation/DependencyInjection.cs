@@ -15,6 +15,6 @@ public static class DependencyInjection
 
         services.AddScoped<ITelegramHelper, TelegramHelper>();
         services.AddScoped<IAddUserCommandFactory, AddUserCommandFactory>();
-        services.AddAutoMapper(typeof(MappingProfile));
+        services.AddAutoMapper(cfg => cfg.AddProfile<MappingProfile>());
     }
 }
